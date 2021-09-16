@@ -1,4 +1,4 @@
-# rzh-design
+# polard
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ Build documentation,
 $ npm run docs:build
 ```
 
-Build rzh-design via `father-build`,
+Build polard via `father-build`,
 
 ```bash
 $ npm run build
