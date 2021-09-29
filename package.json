@@ -1,6 +1,6 @@
 {
   "name": "polard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -27,14 +27,17 @@
     ]
   },
   "dependencies": {
+    "@types/qs": "^6.9.7",
     "ahooks": "^2.10.0",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
     "babel-plugin-import": "^1.13.3",
+    "classnames": "^2.3.1",
     "qs": "^6.10.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-resizable": "^3.0.4"
+    "react-resizable": "^3.0.4",
+    "supports-color": "^9.0.2"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",

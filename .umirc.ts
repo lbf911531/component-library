@@ -34,4 +34,17 @@ export default defineConfig({
       changeOrigin: true,
     },
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    antd: 'antd',
+    '@ant-design/icons': 'icons',
+    moment: 'moment',
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      amd: 'lodash',
+      root: '_',
+    },
+  },
 });
