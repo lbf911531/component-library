@@ -1,6 +1,6 @@
 {
   "name": "polard",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -27,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@types/node": "^16.10.1",
     "@types/qs": "^6.9.7",
     "ahooks": "^2.10.0",
     "antd": "^4.16.13",
