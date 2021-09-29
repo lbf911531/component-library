@@ -1,3 +1,6 @@
+/**
+ * dumi 全局配置
+ */
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
@@ -21,4 +24,14 @@ export default defineConfig({
       },
     ],
   ],
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
+    '/base': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
+  },
 });

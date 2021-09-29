@@ -6,7 +6,7 @@ group:
 
 ## Table 基础表格
 
-Demo:
+### Demo
 
 ```tsx
 import React from 'react';
@@ -49,3 +49,7 @@ export default function BasicTable() {
   return <Table columns={columns} dataSource={dataSource} />;
 }
 ```
+
+### API
+
+具体 API 可参考 [antd/table](https://ant.design/components/table-cn/)
