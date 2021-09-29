@@ -2,8 +2,9 @@
  * dumi 全局配置
  */
 import { defineConfig } from 'dumi';
+import path from 'path';
 
-export default defineConfig({
+const config = {
   title: 'polard',
   favicon: '/images/favicon.png',
   // 配置文档的Logo
@@ -46,5 +47,8 @@ export default defineConfig({
       amd: 'lodash',
       root: '_',
     },
+    httpFetch: 'window.httpFetch',
   },
-});
+};
+
+export default defineConfig(config);

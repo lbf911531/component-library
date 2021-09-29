@@ -9,6 +9,7 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import { useSelections } from 'ahooks';
+import httpFetch from 'httpFetch';
 import Table from '../table';
 import config from '../../config/config';
 import SettingSvg from './images/setting';
