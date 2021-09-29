@@ -1,4 +1,4 @@
-// import { rewriteAxios } from './scripts/httpFetch';
+// import { rewriteAxios } from './share/httpFetch';
 
 // tslint:disable-next-line
 // if (process.env.NODE_ENV !== "development") {

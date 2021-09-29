@@ -35,6 +35,9 @@ const config = {
       changeOrigin: true,
     },
   },
+  alias: {
+    share: path.resolve(__dirname, './src/share'),
+  },
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
@@ -47,7 +50,7 @@ const config = {
       amd: 'lodash',
       root: '_',
     },
-    httpFetch: 'window.httpFetch',
+    httpFetch: path.resolve('./src/share/httpFetch.js'),
   },
 };
 
