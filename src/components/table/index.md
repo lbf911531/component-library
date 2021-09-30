@@ -4,9 +4,9 @@ group:
   path: /components
 ---
 
-## Table 基础表格
+## 基础表格 Table
 
-### Demo
+## 代码演示 Demo
 
 ```tsx
 import React from 'react';
@@ -50,6 +50,6 @@ export default function BasicTable() {
 }
 ```
 
-### API
+## API
 
 具体 API 可参考 [antd/table](https://ant.design/components/table-cn/)

@@ -1,10 +1,5 @@
-// import { rewriteAxios } from './share/httpFetch';
-
-// tslint:disable-next-line
-// if (process.env.NODE_ENV !== "development") {
-//   rewriteAxios();
-// }
-
-export { default as Foo } from './components/Foo';
+// 统一导出
+export { default as Foo } from './components/foo';
 export { default as Table } from './components/table';
 export { default as CustomTable } from './components/custom-table';
+export { default as CodeInput } from './components/code-input';

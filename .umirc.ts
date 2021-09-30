@@ -54,4 +54,9 @@ const config = {
   },
 };
 
+if (process.env.ENV_TYPE === 'native') {
+  // 本地启动的时候不需要配置 externals
+  delete config.externals;
+}
+
 export default defineConfig(config);

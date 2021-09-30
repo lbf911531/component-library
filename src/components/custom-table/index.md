@@ -4,13 +4,13 @@ group:
   path: /components
 ---
 
-## Custom-table 自定义表格
+## 自定义表格 CustomTable
 
 <Alert type="info">
   该表格内部引入了axios，使用时可直接传入url，挂载时会以主动请求url返回的结果作为表格数据
 </Alert>
 
-## Demo
+## 代码演示 Demo
 
 ```tsx
 import React from 'react';
