@@ -1,6 +1,6 @@
 {
   "name": "polard",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "scripts": {
     "start": "cross-env ENV_TYPE=native dumi dev",
     "docs:build": "dumi build",
