@@ -13,6 +13,7 @@ import httpFetch from 'share/httpFetch';
 import Table from '../table';
 import config from '../../config/config';
 import SettingSvg from './images/setting';
+import './style.less';
 
 /**
  * 表格行操作菜单，鼠标移入才显示
@@ -251,6 +252,7 @@ export function HeaderSettingsDropDown(props) {
       const index = originColumns.findIndex(
         (dataIndex) => dataIndex === col.dataIndex,
       );
+      col.key = col.dataIndex;
       treeNodes[index] = col;
     });
     return treeNodes.filter((col) => col);
@@ -534,7 +536,10 @@ class CustomTable extends Component {
     const { headSettingKey, columns } = props || this.props;
     return new Promise((resolve) => {
       if (headSettingKey) {
-        if (!window?.g_app?._store) return;
+        if (!window?.g_app?._store) {
+          resolve({ columns, isDefault: true });
+          return;
+        }
         const search = window.g_app._store.getState()?.search;
         if (search.all && search.all[headSettingKey]) {
           const tableConfig = search.all[headSettingKey].find(
@@ -843,7 +848,11 @@ class CustomTable extends Component {
           total: Number(res.headers['x-total-count']) || 0,
         };
 
-        let data = dataKey ? res.data.dataKey : res.data;
+        let data = dataKey
+          ? typeof dataKey === 'string '
+            ? res.data[dataKey]
+            : res.data.dataKey
+          : res.data;
         if (filterData) {
           data = filterData(data);
         }
@@ -1020,7 +1029,7 @@ class CustomTable extends Component {
     };
 
     return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative' }} className="custom-table">
         <Table
           tableLayout="fixed"
           rowKey={(record) => this.getDataLabel(record, tableKey || 'id')}
