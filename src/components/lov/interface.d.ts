@@ -60,6 +60,10 @@ export interface IProps {
   showPopover: boolean | undefined;
   cusSuffixIcon?: any;
   cusRemoveIcon?: any;
+  labelInValue?: boolean;
+  optionLabelProp?: string;
+  customChooserTextValue?: any;
+  inputStyle?: any;
 }
 
 export interface ILov {
@@ -117,6 +121,7 @@ export interface IListSelectorProps extends IProps {
   dispatch: any;
   delay: boolean;
   isRequest?: boolean;
+  confirmLoading?: boolean;
 }
 
 export interface ILovProps extends IListSelectorProps {
@@ -126,6 +131,8 @@ export interface ILovProps extends IListSelectorProps {
   width?: number | string;
   onCancel: () => void;
   onOk: (res: { result: any; type: string }) => void;
+  hideSelectAll?: boolean;
+  maxLength?: number;
 }
 
 interface IFrontPagination {

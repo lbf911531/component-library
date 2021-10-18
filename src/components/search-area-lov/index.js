@@ -4,7 +4,6 @@
  * 目前只发现差异在于列维可配置，而search-area组件是定义了col的常量
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   DownOutlined,
@@ -32,7 +31,7 @@ import InputNumber from '../input-number';
 import SelectPartLoad from '../select-part-load';
 import moment from 'moment';
 
-import debounce from 'lodash.debounce';
+import _ from 'lodash';
 import httpFetch from 'share/httpFetch';
 import InputLanguage from '../input-language';
 import { messages } from '../utils';
@@ -73,7 +72,7 @@ class SearchArea extends React.Component {
     // leading，函数在每个等待时延的开始被调用，默认值为false
     // trailing，函数在每个等待时延的结束被调用，默认值是true
     // maxwait，最大的等待时间，因为如果debounce的函数调用时间不满足条件，可能永远都无法触发，因此增加了这个配置，保证大于一段时间后一定能执行一次函数
-    this.setOptionsToFormItem = debounce(this.setOptionsToFormItem, 250);
+    this.setOptionsToFormItem = _.debounce(this.setOptionsToFormItem, 250);
   }
 
   componentWillMount() {
@@ -1697,27 +1696,6 @@ class SearchArea extends React.Component {
       options: [{label: '',  value: '', disabled: false}]  //必填，checkbox可选项
    }
  */
-SearchArea.propTypes = {
-  searchForm: PropTypes.array.isRequired, //传入的表单列表
-  checkboxListForm: PropTypes.array, //传入的checkbox表单列表
-  submitHandle: PropTypes.func.isRequired, //搜索事件
-  eventHandle: PropTypes.func, //表单项点击事件
-  clearHandle: PropTypes.func, //重置事件
-  okText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), //左侧ok按钮的文本
-  clearText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), //右侧重置按钮的文本
-  maxLength: PropTypes.number, //搜索区域最大表单数量
-  loading: PropTypes.bool, //用于base-info组件的保存按钮
-  checkboxChange: PropTypes.func, //checkbox表单列表修改时返回选中value事件
-  isExtraFields: PropTypes.bool, //是否添加额外的自定义搜索参数
-  extraFields: PropTypes.array, //额外的搜索配置:自己传入节点，不过加了额外的搜索，主要在外面的submitHandle函数里面进行接收
-  //extraFields类型传数组为了适应样式
-  isHideClearText: PropTypes.bool, //是否隐藏清空按钮
-  isHideOkTextText: PropTypes.bool, //是否隐藏搜索按钮
-  onRef: PropTypes.func, //ref调用子组件函数或者值
-  isReturnLabel: PropTypes.bool, //用于数据缓存
-  returnMoreData: PropTypes.bool, // type为lov时，返回value和label
-};
-
 SearchArea.defaultProps = {
   maxLength: 2,
   eventHandle: () => {},

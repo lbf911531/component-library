@@ -10,6 +10,9 @@ export default function WrapperConnect(mapStateToProps) {
     const partState = mapStateToProps(state);
 
     return class CustomConnect extends React.Component {
+      constructor(props) {
+        super(props);
+      }
       render() {
         return (
           <WrappedComponent

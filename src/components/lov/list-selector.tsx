@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Spin, Button, Popover } from 'antd';
 import WrapperConnect from '../custom-connect';
-import debounce from 'lodash.debounce';
+import _ from 'lodash';
 // @ts-ignore
 import httpFetch from 'share/httpFetch';
 // @ts-ignore
@@ -44,7 +44,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
       lov: {},
       loading: true,
     };
-    this.onOk = debounce(this.onOk, props.delay ? 200 : 0);
+    this.onOk = _.debounce(this.onOk, props.delay ? 200 : 0);
   }
 
   componentWillReceiveProps(nextProps: IListSelectorProps) {

@@ -229,6 +229,7 @@ class Lov extends Component<IProps, IState> {
           </div>
         </Popover>
         <ListSelector
+          // @ts-ignore
           onOk={this.okHandle}
           onCancel={this.cancelHandle}
           visible={visible}

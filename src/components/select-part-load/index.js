@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Select, Spin, Pagination, Tag, Space, Tooltip, Input } from 'antd';
 import httpFetch from 'share/httpFetch';
-import debounce from 'lodash/debounce';
+import _ from 'lodash';
 import CloseSvg from './images/close';
 import SearchSvg from './images/search';
 import './index.less';
@@ -34,7 +34,7 @@ class SelectPartLoad extends Component {
     };
     this.canGetList = true;
     this.fetchTimes = 0;
-    this.onSearch = debounce(this.onSearch, props.time || 250);
+    this.onSearch = _.debounce(this.onSearch, props.time || 250);
   }
 
   componentWillMount() {

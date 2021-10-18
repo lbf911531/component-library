@@ -1,7 +1,7 @@
 /* eslint-disable*/
 'use strict';
 
-exports.__esModule = true;
+// exports.__esModule = true;
 
 var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
 
@@ -1068,5 +1068,6 @@ var _initialiseProps = function _initialiseProps() {
   };
 };
 
-exports['default'] = InputNumber;
-module.exports = exports['default'];
+// exports['default'] = InputNumber;
+// module.exports = exports['default'];
+export default InputNumber;
