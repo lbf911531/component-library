@@ -38,6 +38,7 @@ const config = {
   },
   alias: {
     share: path.resolve(__dirname, './src/share'),
+    config: path.resolve(__dirname, './src/config/config.js'),
   },
   externals: {
     react: 'React',
@@ -52,6 +53,7 @@ const config = {
       root: '_',
     },
     httpFetch: path.resolve('./src/share/httpFetch.js'),
+    config: path.resolve('./src/config/config.js'),
   },
   cssLoader: {
     modules: {

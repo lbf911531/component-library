@@ -1,0 +1,26 @@
+:global {
+  .lov-wrap {
+    .ant-select-selection__clear {
+      & > span {
+        background-color: #fff;
+      }
+    }
+    .lov-none-clear {
+      opacity: 0;
+      display: none;
+      line-height: 32px;
+    }
+    .lov-clear {
+      position: absolute;
+      right: 11px;
+      line-height: 32px;
+      z-index: 10;
+      top: 9px;
+    }
+    .ant-input-suffix
+      .ant-input-search-button.ant-btn:not([disabled])
+      .anticon {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '~antd/lib/style/themes/default.less';
+:global {
+  .custom-dropdown-wrap {
+    .ant-pagination-simple-pager input {
+      padding: 0;
+      border: 0;
+      width: 35px;
+      margin-right: 0;
+    }
+  }
+  .select-part-load {
+    &.single-tag .ant-select-selection-overflow {
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+    .ant-tag.ant-select-selection-item {
+      color: inherit;
+      font-size: inherit;
+      .anticon-close {
+        line-height: 24px;
+        margin-left: 0;
+      }
+    }
+  }
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: fade(@primary-color, 10%);
+  }
+}

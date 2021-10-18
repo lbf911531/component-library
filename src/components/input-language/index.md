@@ -14,7 +14,7 @@ group:
 import React, { useState } from 'react';
 import { InputLanguage } from 'polard';
 
-export default function CodeInputDemo() {
+export default function InputLanguageDemo() {
   const [language, setLanguage] = useState(undefined);
 
   function handleChange(value) {
@@ -52,7 +52,7 @@ import React from 'react';
 import { InputLanguage } from 'polard';
 import { Form, Button } from 'antd';
 
-export default function CodeInputDemo() {
+export default function InputLanguageDemo() {
   function onFinish(value) {
     console.log(value);
   }

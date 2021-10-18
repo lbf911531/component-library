@@ -11,7 +11,7 @@ import {
 import { useSelections } from 'ahooks';
 import httpFetch from 'share/httpFetch';
 import Table from '../table';
-import config from '../../config/config';
+import config from 'config';
 import SettingSvg from './images/setting';
 import './style.less';
 
