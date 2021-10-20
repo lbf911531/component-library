@@ -320,10 +320,11 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import { useSelections } from 'ahooks';
-import httpFetch from 'httpFetch';
+import httpFetch from 'share/httpFetch';
 import Table from '../table';
-import config from '../../config/config';
+import config from 'config';
 import SettingSvg from './images/setting';
+import './style.less';
 /**
  * 表格行操作菜单，鼠标移入才显示
  */
@@ -671,6 +672,7 @@ export function HeaderSettingsDropDown(props) {
       var index = originColumns.findIndex(function (dataIndex) {
         return dataIndex === col.dataIndex;
       });
+      col.key = col.dataIndex;
       treeNodes[index] = col;
     });
     return treeNodes.filter(function (col) {
@@ -979,8 +981,14 @@ var CustomTable = /*#__PURE__*/ (function (_Component) {
                 _window3$g_app === void 0
               ? void 0
               : _window3$g_app._store)
-          )
+          ) {
+            resolve({
+              columns: columns,
+              isDefault: true,
+            });
             return;
+          }
+
           var search =
             (_window$g_app$_store$2 = window.g_app._store.getState()) ===
               null || _window$g_app$_store$2 === void 0
@@ -1457,7 +1465,11 @@ var CustomTable = /*#__PURE__*/ (function (_Component) {
             },
           );
 
-          var data = dataKey ? res.data.dataKey : res.data;
+          var data = dataKey
+            ? typeof dataKey === 'string '
+              ? res.data[dataKey]
+              : res.data.dataKey
+            : res.data;
 
           if (filterData) {
             data = filterData(data);
@@ -1835,6 +1847,7 @@ var CustomTable = /*#__PURE__*/ (function (_Component) {
             style: {
               position: 'relative',
             },
+            className: 'custom-table',
           },
           /*#__PURE__*/ React.createElement(
             Table,

@@ -47,3 +47,24 @@ const { dispatch, getState } = window?.g_app?._store;
 import { getDvaApp } from 'umi';
 const { dispatch, getState } = getDvaApp()._store;
 ```
+
+## 打包，发布
+
+- 修改`.fatherrc.ts`文件中的`cjs,esm`
+- 默认`rollup`打包模式，生成`dist`文件夹，该模式下体积小，但是 es6 语法
+- 修改为`babel`模式时，会生成`lib`,`es`文件夹，该模式下体积大，同时需要修改`package.json`文件
+  修改如下：
+
+```json
+"main": "lib/index.js",
+"module": "lib/index.js",
+"typings": "lib/index.d.ts",
+```
+
+且该模式下后续需要考虑做按需加载
+
+- 发布命令
+
+```bash
+$ npm run release
+```

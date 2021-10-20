@@ -1,8 +1,9 @@
-// import { rewriteAxios } from './scripts/httpFetch';
-// tslint:disable-next-line
-// if (process.env.NODE_ENV !== "development") {
-//   rewriteAxios();
-// }
-export { default as Foo } from './components/Foo';
+// 统一导出
 export { default as Table } from './components/table';
 export { default as CustomTable } from './components/custom-table';
+export { default as CodeInput } from './components/code-input';
+export { default as CustomSwitch } from './components/custom-switch';
+export { default as InputLanguage } from './components/input-language';
+export { default as InputNumber } from './components/input-number';
+export { default as SelectPartLoad } from './components/select-part-load';
+export { default as Lov } from './components/lov';

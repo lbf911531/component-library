@@ -15,7 +15,8 @@
     },
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
-    "types": ["node"]
+    "types": ["node"],
+    "declaration": true
   },
   "exclude": [
     "node_modules",
