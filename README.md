@@ -48,6 +48,18 @@ import { getDvaApp } from 'umi';
 const { dispatch, getState } = getDvaApp()._store;
 ```
 
+3. 涉及到 form 组件，一律改用 antd 4.x 中的 form，`Form.create()(component)`改为`WrappedForm(component)`[path: "components/wrapped-form"]
+
+```js
+export default WrappedForm(WrappedSearchArea);
+```
+
+4. 涉及到 connect 组件的使用，改用`WrapperConnect`[path: "components/custom-connect"]
+
+```js
+export default WrapperConnect(mapStateToProps)(CompatibleLov);
+```
+
 ## 打包，发布
 
 - 修改`.fatherrc.ts`文件中的`cjs,esm`
@@ -68,3 +80,9 @@ const { dispatch, getState } = getDvaApp()._store;
 ```bash
 $ npm run release
 ```
+
+## 后续计划
+
+1. 支持多语言
+2. 组件改为 tsx 语法
+3. 部分组件重构，减少代码量

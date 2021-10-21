@@ -59,7 +59,7 @@ let needBlurValidate = true;
  * @params loading  搜索按钮的loading状态
  * TODO: 选项render函数、searchUrl和getUrl的method区分
  */
-class SearchArea extends React.Component {
+class SearchAreaLov extends React.Component {
   formRef = React.createRef();
   constructor(props) {
     super(props);
@@ -342,8 +342,9 @@ class SearchArea extends React.Component {
   handleSearch = (e) => {
     needBlurValidate = false;
     if (e) e.preventDefault();
-    this.formRef.current.validateFieldsAndScroll((err, values) => {
-      if (!err) {
+    this.formRef.current
+      .validateFields()
+      .then((values) => {
         if (!this.rangeValidate(values)) return; // 校验 金额从/至, 日期从/至
 
         let searchForm = [].concat(this.state.searchForm);
@@ -491,10 +492,10 @@ class SearchArea extends React.Component {
           });
         if (this.props.isReturnLabel) values['expand'] = this.state.expand;
         this.props.submitHandle(values);
-      } else {
+      })
+      .catch((err) => {
         err.name && this.setState({ validateStatus: true });
-      }
-    });
+      });
   };
 
   //点击重置的事件，清空值为初始值
@@ -1696,7 +1697,7 @@ class SearchArea extends React.Component {
       options: [{label: '',  value: '', disabled: false}]  //必填，checkbox可选项
    }
  */
-SearchArea.defaultProps = {
+SearchAreaLov.defaultProps = {
   maxLength: 2,
   eventHandle: () => {},
   okText: 'common.search', //搜索
@@ -1707,4 +1708,4 @@ SearchArea.defaultProps = {
   checkboxChange: () => {},
 };
 
-export default SearchArea;
+export default SearchAreaLov;

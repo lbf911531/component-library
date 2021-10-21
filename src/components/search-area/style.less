@@ -1,0 +1,200 @@
+:global {
+  #search-area {
+    .ant-advanced-search-form.search-area {
+      &.ant-form-inline .has-feedback {
+        display: block;
+      }
+
+      background-color: #fff;
+
+      .ant-form-item {
+        display: flex;
+        margin-right: 0;
+        margin-bottom: 0;
+        min-height: 48px;
+      }
+
+      .ant-legacy-form-item-label {
+        width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 0 0 100px;
+        max-width: 100%;
+      }
+
+      .ant-legacy-form-item-control-wrapper {
+        width: calc(100% - 100px);
+        max-width: 100%;
+      }
+
+      .ant-legacy-form-item-label {
+        width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 0 0 100px;
+        max-width: 100%;
+      }
+
+      .ant-legacy-form-item-control-wrapper {
+        width: calc(100% - 100px);
+        max-width: 100%;
+      }
+
+      .ant-legacy-form-item {
+        width: 100%;
+        display: flex;
+        margin-right: 0;
+        margin-bottom: 0;
+        min-height: 48px;
+      }
+
+      overflow: visible;
+
+      .ant-calendar-picker {
+        width: 100%;
+      }
+
+      .item-label {
+        display: block;
+        margin-top: 0.4em;
+        font-size: 16px;
+      }
+
+      .toggle-button {
+        margin-right: 16px;
+        font-size: 12px;
+      }
+
+      .ant-legacy-form-item-label label {
+        color: #666;
+      }
+
+      .ant-input,
+      .ant-select,
+      .ant-picker-input > input,
+      .ant-input-number-input,
+      .ant-cascader-picker {
+        color: #333;
+      }
+
+      input:-ms-input-placeholder.ant-input {
+        color: #bfbfbf !important;
+      }
+
+      // .ant-form-item-label{
+      //   line-height: 25px;
+      // }
+      .ant-radio-group.ant-radio-group-large {
+        white-space: nowrap;
+        width: 100%;
+
+        .ant-radio-button-wrapper {
+          width: 50%;
+          padding: 0;
+          text-align: center;
+        }
+      }
+
+      .chooser {
+        .ant-select-selection.ant-select-selection--multiple {
+          .ant-select-selection__choice {
+            padding: 0 10px;
+          }
+
+          .ant-select-selection__choice__remove {
+            display: none;
+          }
+        }
+      }
+
+      .checkbox-list-form {
+        border: 1px solid #eee;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        background: #fff;
+        margin-bottom: 0px;
+
+        .check-all-option {
+          position: absolute;
+          z-index: 1;
+          padding: 7px 10px 5px;
+        }
+
+        .ant-radio-group {
+          white-space: normal;
+          display: block;
+        }
+
+        .list-row {
+          .list-col-header {
+            background: #f7f7f7;
+            text-align: right;
+            padding-right: 20px;
+            height: 100%;
+            position: absolute;
+            line-height: 44px;
+          }
+
+          .ant-checkbox-wrapper,
+          .ant-radio-wrapper {
+            margin-left: 0 !important;
+            margin-right: 8px !important;
+          }
+
+          .list-col-content {
+            padding: 5px 10px;
+            float: right;
+            overflow: hidden;
+            line-height: 34px;
+
+            .antd-pro-tag-select-tagSelect {
+              max-height: unset;
+            }
+          }
+        }
+
+        .ant-row.ant-form-item {
+          margin-bottom: -10px;
+
+          &:not(:first-child) {
+            border-top: 1px solid #eee;
+          }
+
+          &:first-child {
+            .list-col-header {
+              border-top-left-radius: 5px;
+            }
+          }
+
+          &:last-child {
+            .list-col-header {
+              border-bottom-left-radius: 5px;
+            }
+          }
+        }
+      }
+
+      .antd-pro-tag-select-tagSelect {
+        margin-left: 0;
+      }
+
+      .antd-pro-tag-select-tagSelect.antd-pro-tag-select-expanded {
+        max-height: unset;
+      }
+    }
+
+    .cost-center-search-modal {
+      .ant-modal-body {
+        height: 500px;
+        overflow-y: auto;
+      }
+    }
+
+    .common-top-area {
+      background-color: #f7f8fa;
+    }
+  }
+}

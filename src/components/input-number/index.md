@@ -81,7 +81,7 @@ export default function InputNumberDemo() {
 | autoFocus    | 自动获取焦点                                               | boolean                  | false  |
 | defaultValue | 初始值                                                     | number                   | -      |
 | value        | 值                                                         | number                   | -      |
-| step         | 每次改变步数，可以为小数                                   | number                   | string |
+| step         | 每次改变步数，可以为小数                                   | number/string            | -      |
 | min          | 最小值                                                     | number                   | -      |
 | max          | 最大值                                                     | number                   | -      |
 | parser       | 指定从 formatter 里转换回数字的方式，和 formatter 搭配使用 | function(string): number | -      |

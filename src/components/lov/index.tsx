@@ -56,7 +56,6 @@ function CompatibleLov(props: IProps) {
         }
       });
     }
-    console.log(1);
     // selectorItem，code共存时，优先使用 selectorItem
     if (selectorItem && selectorItem.constructor === Object) {
       setLovIfHasSelectorItem(columnsMap);
@@ -116,7 +115,7 @@ function CompatibleLov(props: IProps) {
       dispatch,
       needCache = true,
     } = nextProps;
-    console.log(2, `${config.baseUrl}/api/lov/detail/${code}`);
+
     httpFetch
       .get(`${config.baseUrl}/api/lov/detail/${code}`)
       .then(({ data }: any) => {
