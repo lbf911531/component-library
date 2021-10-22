@@ -37,7 +37,7 @@ import InputNumber from '../input-number';
 import LanguageInput from '../input-language';
 import { messages } from '../utils';
 import WrappedForm from '../wrapped-form';
-import LocaleContext from '../locale-provider/context';
+import LocaleContext from '../locale-lan-provider/context';
 import './style.less';
 
 const { Option } = Select;

@@ -1,8 +1,13 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
 
-import zhCN from './locale/zh_CN';
-import enUS from './locale/en_US';
+import zhCN from './locale-language/zh_CN';
+import enUS from './locale-language/en_US';
+
+const defaultLocaleMap = {
+  zh_cn: zhCN,
+  en_us: enUS,
+};
 
 /**
  * 金额格式化
@@ -64,14 +69,15 @@ export function messages(title: string, config?: IConfig): string {
     params,
     context = {
       locale: 'zh_cn',
-      localeMap: {
-        zh_cn: zhCN,
-        en_us: enUS,
-      },
+      localeMap: defaultLocaleMap,
     },
   } = config;
-
-  const lang = context.localeMap?.[context.locale]?.[title];
+  // 合并外界传入的，
+  const lastLocaleMap = {
+    ...defaultLocaleMap,
+    ...context.localeMap,
+  };
+  const lang = lastLocaleMap[context.locale]?.[title];
   console.log('locale:', context.locale);
   if (!lang) return title;
   if (params) {
