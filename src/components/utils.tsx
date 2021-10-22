@@ -1,6 +1,9 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
 
+import zhCN from './locale/zh_CN';
+import enUS from './locale/en_US';
+
 /**
  * 金额格式化
  * @param moneys
@@ -44,8 +47,28 @@ export function formatMoney(
 /**
  * 多语言
  * @param title
+ * @param config： { params, context }
  * @returns
  */
-export function messages(title) {
-  return title;
+export function messages(title, config) {
+  if (!config) return title;
+
+  const {
+    params,
+    context = {
+      locale: 'zh_cn',
+      localeMap: {
+        zh_cn: zhCN,
+        en_us: enUS,
+      },
+    },
+  } = config;
+
+  const lang = context.localeMap?.[context.locale]?.[title];
+  console.log('locale:', context.locale);
+  if (!lang) return title;
+  if (params) {
+    return lang.replace(/\{(.+?)\}/g, ($1, $2) => params[$2]);
+  }
+  return lang;
 }
