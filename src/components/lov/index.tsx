@@ -141,7 +141,7 @@ function CompatibleLov(props: IProps) {
 
               const temp = {
                 ...cur,
-                title: messages(cur.title),
+                title: cur.title,
                 width: cur.width || 200,
               };
               pre.push(addRenderFnc(temp));
@@ -164,7 +164,7 @@ function CompatibleLov(props: IProps) {
               if (cur.id in tempSearchMap) {
                 return pre;
               }
-              pre.push({ ...cur, label: messages(cur.label) });
+              pre.push({ ...cur, label: cur.label });
               return pre;
             }, []),
           ];

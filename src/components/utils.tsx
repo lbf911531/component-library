@@ -50,7 +50,14 @@ export function formatMoney(
  * @param config： { params, context }
  * @returns
  */
-export function messages(title, config) {
+export interface IConfig {
+  params?: any;
+  context: {
+    locale: string;
+    localeMap?: any;
+  };
+}
+export function messages(title: string, config?: IConfig): string {
   if (!config) return title;
 
   const {
