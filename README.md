@@ -83,6 +83,30 @@ $ npm run release
 
 ## 后续计划
 
-1. 支持多语言
+1. 支持多语言 (目前进度 50%)
 2. 组件改为 tsx 语法
 3. 部分组件重构，减少代码量
+
+## 多语言
+
+提供 LocaleProvider 组件，于项目入口出，调用该组件包裹子组件，并传入 locale 参数
+如下是 antd 多语言与 polard 多语言共有场景：
+
+```tsx
+// locale: {
+//   locale: "zh_cn",
+//   localeMap: {
+//     zh_cn: {"common.key": "键",...},
+//     en_us: {},
+//   },
+// }
+//  组件库内部暂时仅支持zh_cn,en_us, 如项目有需求增加其他语言，可自行配置，并传入即可，localeMap同名配置以外界传入为主
+<ConfigProvider locale={localeInfo[locale] || zhCN}>
+  <IntlProvider onError={() => { }} locale={langTypes[locale]} messages={messages}>
+    <InjectedWrapper>
+      <LocaleProvider locale={{locale,localeMap}}>
+        {basicLayout}
+      </InjectedWrapper>
+  </IntlProvider>
+</ConfigProvider>
+```
