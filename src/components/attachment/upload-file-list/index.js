@@ -1,7 +1,6 @@
 import React from 'react';
 import Icon, { LoadingOutlined } from '@ant-design/icons';
 import { Tooltip, Popconfirm, Col, Row } from 'antd';
-import PropTypes from 'prop-types';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
 import { getImgIcon } from 'utils/utils';
@@ -317,14 +316,6 @@ class RenderUploadFileItem extends React.Component {
     );
   }
 }
-
-RenderUploadFileItem.propTypes = {
-  fileList: PropTypes.array,
-  showRemoveIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  showPreviewIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  showDownloadIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  onRemove: PropTypes.func,
-};
 
 RenderUploadFileItem.defaultProps = {
   fileList: [],

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Upload, Button, message } from 'antd';
 import { UploadOutlined, DownOutlined, RightOutlined } from '@ant-design/icons';
 import { isNil } from 'lodash';
@@ -509,37 +508,6 @@ class UploadButton extends React.Component {
   }
 }
 
-UploadButton.propTypes = {
-  uploadUrl: PropTypes.string, // 上传URL
-  disabled: PropTypes.bool, // 是否禁用, 禁用时会隐藏掉上传按钮
-  valueKey: PropTypes.string, // 指定使用附件的唯一值字段，默认使用id，原使用attachmentOid
-  className: PropTypes.string, // upload-button 组件的样式类名
-  noZoom: PropTypes.bool, // 控制附件上传按钮及扩展icon的显隐
-  hideArrow: PropTypes.bool, // 控制 扩展icon的显隐
-  extraRender: PropTypes.func, // 额外渲染dom在 扩展icon 前面
-  hideButtonIcon: PropTypes.bool, // 控制 上传按钮内的上传icon显隐
-  buttonText: PropTypes.string, // 上传按钮文本
-  buttonClass: PropTypes.string, // 按钮样式类名
-  attachmentType: PropTypes.string, // 上传请求额外参数
-  pkValue: PropTypes.string, // 上传请求额外参数
-  bucketName: PropTypes.string, // 上传请求额外参数
-  pkName: PropTypes.string, // 上传请求额外参数
-  showRemoveIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]), // 附件展示列表中是否展示删除
-  showPreviewIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  showDownloadIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  multiple: PropTypes.bool, // 是否支持多选文件
-  defaultFileList: PropTypes.array, // 默认上传的文件列表，每项必须包含：uid，name
-  defaultOids: PropTypes.array, // 默认上传的文件列表Oid
-  uploadHandle: PropTypes.func, // 回调，获取上传数据
-  isUseAttachmentId: PropTypes.bool, // 删除附件时是否使用id
-  fileSize: PropTypes.number, // 附件大小限制
-  unitSize: PropTypes.string, // 附件大小 单位
-  compressionRatio: PropTypes.number, // 压缩后的图片质量 值在0与1之间, 1质量最好
-  compressionSize: PropTypes.number, // 图片超过多大才压缩
-  fileNum: PropTypes.number,
-  extensions: PropTypes.array, // 限制上传类型
-  uploadHandleFileList: PropTypes.func,
-};
 // 理论上讲disabled,hideArrow,noZoom 都用于了显隐当前组件的一部分，不知道原来是出于什么样的考虑这样做
 UploadButton.defaultProps = {
   uploadUrl: `${config.fileUrl}/api/upload/attachment`,

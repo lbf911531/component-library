@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal, Radio, Spin } from 'antd';
 import httpFetch from 'share/httpFetch';
-import PropTypes from 'prop-types';
 import config from 'config';
 import moment from 'moment';
 import FileSaver from 'file-saver';

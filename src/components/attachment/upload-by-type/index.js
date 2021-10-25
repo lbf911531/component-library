@@ -9,7 +9,6 @@ import {
 } from '@ant-design/icons';
 import { Tooltip, Upload, message } from 'antd';
 import httpFetch from 'share/httpFetch';
-import PropTypes from 'prop-types';
 import config from 'config';
 import Folder from '@/assets/folder@2x.png';
 import UploadFileList from '../upload-file-list';
@@ -417,24 +416,6 @@ class UploadByType extends React.Component {
     );
   }
 }
-
-UploadByType.propTypes = {
-  params: PropTypes.object.isRequired, // 附件类型相关信息（类型名称，代码，格式，附件大小等信息）
-  pkName: PropTypes.string.isRequired, // 上传时的参数
-  attachmentType: PropTypes.string, // 上传时的参数
-  pkValue: PropTypes.string, // 上传时的参数
-  defaultFileList: PropTypes.array, // 附件列表
-  uploadUrl: PropTypes.string, // 上传接口
-  multiple: PropTypes.bool, // 是否多选
-  disabled: PropTypes.bool, // 是否置灰
-  isUseAttachmentId: PropTypes.bool, // 删除时附件id传值方式， true： ?id=attachmentOid；false: 拼接 /attachmentOid
-  uploadHandle: PropTypes.func, // 附件上传或删除时获取 附件Oids、附件列表
-  fileNum: PropTypes.number, // 附件最多数量
-  noDelete: PropTypes.bool, // 隐藏删除附件按钮
-  bucketName: PropTypes.string, // 上传的bucketName名称，好比目录
-  required: PropTypes.bool, // 是否必输 必输加红星，非必输无
-  readOnly: PropTypes.bool, // 是否只读，只读时没有上传和删除按钮
-};
 
 UploadByType.defaultProps = {
   defaultFileList: [],

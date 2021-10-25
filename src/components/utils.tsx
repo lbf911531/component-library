@@ -56,6 +56,7 @@ export function formatMoney(
   }
 }
 
+// @ts-ignore
 React.Component.prototype.$t = messages;
 
 /**
