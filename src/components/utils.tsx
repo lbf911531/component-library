@@ -1,5 +1,12 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
+import ImageIcon from '@/assets/image.png';
+import PptIcon from '@/assets/ppt.png';
+import WordIcon from '@/assets/word.png';
+import ExcelIcon from '@/assets/excel.png';
+import PdfIcon from '@/assets/pdf.png';
+import UnknownIcon from '@/assets/unknown.jpg';
+import PackageIcon from '@/assets/package.jpg';
 
 import zhCN from './locale-language/zh_CN';
 import enUS from './locale-language/en_US';
@@ -48,6 +55,43 @@ export function formatMoney(
     return <span className="money-cell">{numberString}</span>;
   }
 }
+
+React.Component.prototype.$t = messages;
+
+/**
+ * 根据文件名 后缀 判断文件类型，返回对应icon,
+ * title 文件名
+ * canPreviewFile: true/false  判断是否为 可预览文件
+ */
+export const getImgIcon = (title = '', canPreviewFile) => {
+  const fileType = title.split('.').pop().toLowerCase();
+  const ppt = ['ppt', 'pptx'];
+  const imgs = ['png', 'jpg', 'bmp', 'jpeg', 'gif', 'svg'];
+  const docs = ['doc', 'docx'];
+  const excels = ['xlsx'];
+  const pdf = ['pdf'];
+  const packages = ['zip', 'rar'];
+  if (canPreviewFile) {
+    return [...ppt, ...imgs, ...docs, ...excels, ...pdf, 'zip', 'ofd'].includes(
+      fileType,
+    );
+  }
+  if (ppt.includes(fileType)) {
+    return PptIcon;
+  } else if (imgs.includes(fileType)) {
+    return ImageIcon;
+  } else if (docs.includes(fileType)) {
+    return WordIcon;
+  } else if (excels.includes(fileType)) {
+    return ExcelIcon;
+  } else if (pdf.includes(fileType)) {
+    return PdfIcon;
+  } else if (packages.includes(fileType)) {
+    return PackageIcon;
+  } else {
+    return UnknownIcon;
+  }
+};
 
 /**
  * 多语言

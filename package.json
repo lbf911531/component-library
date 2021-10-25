@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@ant-design/create-react-context": "^0.2.5",
+    "@ant-design/pro-layout": "^6.5.0",
     "@types/node": "^16.10.1",
     "@types/qs": "^6.9.7",
     "ahooks": "^2.10.0",
