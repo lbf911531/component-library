@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-22 16:08:16
+ * @LastEditTime: 2021-10-25 11:21:30
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -24,4 +24,10 @@ export default {
   'common.fold': '收起',
   'common.expand': '展开',
   'common.Illegal.digital': '{label}为非法数字',
+  'common.search': '搜索',
+  'common.reset': '重置',
+  'common.enabled': '启用',
+  'common.disabled': '禁用',
+  'common.fill.in.multilingual': '填写多语言',
+  'base.no.more.than.limit': '最多输入{number}个字符',
 };

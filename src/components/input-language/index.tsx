@@ -4,6 +4,8 @@ import { Input, Tooltip } from 'antd';
 import { DEFAULT_LANGUAGE_CONFIG } from './constant';
 import LanguageForm from './form';
 import { IProps } from './interface';
+import { messages } from '../utils';
+import LocaleContext from '../locale-lan-provider/context';
 import './style.less';
 
 /**
@@ -47,6 +49,7 @@ class InputLanguage extends Component<IProps> {
     value: '',
     i18n: [],
   };
+  static contextType = LocaleContext;
 
   componentDidMount() {
     let { value } = this.props;
@@ -232,7 +235,11 @@ class InputLanguage extends Component<IProps> {
         {type && type.toLocaleLowerCase() === 'textarea' ? (
           <div className="input-language-wrap">
             <Input.TextArea {...attribute} autoSize={autoSize} />
-            <Tooltip title="填写多语言">
+            <Tooltip
+              title={messages('common.fill.in.multilingual', {
+                context: this.context,
+              })}
+            >
               <GlobalOutlined
                 onClick={this.suffixIconClick}
                 style={{
@@ -246,7 +253,11 @@ class InputLanguage extends Component<IProps> {
           <Input
             {...attribute}
             suffix={
-              <Tooltip title="填写多语言">
+              <Tooltip
+                title={messages('common.fill.in.multilingual', {
+                  context: this.context,
+                })}
+              >
                 <GlobalOutlined
                   onClick={this.suffixIconClick}
                   style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}

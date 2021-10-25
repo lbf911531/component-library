@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Switch } from 'antd';
 import { IProps } from './interface';
+import { messages } from '../utils';
+import LocaleContext from '../locale-lan-provider/context';
 
 export default function CustomSwitch(props: IProps) {
+  const context = useContext(LocaleContext);
   const {
     checked,
     disabled,
-    checkedDesc = '启用',
-    unCheckedDesc = '禁用',
+    checkedDesc = messages('common.enabled', { context }),
+    unCheckedDesc = messages('common.disabled', { context }),
   } = props;
 
   const [value, setValue] = useState(props.checked);

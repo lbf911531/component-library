@@ -6,7 +6,7 @@ group:
 
 ## 基础表格 Table
 
-## 代码演示 Demo
+## 代码演示
 
 ```tsx
 import React from 'react';

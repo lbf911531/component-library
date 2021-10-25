@@ -56,14 +56,21 @@ export function formatMoney(
  * @returns
  */
 export interface IConfig {
-  params?: any;
+  params?: {
+    [key: string]: any;
+  };
   context: {
     locale: string;
-    localeMap?: any;
+    localeMap?: {
+      [key: string]: any;
+    };
   };
 }
+
 export function messages(title: string, config?: IConfig): string {
-  if (!config) return title;
+  // 从session中取，是为了兼容调用messages方法在没有params时可以不必传递config
+  const locale = window.sessionStorage.getItem('cur_locale');
+  if (!config && !locale) return title;
 
   const {
     params,
@@ -77,8 +84,8 @@ export function messages(title: string, config?: IConfig): string {
     ...defaultLocaleMap,
     ...context.localeMap,
   };
-  const lang = lastLocaleMap[context.locale]?.[title];
-  console.log('locale:', context.locale);
+  const lang = lastLocaleMap[locale || context.locale]?.[title];
+  console.log('locale:', context.locale, locale);
   if (!lang) return title;
   if (params) {
     return lang.replace(/\{(.+?)\}/g, ($1, $2) => params[$2]);
