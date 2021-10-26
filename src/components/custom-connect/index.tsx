@@ -1,7 +1,7 @@
 /**
  * 模拟dva的connect
  */
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 const defaultState = { user: { currentUser: {} } };
 
@@ -11,20 +11,16 @@ export default function WrapperConnect(mapStateToProps) {
     const state = getState ? getState() || {} : defaultState;
     const partState = mapStateToProps(state);
 
-    return class CustomConnect extends React.Component {
-      constructor(props) {
-        super(props);
-      }
-      render() {
-        return (
-          <WrappedComponent
-            {...this.props}
-            {...partState}
-            dispatch={dispatch}
-          />
-        );
-      }
-    };
+    return forwardRef((props, ref) => {
+      return (
+        <WrappedComponent
+          {...props}
+          {...partState}
+          ref={ref}
+          dispatch={dispatch}
+        />
+      );
+    });
   };
 }
 
