@@ -14,6 +14,7 @@ export { default as SelectPartLoad } from './components/select-part-load';
 export { default as Lov } from './components/lov';
 export { default as SearchArea } from './components/search-area';
 export { default as LocaleProvider } from './components/locale-lan-provider';
+export { default as CommonImporter } from './components/common-import';
 
 export { default as PolicyTips } from './components/business-components/policy-tips';
 export { default as VoucherTable } from './components/business-components/voucher-table';
