@@ -51,7 +51,7 @@ export default function Test() {
 
   function onClick() {
     setRowKeys(['123']);
-    setAllRows({ 123: [{ id: '123', requisitionNumber: 'BZD001' }] });
+    setAllRows({ 123: { id: '123', requisitionNumber: 'BZD001' } });
     setVisible(true);
   }
 
