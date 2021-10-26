@@ -28,3 +28,4 @@ export { default as UploadByType } from './components/attachment/upload-by-type'
 export { default as UploadFileList } from './components/attachment/upload-file-list';
 export { default as ImagePriview } from './components/attachment/image-preview';
 export { default as ZipFileView } from './components/attachment/zip-preview';
+export { default as CustomCollapse } from './components/custom-collapse';

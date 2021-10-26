@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Modal, Input, Form } from 'antd';
 import { IFormProps } from './interface';
+import { messages } from '../utils';
+import LocaleContext from '../locale-lan-provider/context';
 
 function LanguageForm(props: IFormProps) {
   const [form] = Form.useForm();
+  const context = useContext(LocaleContext);
   const { languages, required, i18n, type, autoSize, valueLength } = props;
   const isTextArea = type && type.toLocaleLowerCase() === 'textarea';
 
@@ -30,8 +33,19 @@ function LanguageForm(props: IFormProps) {
   }
 
   return (
-    <Modal {...props} title="填写语言" onOk={ok} onCancel={cancel} width={600}>
-      <Form wrapperCol={{ span: 16 }} labelCol={{ span: 6 }} form={form}>
+    <Modal
+      {...props}
+      title={messages('common.fill.in.multilingual', { context })}
+      onOk={ok}
+      onCancel={cancel}
+      width={600}
+    >
+      <Form
+        wrapperCol={{ span: 16 }}
+        labelCol={{ span: 6 }}
+        form={form}
+        initialValues={i18n}
+      >
         {languages.languageType.map((item) => {
           return (
             <Form.Item
@@ -41,18 +55,20 @@ function LanguageForm(props: IFormProps) {
               rules={[
                 {
                   required: required && languages.local === item.code,
-                  message: '请输入',
+                  message: messages('common.please.enter', { context }),
                 },
                 {
                   max: isTextArea ? valueLength : 80,
-                  message: `最多输入${valueLength ?? 80}个字符`,
+                  message: messages('base.no.more.than.limit', {
+                    params: valueLength ?? 80,
+                    context,
+                  }),
                 },
                 {
                   whitespace: true,
-                  message: '请输入',
+                  message: messages('common.please.enter', { context }),
                 },
               ]}
-              initialValue={i18n[item.language]}
             >
               {isTextArea ? <Input.TextArea autoSize={autoSize} /> : <Input />}
             </Form.Item>

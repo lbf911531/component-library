@@ -30,6 +30,9 @@ $ npm run build
 
 1. 本地 node 版本建议使用 v12.0.0 （个人使用的是 v14.16.0）以上，否则安装依赖时，dumi 内部无法兼容，导致项目启动报错
 2. 组件内部如果需要使用 redux，建议使用 `window?.g_app?._store`
+   > - 由于组件库的建立后行于项目，组件库内部用到的 dispatch 的相关 models 文件夹暂时只能使用项目中，如果组件库内部自行引入 react-redux 实现，恐项目用到了组件库的 models 文件，导致访问路径发生改变；反之则与项目耦合度过高
+   > - 目前只有 lov 组件，search-area，custom-table（后二者共用一个）会用到
+   > - dispatch 在这三个组件内的作用，仅实现数据的缓存，用于优化，不影响主体功能的使用
 
 ```js
 // 全局入口
@@ -48,7 +51,7 @@ import { getDvaApp } from 'umi';
 const { dispatch, getState } = getDvaApp()._store;
 ```
 
-3. 涉及到 form 组件，一律改用 antd 4.x 中的 form，`Form.create()(component)`改为`WrappedForm(component)`[path: "components/wrapped-form"]
+1. 涉及到 form 组件，一律改用 antd 4.x 中的 form，`Form.create()(component)`改为`WrappedForm(component)`[path: "components/wrapped-form"]
 
 ```js
 export default WrappedForm(WrappedSearchArea);

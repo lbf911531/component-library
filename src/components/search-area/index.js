@@ -272,10 +272,12 @@ class SearchArea extends React.Component {
         for (let i = 0; i < tags.length; i += 1) {
           if (
             tags[i].getElementsByClassName('ant-tag')[0].innerHTML !==
-            messages('common.all')
+            messages('common.all', { context: this.context })
           )
-            tags[i].getElementsByClassName('ant-tag')[0].innerHTML =
-              messages('common.all');
+            tags[i].getElementsByClassName('ant-tag')[0].innerHTML = messages(
+              'common.all',
+              { context: this.context },
+            );
         }
         this.getRangeField(newSearchForm);
       },
@@ -532,10 +534,12 @@ class SearchArea extends React.Component {
     Object.values(numberField).forEach((item) => {
       if (!values[item.key]) return;
       if (!this.isNumber(values[item.key])) {
-        message.error('common.Illegal.digital', {
-          context: this.context,
-          params: { label: item.label },
-        }); // `${item.label}为非法数字`
+        message.error(
+          messages('common.Illegal.digital', {
+            context: this.context,
+            params: { label: item.label },
+          }),
+        ); // `${item.label}为非法数字`
         result = false;
       }
     });
@@ -1989,12 +1993,12 @@ class SearchArea extends React.Component {
         ) : isPopconfirmFlag ? (
           <Popconfirm onConfirm={this.handleSearch} title={title}>
             <Button type="primary" loading={loading}>
-              {okText}
+              {messages(okText, { context: this.context })}
             </Button>
           </Popconfirm>
         ) : (
           <Button type="primary" onClick={this.handleSearch} loading={loading}>
-            {okText}
+            {messages(okText, { context: this.context })}
           </Button>
         )}
 
@@ -2002,7 +2006,7 @@ class SearchArea extends React.Component {
           ''
         ) : (
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-            {clearText}
+            {messages(clearText, { context: this.context })}
           </Button>
         )}
       </Col>,
@@ -2175,8 +2179,8 @@ class SearchArea extends React.Component {
 SearchArea.defaultProps = {
   maxLength: 3,
   eventHandle: () => {},
-  okText: '搜索', // 搜索
-  clearText: '重置', // 重置
+  okText: 'common.search', // 搜索
+  clearText: 'common.reset', // 重置
   loading: false,
   isHideClearText: false,
   isHideOkTextText: false,

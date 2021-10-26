@@ -10,8 +10,6 @@ group:
 
 ## 代码演示
 
-### 基本使用
-
 ```tsx
 import React, { useState } from 'react';
 import { InputNumber } from 'polard';

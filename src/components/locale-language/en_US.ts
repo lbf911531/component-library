@@ -18,4 +18,10 @@ export default {
   'common.fold': 'fold',
   'common.expand': 'expand',
   'common.Illegal.digital': '{label} is an illegal number',
+  'common.search': 'search',
+  'common.reset': 'reset',
+  'common.enabled': 'enabled',
+  'common.disabled': 'disabled',
+  'common.fill.in.multilingual': 'Fill In Multilingual',
+  'base.no.more.than.limit': "Can't Exceed {number} Characters",
 };
