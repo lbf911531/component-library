@@ -56,9 +56,6 @@ export function formatMoney(
   }
 }
 
-// @ts-ignore
-React.Component.prototype.$t = messages;
-
 /**
  * 根据文件名 后缀 判断文件类型，返回对应icon,
  * title 文件名

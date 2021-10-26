@@ -3,7 +3,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Checkbox } from 'antd';
 import Folder from '@/assets/folder@2x.png';
 import { messages } from 'utils/utils';
-import UploadFileList from '../attachment/upload-file-list';
+import UploadFileList from '../../attachment/upload-file-list';
 import { canExportPdf, filterCanExportPdf, transformToObject } from './utils';
 
 function RenderItem(props) {

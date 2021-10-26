@@ -2,6 +2,8 @@
 group:
   title: 业务组件
   path: /business-components
+
+order: 4
 ---
 
 ## 预算校验/预算进度 BudgetTips/BudgetProgressDetail

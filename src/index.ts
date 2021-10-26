@@ -1,3 +1,8 @@
+import React from 'react';
+import { messages } from './components/utils';
+// @ts-ignore
+React.Component.prototype.$t = messages;
+
 // 统一导出
 export { default as Table } from './components/table';
 export { default as CustomTable } from './components/custom-table';
@@ -14,6 +19,8 @@ export { default as PolicyTips } from './components/business-components/policy-t
 export { default as VoucherTable } from './components/business-components/voucher-table';
 export { default as BudgetTips } from './components/business-components/budget/budget-check-message';
 export { default as BudgetProgressDetail } from './components/business-components/budget/budget-progress-detail';
+export { default as DocumentBasicInfo } from './components/business-components/document-basic-info';
+export { default as BatchDownLoadAttachments } from './components/business-components/batch-download-attachments';
 
 export { default as Upload } from './components/attachment/upload';
 export { default as UploadButton } from './components/attachment/upload-button';

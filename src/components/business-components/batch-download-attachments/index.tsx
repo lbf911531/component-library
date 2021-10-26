@@ -4,6 +4,7 @@ import httpFetch from 'share/httpFetch';
 import config from 'config';
 import moment from 'moment';
 import FileSaver from 'file-saver';
+// import PropTypes from 'prop-types';
 import { messages } from 'utils/utils';
 import RenderAttachmentsItem from './render-attachments-item';
 import AttachmentsWrap from './attachments-wrap';
@@ -22,20 +23,20 @@ class BatchDownLoadAttachments extends React.Component<
   BatchDownloadProps,
   BatchDownloadState
 > {
-  static propTypes = {
-    visible: PropTypes.bool.isRequired,
-    pkName: PropTypes.object.isRequired,
-    queryMethod: PropTypes.string,
-    queryUrl: PropTypes.string,
-    downloadCompressURL: PropTypes.string,
-    downloadPdfURL: PropTypes.string,
-    saveMethod: PropTypes.string,
-    pkValueList: PropTypes.array,
-    allSelectedRows: PropTypes.object,
-    onCancel: PropTypes.func,
-    categoryType: PropTypes.string,
-    documentNumberField: PropTypes.string,
-  };
+  // static propTypes = {
+  //   visible: PropTypes.bool.isRequired,
+  //   pkName: PropTypes.object.isRequired,
+  //   queryMethod: PropTypes.string,
+  //   queryUrl: PropTypes.string,
+  //   downloadCompressURL: PropTypes.string,
+  //   downloadPdfURL: PropTypes.string,
+  //   saveMethod: PropTypes.string,
+  //   pkValueList: PropTypes.array,
+  //   allSelectedRows: PropTypes.object,
+  //   onCancel: PropTypes.func,
+  //   categoryType: PropTypes.string,
+  //   documentNumberField: PropTypes.string,
+  // };
 
   static defaultProps = {
     queryMethod: 'post',
@@ -142,7 +143,7 @@ class BatchDownLoadAttachments extends React.Component<
         sortIndex = result.length,
         [documentNumberField]: documentNumber,
       } = allSelectedRows[documentId] || {};
-      const attachments = fileList.map((file) => {
+      const attachments = (fileList as any[]).map((file) => {
         return { ...file, previewName: `${documentNumber}-${file.fileName}` };
       });
       result[sortIndex] = {
@@ -177,7 +178,7 @@ class BatchDownLoadAttachments extends React.Component<
     Object.entries(allSelected).forEach((item) => {
       const [documentNumber, attachments] = item;
       const folderName = `${documentNumber}-${attachments.length}${
-        this.$t('expense.a') /* 个 */
+        messages('expense.a') /* 个 */
       }`;
       result[folderName] = attachments.map((file) => file.id);
       allFileList.push(...attachments);
@@ -185,7 +186,7 @@ class BatchDownLoadAttachments extends React.Component<
     let saveUrl = downloadCompressURL;
     const fileName = `${categoryType} ${moment().format('YYYYMMDD')}-${
       allFileList.length
-    }${this.$t('expense.a') /* 个 */}`;
+    }${messages('expense.a') /* 个 */}`;
     if (downloadFormat === 'pdf') {
       saveUrl = downloadPdfURL;
       result = { [fileName]: allFileList.map((file) => file.id) };
@@ -275,13 +276,13 @@ class BatchDownLoadAttachments extends React.Component<
       <Modal
         visible={visible}
         title={
-          this.$t('expense.bulk.download.of.attachments') /* 附件批量下载 */
+          messages('expense.bulk.download.of.attachments') /* 附件批量下载 */
         }
         confirmLoading={confirmLoading}
         onOk={this.onOkHandle}
         onCancel={this.onCancel}
-        okText={this.$t('common.ok')}
-        cancelText={this.$t('common.cancel')}
+        okText={messages('common.ok')}
+        cancelText={messages('common.cancel')}
         width={614}
         wrapClassName="batch-download-attachments"
         bodyStyle={{ paddingTop: 0, height: 500 }}
@@ -290,7 +291,7 @@ class BatchDownLoadAttachments extends React.Component<
       >
         <div className="select-type-wrap clearfix">
           <span className="select-type-desc">
-            {this.$t('expense.choose.download.format') /* 选择下载格式 */}：
+            {messages('expense.choose.download.format') /* 选择下载格式 */}：
           </span>
           <Radio.Group
             onChange={this.onTypeChange}
@@ -298,17 +299,17 @@ class BatchDownLoadAttachments extends React.Component<
             disabled={loading}
           >
             <Radio value="pdf">
-              {this.$t('expense.to.pdf.merge') /* 转pdf合并 */}
+              {messages('expense.to.pdf.merge') /* 转pdf合并 */}
             </Radio>
             <Radio value="compression">
-              {this.$t('expense.original.compression') /* 原件压缩 */}
+              {messages('expense.original.compression') /* 原件压缩 */}
             </Radio>
           </Radio.Group>
 
           <span className="title-right over-range">
             <span className="selected-num">
               {
-                this.$t('expense.selected.num', {
+                messages('expense.selected.num', {
                   num: selectedNum,
                 }) /* 已选中{num}个 */
               }
@@ -316,7 +317,7 @@ class BatchDownLoadAttachments extends React.Component<
             /
             <span className="total-num">
               {
-                this.$t('expense.total.files', {
+                messages('expense.total.files', {
                   number: allAttachments.length,
                 }) /* 共{num}个文件 */
               }

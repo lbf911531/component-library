@@ -1,5 +1,5 @@
 import React from 'react';
-import FilePreview from '../../attachment/Template/image-preview';
+import FilePreview from '../../attachment/image-preview';
 import ZipFileView from '../../attachment/image-preview';
 import httpFetch from 'share/httpFetch';
 import config from 'config';

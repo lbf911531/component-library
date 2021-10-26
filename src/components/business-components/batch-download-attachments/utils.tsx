@@ -62,7 +62,7 @@ export const transformSelectRows = (
   pkValueField: string = 'id',
 ) => {
   if (!Array.isArray(rows)) return {};
-  return rows.reduce((pre, cur, index) => {
+  return rows.reduce((pre, cur: any, index) => {
     const documentLineIds = (cur[lineField] || []).reduce((obj, lineId) => {
       return { ...obj, [lineId]: { headerId: cur.id } };
     }, {});
@@ -77,7 +77,7 @@ export const filterAndSetSortIndex = (
   selectedRowKeys: Object[],
   allSelectedRows: Object,
 ) => {
-  return selectedRowKeys.reduce((pre, cur, index) => {
+  return selectedRowKeys.reduce((pre, cur: string, index) => {
     return { ...pre, [cur]: { ...allSelectedRows[cur], sortIndex: index } };
   }, {});
 };

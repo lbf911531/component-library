@@ -2,6 +2,8 @@
 group:
   title: 业务组件
   path: /business-components
+
+order: 3
 ---
 
 ## 费用政策提交原因 PolicyTips

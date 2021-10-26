@@ -3,6 +3,7 @@
  */
 import React, { Fragment } from 'react';
 import { Upload, message } from 'antd';
+// import PropTypes from 'prop-types';
 import config from 'config';
 import { InboxOutlined } from '@ant-design/icons';
 import { messages } from 'utils/utils';
@@ -413,6 +414,30 @@ class CustomUpload extends React.Component {
   }
 }
 
+// CustomUpload.propTypes = {
+//   uploadUrl: PropTypes.string, // 上传URL
+//   disabled: PropTypes.bool, // 是否禁用组件
+//   defaultFileList: PropTypes.array, // 默认上传的文件列表，每项必须包含：uid，name
+//   pkName: PropTypes.string, // 业务类型
+//   pkValue: PropTypes.string, // 业务类型
+//   uploadHandle: PropTypes.func, // 回调事件，获取上传后的数据
+//   attachmentType: PropTypes.string, // 上传组件额外参数，由后端提供
+//   style: PropTypes.object, // 附件展示列的样式
+//   // eslint-disable-next-line react/require-default-props
+//   fileNum: PropTypes.number, // 限制上传的数量
+//   valueKey: PropTypes.string, // 指定使用 接口返回的附件attachment中使用的值字段,方便以后修改
+//   isUseAttachmentId: PropTypes.bool, // 从代码反推，该字段是用来决定使用哪个删除接口
+//   needAllResponse: PropTypes.bool, // 是否返回上传文件的所有内容，为false时只返回 valueKey指定的值，默认id list
+//   fileSize: PropTypes.number, // 附件大小限制
+//   unitSize: PropTypes.oneOf(['MB', 'KB', 'B']), // 附件大小 的单位，默认是兆
+//   extensions: PropTypes.array, // 限制上传类型
+//   extensionName: PropTypes.string, // 附件支持的扩展名
+//   //  showRemoveIcon
+//   //  showPreviewIcon
+//   //  showDownloadIcon
+//   //  onFaceLift 自定义UI展示内容
+//   defaultOids: PropTypes.array,
+// };
 CustomUpload.defaultProps = {
   uploadUrl: `${config.fileUrl}/api/upload/static/attachment`,
   disabled: false,

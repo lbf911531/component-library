@@ -2,6 +2,8 @@
 group:
   title: 业务组件
   path: /business-components
+
+order: 2
 ---
 
 ## 单据附件批量下载 BatchDownLoadAttachments
@@ -30,5 +32,43 @@ group:
 
 ## 方法
 
-- transformSelectRows(selectedRows, lineIdsField, headerIdField)
-- selectedRows(onSelectChange 选中的行数据)，lineIdsField(单据行 pkValueList 字段)，headerIdField(头 pkValueList 字段， 默认 id)
+- `transformSelectRows(selectedRows, lineIdsField, headerIdField)`
+  - `selectedRows`(onSelectChange 选中的行数据)
+  - `lineIdsField`(单据行 pkValueList 字段)
+  - `headerIdField`(头 pkValueList 字段， 默认 id)
+
+## 使用例子
+
+```tsx
+import React, { useState } from 'react';
+import { Button } from 'antd';
+import { BatchDownLoadAttachments } from 'polard';
+
+export default function Test() {
+  const [visible, setVisible] = useState(false);
+  const [selectedRowKeys, setRowKeys] = useState();
+  const [allSelectedRows, setAllRows] = useState();
+
+  function onClick() {
+    setRowKeys(['123']);
+    setAllRows({ 123: [{ id: '123', requisitionNumber: 'BZD001' }] });
+    setVisible(true);
+  }
+
+  return (
+    <div>
+      <Button onClick={onClick}>批量下载</Button>
+      <BatchDownLoadAttachments
+        visible={visible}
+        pkName={{ header: 'EXP_REPORT_HEADER', line: 'EXP_REPORT_LINE' }}
+        pkValueList={selectedRowKeys}
+        allSelectedRows={allSelectedRows}
+        linePKValueField="lineIds"
+        documentNumberField="requisitionNumber"
+        categoryType="报账单"
+        onCancel={() => setVisible(false)}
+      />
+    </div>
+  );
+}
+```

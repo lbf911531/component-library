@@ -2,6 +2,8 @@
 group:
   title: 业务组件
   path: /business-components
+
+order: 5
 ---
 
 ## 凭证查看 VoucherTable

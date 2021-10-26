@@ -1,0 +1,41 @@
+:global {
+  // 单据状态
+  .ant-tag {
+    &.tag-edit {
+      // 编辑中
+      color: #4390ff;
+      background: rgba(67, 144, 255, 0.08);
+      border-color: rgba(67, 144, 255, 0.5);
+    }
+    &.tag-process {
+      // 审核中、审批中
+      color: #faad14;
+      background: rgba(250, 173, 20, 0.08);
+      border-color: rgba(250, 173, 20, 0.5);
+    }
+    &.tag-withdraw {
+      // 撤回
+      color: #fa541c;
+      background: rgba(250, 84, 28, 0.08);
+      border-color: rgba(250, 84, 28, 0.5);
+    }
+    &.tag-reject {
+      // 审批驳回、审核驳回
+      color: #f5222d;
+      background: rgba(245, 34, 45, 0.08);
+      border-color: rgba(245, 34, 45, 0.35);
+    }
+    &.tag-approve-pass {
+      // 审批通过
+      color: #13c2c2;
+      background: rgba(19, 194, 194, 0.08);
+      border-color: rgba(19, 194, 194, 0.5);
+    }
+    &.tag-audit-pass {
+      // 审核通过
+      color: #52c41a;
+      background: rgba(82, 196, 26, 0.08);
+      border-color: rgba(82, 196, 26, 0.5);
+    }
+  }
+}
