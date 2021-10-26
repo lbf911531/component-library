@@ -13,7 +13,7 @@ order: 2
 ## API
 
 | 参数                 | 说明                                          | 默认值                                    |
-| -------------------- | --------------------------------------------- | ----------------------------------------- | --- |
+| -------------------- | --------------------------------------------- | ----------------------------------------- |
 | uploadUrl            | 上传 URL                                      | `${config.fileUrl}/api/upload/attachment` |
 | attachmentType       | 附件 attachmentType                           |                                           |
 | pkName               | 附件 pkName                                   | 'default'                                 |
@@ -29,7 +29,7 @@ order: 2
 | disabled             | 是否禁用                                      | false                                     |
 | buttonText           | 上传按钮的名称                                |                                           |
 | isUseAttachmentId    | 删除附件时是否使用 id                         | false                                     |
-| fileSize             | 附件大小限制                                  | 500(500MB)                                |     |
+| fileSize             | 附件大小限制                                  | 500(500MB)                                |
 | compressionRatio     | 压缩后的图片质量 值在 0 与 1 之间, 1 质量最好 | undefined                                 |
 | compressionSize      | 图片超过多大才压缩                            | 0                                         |
 | fileListFlag         | 用于刷新默认 defaultFileList,defaultOids 值   | false                                     |
