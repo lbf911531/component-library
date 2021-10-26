@@ -1,0 +1,25 @@
+:global {
+  .file-priview {
+    .close-icon {
+      transition: all 0.4s;
+    }
+
+    .close-icon:hover {
+      transform: rotate(180deg);
+    }
+    .ico-wrapper {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 30px;
+      cursor: pointer;
+      &.left-ico {
+        left: 82px;
+      }
+      &.right-ico {
+        right: 82px;
+      }
+    }
+  }
+}

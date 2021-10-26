@@ -1,0 +1,72 @@
+:global {
+  .batch-download-attachments {
+    .select-type-wrap {
+      position: absolute;
+      top: 49px;
+      width: 100%;
+      line-height: 52px;
+      background: #f6f6f6;
+      margin: 0 -24px;
+      padding: 0 24px;
+      z-index: 2;
+      .select-type-desc {
+        color: #333333;
+      }
+      .ant-radio-wrapper,
+      .title-right {
+        color: #666;
+      }
+    }
+    .title-right {
+      float: right;
+      text-align: right;
+      max-width: 180px;
+      font-size: 12px;
+    }
+    .attachments-title-wrap {
+      line-height: 52px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      .title-left {
+        float: left;
+        max-width: calc(100% - 180px);
+        img {
+          width: 26px;
+          margin-right: 8px;
+          transform: translateY(-2px);
+        }
+        .document-number {
+          color: #333;
+          font-weight: bold;
+        }
+      }
+      .title-right {
+        .total-num {
+          padding: 0 8px;
+        }
+        color: #999;
+      }
+    }
+    .attachments-list-wrap {
+      padding-top: 52px;
+    }
+    .attachments-wrap {
+      .upload-file-list {
+        margin-top: 16px;
+        margin-left: 8px;
+        .check-item {
+          margin-right: 16px;
+        }
+        & > .ant-row {
+          display: block;
+        }
+        .upload-file-list-title {
+          display: inline-flex;
+          vertical-align: top;
+          width: calc(100% - 32px);
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}

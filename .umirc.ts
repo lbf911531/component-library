@@ -35,10 +35,24 @@ const config = {
       target: 'http://localhost:3000/',
       changeOrigin: true,
     },
+    '/file': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
+    '/budget': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
+    '/expense': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
   },
   alias: {
     share: path.resolve(__dirname, './src/share'),
     config: path.resolve(__dirname, './src/config/config.js'),
+    dva: path.resolve(__dirname, './src/components/custom-connect'),
+    'utils/utils': path.resolve(__dirname, './src/components/utils.tsx'),
   },
   externals: {
     react: 'React',

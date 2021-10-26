@@ -1,0 +1,43 @@
+/* tile uploaded pictures */
+:global {
+  .upload-button {
+    .upload-list-inline .ant-upload-list-item {
+      float: left;
+      width: 160px;
+      margin-right: 8px;
+    }
+    .upload-list-inline .ant-upload-animate-enter {
+      animation-name: uploadAnimateInlineIn;
+    }
+    .upload-list-inline .ant-upload-animate-leave {
+      animation-name: uploadAnimateInlineOut;
+    }
+    .ant-collapse-content {
+      overflow: hidden;
+      color: rgba(0, 0, 0, 0.65);
+      padding: 0 40px;
+      background-color: #fff;
+      border-top: 1px solid #d9d9d9;
+    }
+    .file-item {
+      padding: 0 6px;
+      cursor: pointer;
+      line-height: 24px;
+    }
+    .file-item:hover {
+      background-color: #e6f7ff;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow {
+      line-height: 60px;
+    }
+    .upload-file-list {
+      padding: 0;
+    }
+    .btn-wrap {
+      margin-bottom: 8px;
+      &:only-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
