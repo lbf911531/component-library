@@ -5,7 +5,7 @@ import moment from 'moment';
 import httpFetch from 'share/httpFetch';
 // @ts-ignore
 import config from 'config';
-import { messages } from '../utils';
+import { messages } from '../../utils';
 import { IProps, IState } from './interface';
 import { modelInfoMap } from './config';
 import './style.less';

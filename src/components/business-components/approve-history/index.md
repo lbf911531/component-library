@@ -1,7 +1,7 @@
 ---
 group:
-  title: 展示
-  path: /display
+  title: 业务组件
+  path: /business-components
 ---
 
 ## 审批历史 ApproveHistory
