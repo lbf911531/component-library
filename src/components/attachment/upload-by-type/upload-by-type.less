@@ -1,0 +1,108 @@
+:global {
+  .upload-by-type {
+    position: relative;
+    line-height: 32px;
+    // margin-bottom: 6px;
+    .upload-by-type-tree {
+      .upload-by-type-tree-title {
+        height: 32px;
+        .folder-ico {
+          width: 24px;
+          margin-right: 4px;
+          transform: translateY(-2px);
+        }
+        .expand-ico-wrap {
+          display: inline-block;
+          width: 30px;
+          height: 100%;
+          margin-right: 4px;
+          vertical-align: middle;
+          line-height: 100%;
+          .ant-table-row-expand-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            margin-right: 6px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            transform: translateY(-2px);
+            &.ant-table-row-collapsed.ant-tree-switcher-icon,
+            &.ant-table-row-expanded.ant-tree-switcher-icon {
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+      .upload-by-type-file {
+        padding: 0 8px 8px 34px;
+      }
+      .upload-title {
+        display: block;
+        cursor: pointer;
+        .upload-title-name {
+          display: inline-block;
+          max-width: calc(100% - 160px);
+          vertical-align: middle;
+        }
+        .tips-ico {
+          padding-left: 6px;
+          transform: translateY(1px);
+        }
+        .upload-num {
+          padding-left: 12px;
+          padding-right: 6px;
+        }
+        .required {
+          color: #f5222d;
+          float: right;
+        }
+      }
+    }
+    .upload-component {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      width: 40px;
+      cursor: pointer;
+      text-align: center;
+      z-index: 1000;
+      .upload-ico {
+        font-size: 16px;
+      }
+    }
+  }
+  .type-tips {
+    &.ant-tooltip {
+      max-width: none;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }
+    .tips-title {
+      padding-bottom: 6px;
+    }
+    .type-template {
+      line-height: 24px;
+      .type-template-list {
+        display: inline-block;
+        vertical-align: top;
+        .over-range {
+          max-width: 350px;
+        }
+        .upload-file-list .upload-file-list-title {
+          color: #fff;
+        }
+        .upload-file-list-operation {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
