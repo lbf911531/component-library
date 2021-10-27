@@ -2,6 +2,7 @@
 group:
   title: 业务组件
   path: /business-components
+  order: 5
 ---
 
 ## 审批历史 ApproveHistory

@@ -2,8 +2,7 @@
 group:
   title: 附件
   path: /attachment
-
-order: 1
+  order: 3
 ---
 
 ## 可拖拽上传附件 Upload

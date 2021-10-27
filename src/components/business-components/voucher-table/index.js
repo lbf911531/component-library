@@ -3,10 +3,10 @@
  */
 import React, { Component } from 'react';
 import { Popover } from 'antd';
-import CustomTable from '../../table';
 import config from 'config';
 import moment from 'moment';
 import httpFetch from 'share/httpFetch';
+import CustomTable from '../../basic/table';
 
 class VoucherTable extends Component {
   constructor(props) {

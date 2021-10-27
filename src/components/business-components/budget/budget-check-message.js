@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, Popover } from 'antd';
-import Table from '../../table';
+import Table from '../../basic/table';
 
 class BudgetTips extends Component {
   constructor(props) {

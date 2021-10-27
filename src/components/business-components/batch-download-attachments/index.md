@@ -2,8 +2,7 @@
 group:
   title: 业务组件
   path: /business-components
-
-order: 2
+  order: 4
 ---
 
 ## 单据附件批量下载 BatchDownLoadAttachments
