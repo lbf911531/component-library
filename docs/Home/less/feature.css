@@ -1,0 +1,11 @@
+
+
+.feature {
+  height: 200px;
+  text-align: center;
+  /* background-color: #f7f9fc; */
+}
+.feature .feature-title {
+  font-size: 32px;
+  margin: 16px 0;
+}
