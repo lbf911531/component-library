@@ -30,4 +30,5 @@ export default {
   'common.disabled': '禁用',
   'common.fill.in.multilingual': '填写多语言',
   'base.no.more.than.limit': '最多输入{number}个字符',
+  'common.approval.history': '审批历史',
 };

@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-22 16:08:16
+ * @LastEditTime: 2021-10-26 14:56:01
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -24,4 +24,5 @@ export default {
   'common.disabled': 'disabled',
   'common.fill.in.multilingual': 'Fill In Multilingual',
   'base.no.more.than.limit': "Can't Exceed {number} Characters",
+  'common.approval.history': 'Approval History',
 };

@@ -35,6 +35,10 @@ const config = {
       target: 'http://localhost:3000/',
       changeOrigin: true,
     },
+    '/workflow': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
   },
   alias: {
     share: path.resolve(__dirname, './src/share'),

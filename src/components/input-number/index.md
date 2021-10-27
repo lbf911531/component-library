@@ -73,18 +73,18 @@ export default function InputNumberDemo() {
 
 ## API
 
-| 参数         | 说明                                                       | 类型                     | 默认值 |
-| ------------ | ---------------------------------------------------------- | ------------------------ | ------ | ----- | --- |
-| disabled     | 是否禁用                                                   | boolean                  | false  |
-| autoFocus    | 自动获取焦点                                               | boolean                  | false  |
-| defaultValue | 初始值                                                     | number                   | -      |
-| value        | 值                                                         | number                   | -      |
-| step         | 每次改变步数，可以为小数                                   | number/string            | -      |
-| min          | 最小值                                                     | number                   | -      |
-| max          | 最大值                                                     | number                   | -      |
-| parser       | 指定从 formatter 里转换回数字的方式，和 formatter 搭配使用 | function(string): number | -      |
-| formatter    | 指定输入框展示值的格式                                     | function(number): string | -      |
-| onChange     | 变化回调                                                   | function(value: number   | string | null) | -   |
+| 参数         | 说明                                                       | 类型                                | 默认值 |
+| ------------ | ---------------------------------------------------------- | ----------------------------------- | ------ |
+| disabled     | 是否禁用                                                   | boolean                             | false  |
+| autoFocus    | 自动获取焦点                                               | boolean                             | false  |
+| defaultValue | 初始值                                                     | number                              | -      |
+| value        | 值                                                         | number                              | -      |
+| step         | 每次改变步数，可以为小数                                   | number/string                       | -      |
+| min          | 最小值                                                     | number                              | -      |
+| max          | 最大值                                                     | number                              | -      |
+| parser       | 指定从 formatter 里转换回数字的方式，和 formatter 搭配使用 | function(string): number            | -      |
+| formatter    | 指定输入框展示值的格式                                     | function(number): string            | -      |
+| onChange     | 变化回调                                                   | function(value: number/string/null) | -      |
 
 具体 API 可参考 antd 官网 v4.12.0 及以下版本的属性
 [antd/input-number](https://ant.design/components/input-number-cn/)
