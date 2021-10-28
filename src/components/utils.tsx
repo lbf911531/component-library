@@ -15,7 +15,12 @@ const defaultLocaleMap = {
   zh_cn: zhCN,
   en_us: enUS,
 };
-
+const defaultConfig = {
+  context: {
+    locale: 'zh_cn',
+    localeMap: defaultLocaleMap,
+  },
+};
 /**
  * 金额格式化
  * @param moneys
@@ -109,10 +114,12 @@ export interface IConfig {
   };
 }
 
-export function messages(title: string, config?: IConfig): string {
+export function messages(
+  title: string,
+  config: IConfig = defaultConfig,
+): string {
   // 从session中取，是为了兼容调用messages方法在没有params时可以不必传递config
   const locale = window.sessionStorage.getItem('cur_locale');
-  if (!config && !locale) return title;
 
   const {
     params,
@@ -126,7 +133,7 @@ export function messages(title: string, config?: IConfig): string {
     ...defaultLocaleMap,
     ...context.localeMap,
   };
-  const lang = lastLocaleMap[locale || context.locale || 'zh_cn']?.[title];
+  const lang = lastLocaleMap[locale || context.locale]?.[title];
   console.log('locale:', context.locale, locale);
   if (!lang) return title;
   if (params) {

@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-28 11:18:15
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-28 11:39:56
+ * @LastEditTime: 2021-10-28 17:44:33
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -17,7 +17,7 @@ import { messages } from '@/components/utils';
  * <PrintBtn printId='divId' />
  * PrintBtn 可以放在div#divId里也可以放在外面，
  */
-class PrintBtn extends Component {
+class PrintBtn extends Component<any, any> {
   constructor(props) {
     super(props);
   }
@@ -65,7 +65,8 @@ class PrintBtn extends Component {
   };
 
   render() {
-    const { ...otherProps } = this.props;
+    const { printId, ...otherProps } = this.props;
+
     return (
       <Button onClick={this.handlePrint} {...otherProps}>
         {messages('common.print')}
