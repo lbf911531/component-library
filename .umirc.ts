@@ -72,6 +72,8 @@ const config = {
     },
     httpFetch: path.resolve('./src/share/httpFetch.js'),
     config: path.resolve('./src/config/config.js'),
+    axios: 'axios',
+    qs: 'qs',
   },
   cssLoader: {
     modules: {

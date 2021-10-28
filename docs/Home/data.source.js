@@ -1,6 +1,11 @@
 import React from 'react';
 import BannerImg from './images/banner.png';
 import CaseOneImg from './images/case1.png';
+import CaseThirdImg from './images/case3.png';
+import CaseFourthImg from './images/case4.png';
+import CaseFifthImg from './images/case5.png';
+import CaseSixthImg from './images/case6.png';
+import CaseSeventhImg from './images/case7.png';
 
 export const Banner50DataSource = {
   wrapper: { className: 'home-page-wrapper banner5' },
@@ -66,10 +71,13 @@ export const Content50DataSource = {
       {
         name: 'block0',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/basic/custom-table',
+          },
           img: {
             children: CaseOneImg,
           },
@@ -79,97 +87,79 @@ export const Content50DataSource = {
       {
         name: 'block1',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
-          img: {
-            children:
-              'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/form/lov',
           },
-          content: { children: '搜索组件' },
-        },
-      },
-      {
-        name: 'block2',
-        className: 'block',
-        md: 6,
-        xs: 24,
-        children: {
-          wrapper: { className: 'content5-block-content' },
           img: {
-            children:
-              'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+            children: CaseThirdImg,
           },
           content: { children: '值列表' },
         },
       },
       {
-        name: 'block3',
+        name: 'block2',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/form/input-language',
+          },
           img: {
-            children:
-              'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+            children: CaseFourthImg,
           },
           content: { children: '多语言输入' },
         },
       },
       {
-        name: 'block4',
+        name: 'block3',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
-          img: {
-            children:
-              'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/business-components/document-basic-info',
           },
-          content: { children: '分页下拉' },
-        },
-      },
-      {
-        name: 'block5',
-        className: 'block',
-        md: 6,
-        xs: 24,
-        children: {
-          wrapper: { className: 'content5-block-content' },
           img: {
-            children:
-              'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+            children: CaseFifthImg,
           },
           content: { children: '单据详情' },
         },
       },
       {
-        name: 'block6',
+        name: 'block4',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/business-components/approve-history',
+          },
           img: {
-            children:
-              'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+            children: CaseSixthImg,
           },
           content: { children: '审批历史' },
         },
       },
       {
-        name: 'block7',
+        name: 'block5',
         className: 'block',
-        md: 6,
+        md: 8,
         xs: 24,
         children: {
-          wrapper: { className: 'content5-block-content' },
+          wrapper: {
+            className: 'content5-block-content',
+            href: '/components/other/common-import',
+          },
           img: {
-            children:
-              'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+            children: CaseSeventhImg,
           },
           content: { children: 'Excel导入' },
         },

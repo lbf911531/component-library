@@ -31,4 +31,11 @@ export default {
   'common.fill.in.multilingual': '填写多语言',
   'base.no.more.than.limit': '最多输入{number}个字符',
   'common.approval.history': '审批历史',
+  'common.print': '打印',
+  'please.select.export.column': '请选择导出列',
+  'column.name': '列名',
+  'select.columns.to.export': '选择要导出的列',
+  'common.export': '导出',
+  'common.cancel': '取消',
+  'common.export.as': '导出为',
 };

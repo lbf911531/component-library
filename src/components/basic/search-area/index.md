@@ -4,9 +4,14 @@ group:
   path: /basic
 ---
 
-## 搜索组件 searchArea
+## 搜索组件 SearchArea
+
+- SearchArea 组件默认一行四列展示表单项
+- 如需将 SearchArea 组件用于弹窗中，建议引用`SearchAreaLov`组件，该组件默认一行两列，且支持配置各表单项及操作按钮分别占当前行的比例（由于历史原因，后续考虑将二者合并成一个组件）
 
 ## 代码演示
+
+### 普通页的搜索组件
 
 ```tsx
 import React, { useState, useRef } from 'react';
@@ -81,6 +86,85 @@ export default function SearchAreaDemo() {
 }
 ```
 
+### 弹窗中的搜索组件
+
+```tsx
+import React, { useState, useRef } from 'react';
+import { SearchAreaLov } from 'polard';
+
+export default function SearchAreaLovDemo() {
+  const searchRef = useRef();
+  const [searchForm, setSearchForm] = useState([
+    {
+      type: 'input',
+      id: 'code',
+      label: '代码',
+      event: 'CODE',
+      span: 6,
+    },
+    {
+      type: 'input',
+      id: 'name',
+      label: '名称',
+      span: 6,
+    },
+    {
+      type: 'lov',
+      id: 'companyId',
+      label: '公司',
+      code: 'company',
+      valueKey: 'id',
+      labelKey: 'name',
+      single: true,
+      placeholder: '请选择',
+      span: 10,
+    },
+    {
+      type: 'select',
+      span: 6,
+      id: 'enabled',
+      label: '状态',
+      options: [
+        { label: '启用', value: true },
+        { label: '禁用', value: false },
+      ],
+      event: 'STATUS',
+    },
+  ]);
+
+  function handleSearch(params) {
+    console.log('搜索区值集：', params);
+  }
+
+  function handleClear() {
+    // 无业务需求可以不声明
+  }
+
+  function listenValueChange(event, value) {
+    if (event === 'CODE') {
+      console.log(searchRef, 's');
+      searchRef.current.setValues({
+        name: value,
+      });
+    } else if (event === 'STATUS') {
+      searchForm[0].disabled = value === 'true';
+      setSearchForm([...searchForm]);
+    }
+  }
+
+  return (
+    <SearchAreaLov
+      searchForm={searchForm}
+      submitHandle={handleSearch}
+      clearHandle={handleClear}
+      eventHandle={listenValueChange}
+      wrappedComponentRef={searchRef}
+      btnCol={10}
+    />
+  );
+}
+```
+
 ## API
 
 | 参数             | 说明                                                                                        | 类型                                                         | 默认值 |
@@ -100,6 +184,7 @@ export default function SearchAreaDemo() {
 | onRef            | ref 调用子组件函数或者值                                                                    | function(this)                                               | -      |
 | isReturnLabel    | 用于数据缓存                                                                                | boolean                                                      | -      |
 | searchCodeKey    | 搜索区数据以对象形式存放到 redux 中,codeKey 表示对象的属性,建议用页面代码，具唯一性         | string                                                       | -      |
+| btnSpan          | 设置操作栏栅格布局所占栅格数                                                                | number                                                       | -      |
 
 ### <a id="search-area-form-item-config">searchFormItem</a>
 
@@ -132,5 +217,6 @@ export default function SearchAreaDemo() {
 | renderOption        | (option) => {}          | 可选，当类型为 select、coombobox、multiple、value_list 时选项 option 的渲染规则                                                                |
 | listKey             | string                  | 可选，getUrl 接口返回值内的变量名，如果接口直接返回数组则置空                                                                                  |
 | childrenMultipleKey | string                  | 可选，是否递归遍历子对象                                                                                                                       |
-| showTime            | false                   | 可选，当 type 为 date 时，控制是否需要选择时间                                                                                                 |
-| allowClear          | true                    | 可选，是否允许清除                                                                                                                             |
+| showTime            | boolean                 | 可选，当 type 为 date 时，控制是否需要选择时间 ,默认 false                                                                                     |
+| allowClear          | boolean                 | 可选，是否允许清除,默认为 true                                                                                                                 |
+| span                | number                  | 设置表单项栅格布局所占栅格数,仅用于`SearchAreaLov`组件,默认值为 8                                                                              |

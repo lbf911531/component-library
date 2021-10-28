@@ -1922,6 +1922,7 @@ class SearchArea extends React.Component {
       okText,
       isPopconfirmFlag,
       title,
+      btnSpan,
     } = this.props;
     const { searchForm, expand, maxLength } = this.state;
 
@@ -1976,7 +1977,7 @@ class SearchArea extends React.Component {
 
     children.push(
       <Col
-        span={expand ? 24 : 6}
+        span={expand ? 24 : btnSpan ?? 6}
         key={-1}
         style={{ textAlign: 'right', marginBottom: 24 }}
       >

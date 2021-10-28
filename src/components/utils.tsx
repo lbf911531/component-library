@@ -126,7 +126,7 @@ export function messages(title: string, config?: IConfig): string {
     ...defaultLocaleMap,
     ...context.localeMap,
   };
-  const lang = lastLocaleMap[locale || context.locale]?.[title];
+  const lang = lastLocaleMap[locale || context.locale || 'zh_cn']?.[title];
   console.log('locale:', context.locale, locale);
   if (!lang) return title;
   if (params) {

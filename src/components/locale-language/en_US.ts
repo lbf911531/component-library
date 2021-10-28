@@ -25,4 +25,11 @@ export default {
   'common.fill.in.multilingual': 'Fill In Multilingual',
   'base.no.more.than.limit': "Can't Exceed {number} Characters",
   'common.approval.history': 'Approval History',
+  'common.print': 'print',
+  'please.select.export.column': 'Please Select Export Column',
+  'column.name': 'The column name',
+  'select.columns.to.export': 'Select the columns to export',
+  'common.export': 'export',
+  'common.cancel': 'cancel',
+  'common.export.as': 'Export to',
 };
