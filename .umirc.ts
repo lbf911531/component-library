@@ -98,6 +98,9 @@ const config = {
       },
     },
   },
+  // targets: {
+  //   ie: 11,
+  // },
 };
 
 if (process.env.ENV_TYPE === 'native') {

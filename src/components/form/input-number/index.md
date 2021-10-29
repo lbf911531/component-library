@@ -1,4 +1,6 @@
 ---
+nav:
+  title: 组件
 group:
   title: 表单
   path: /form

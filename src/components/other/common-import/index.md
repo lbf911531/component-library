@@ -1,4 +1,6 @@
 ---
+nav:
+  title: 组件
 group:
   title: 其他
   path: /other

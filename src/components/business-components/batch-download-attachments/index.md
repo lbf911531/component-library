@@ -1,4 +1,6 @@
 ---
+nav:
+  title: 组件
 group:
   title: 业务组件
   path: /business-components

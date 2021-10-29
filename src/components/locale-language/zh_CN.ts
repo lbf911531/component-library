@@ -38,4 +38,11 @@ export default {
   'common.export': '导出',
   'common.cancel': '取消',
   'common.export.as': '导出为',
+  'common.clear': '清空',
+  'common.save': '保存',
+  'common.submit': '提交',
+  'common.approver': '审批人',
+  'common.select.staff': '选择人员',
+  'common.staff.code': '人员代码',
+  'common.staff.name': '人员名称',
 };

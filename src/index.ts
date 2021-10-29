@@ -10,6 +10,7 @@ export { default as Table } from './components/basic/table';
 export { default as CustomTable } from './components/basic/custom-table';
 export { default as SearchArea } from './components/basic/search-area';
 export { default as SearchAreaLov } from './components/basic/search-area-lov';
+export { default as ProTable } from './components/basic/pro-table';
 // 其他
 export { default as CommonImporter } from './components/other/common-import';
 export { default as SlideFrame } from './components/other/slide-frame';
@@ -36,6 +37,7 @@ export { default as DocumentBasicInfo } from './components/business-components/d
 export { default as BatchDownLoadAttachments } from './components/business-components/batch-download-attachments';
 export { default as SelectApplicationType } from './components/business-components/select-application-type';
 export { default as ApproveHistory } from './components/business-components/approve-history';
+export { default as DocumentSubmitBtn } from './components/business-components/document-submit-btn';
 
 // 附件
 export { default as Upload } from './components/attachment/upload';

@@ -134,7 +134,7 @@ export function messages(
     ...context.localeMap,
   };
   const lang = lastLocaleMap[locale || context.locale]?.[title];
-  console.log('locale:', context.locale, locale);
+  // console.log('locale:', context.locale, locale);
   if (!lang) return title;
   if (params) {
     return lang.replace(/\{(.+?)\}/g, ($1, $2) => params[$2]);

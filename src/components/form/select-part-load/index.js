@@ -414,23 +414,6 @@ class SelectPartLoad extends Component {
     }, []);
   };
 
-  filterProps = (rest = {}) => {
-    const props = { ...rest };
-    const filterFields = [
-      'valueKey',
-      'labelKey',
-      'searchKey',
-      'renderOptions',
-      'extraOptionList',
-    ];
-    for (const key in props) {
-      if ({}.hasOwnProperty.call(props, key) && filterFields.includes(key)) {
-        delete props[key];
-      }
-    }
-    return props;
-  };
-
   tagRender = (props) => {
     const { label, closable, onClose } = props;
     return (
@@ -496,6 +479,21 @@ class SelectPartLoad extends Component {
       showPagination,
       mode,
       componentType,
+      // 避免控制台警告，以下属性都不应该挂到select组件上
+      // 以下属性来自lov组件，由于上级要求，强制lov组件内部整合当前组件渲染
+      valueKey,
+      labelKey,
+      searchKey,
+      renderOptions,
+      extraOptionList,
+      showSearch,
+      selectorItem,
+      showDetail,
+      listExtraParams,
+      requestBody,
+      lovType,
+      lovData,
+      single,
       ...rest
     } = this.props;
     const { value, open, loading } = this.state;
@@ -506,7 +504,7 @@ class SelectPartLoad extends Component {
       >
         <Select
           dropdownMatchSelectWidth={250}
-          {...this.filterProps(rest)}
+          {...rest}
           {...(mode === 'singleTag' ? { open } : {})}
           ref={(ref) => {
             this.selectRef = ref;
@@ -516,7 +514,7 @@ class SelectPartLoad extends Component {
           onPopupScroll={
             lazyLoad && !showPagination ? this.onPopupScroll : undefined
           }
-          onSearch={this.onSearch}
+          onSearch={false}
           onDropdownVisibleChange={this.onDropdownVisibleChange}
           onChange={this.onChange}
           onSelect={this.handleSelectValue}
