@@ -12,7 +12,7 @@ export { default as InputLanguage } from './components/input-language';
 export { default as InputNumber } from './components/input-number';
 export { default as SelectPartLoad } from './components/select-part-load';
 export { default as Lov } from './components/lov';
-export { default as SearchArea } from './components/search-area';
+export { default as SearchArea, SearchAreaLov } from './components/search-area';
 export { default as LocaleProvider } from './components/locale-lan-provider';
 export { default as CommonImporter } from './components/common-import';
 
@@ -22,6 +22,7 @@ export { default as BudgetTips } from './components/business-components/budget/b
 export { default as BudgetProgressDetail } from './components/business-components/budget/budget-progress-detail';
 export { default as DocumentBasicInfo } from './components/business-components/document-basic-info';
 export { default as BatchDownLoadAttachments } from './components/business-components/batch-download-attachments';
+export { default as SelectApplicationType } from './components/business-components/select-application-type';
 
 export { default as Upload } from './components/attachment/upload';
 export { default as UploadButton } from './components/attachment/upload-button';

@@ -83,23 +83,26 @@ export default function SearchAreaDemo() {
 
 ## API
 
-| 参数             | 说明                                                                                        | 类型                                                         | 默认值 |
-| ---------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------ |
-| searchForm       | 传入的表单列表                                                                              | 必输，Array<[searchFormItem](#search-area-form-item-config)> | []     |
-| submitHandle     | 搜索事件                                                                                    | function(values)                                             | -      |
-| eventHandle      | 表单项值改变事件，一般用于联动                                                              | function(eventType, value)                                   | -      |
-| clearHandle      | 重置事件                                                                                    | function()                                                   | -      |
-| okText           | 左侧 ok 按钮的文本                                                                          | string                                                       | -      |
-| clearText        | 右侧重置按钮的文本                                                                          | string                                                       | -      |
-| maxLength        | 搜索区域默认展示的最大表单数量                                                              | number                                                       | 3      |
-| loading          | 用于 base-info 组件的保存按钮                                                               | boolean                                                      | -      |
-| isExtraFields    | 是否添加额外的自定义搜索参数                                                                | boolean                                                      | -      |
-| extraFields      | 额外的搜索配置:自己传入节点，不过加了额外的搜索，主要在外面的 submitHandle 函数里面进行接收 | array                                                        | -      |
-| isHideClearText  | 是否隐藏清空按钮                                                                            | boolean                                                      | -      |
-| isHideOkTextText | 是否隐藏搜索按钮                                                                            | boolean                                                      | -      |
-| onRef            | ref 调用子组件函数或者值                                                                    | function(this)                                               | -      |
-| isReturnLabel    | 用于数据缓存                                                                                | boolean                                                      | -      |
-| searchCodeKey    | 搜索区数据以对象形式存放到 redux 中,codeKey 表示对象的属性,建议用页面代码，具唯一性         | string                                                       | -      |
+| 参数             | 说明                                                                                        | 类型                                                         | 默认值                                              |
+| ---------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
+| searchForm       | 传入的表单列表                                                                              | 必输，Array<[searchFormItem](#search-area-form-item-config)> | []                                                  |
+| submitHandle     | 搜索事件                                                                                    | function(values)                                             | -                                                   |
+| eventHandle      | 表单项值改变事件，一般用于联动                                                              | function(eventType, value)                                   | -                                                   |
+| clearHandle      | 重置事件                                                                                    | function()                                                   | -                                                   |
+| okText           | 左侧 ok 按钮的文本                                                                          | string                                                       | -                                                   |
+| clearText        | 右侧重置按钮的文本                                                                          | string                                                       | -                                                   |
+| defaultLength    | 搜索区域默认展示的最大表单数量                                                              | number                                                       | 3                                                   |
+| defaultSpan      | 搜索项的 Col 对应的 span                                                                    | number                                                       | 6                                                   |
+| btnCol           | 按钮区域的 Col 的 span                                                                      | number                                                       | 同 defaultSpan                                      |
+| formLayout       | 同表单 formLayout                                                                           | object                                                       | { labelCol: { span: 6 }, wrapperCol: { span: 15 } } |
+| loading          | 用于 base-info 组件的保存按钮                                                               | boolean                                                      | -                                                   |
+| isExtraFields    | 是否添加额外的自定义搜索参数                                                                | boolean                                                      | -                                                   |
+| extraFields      | 额外的搜索配置:自己传入节点，不过加了额外的搜索，主要在外面的 submitHandle 函数里面进行接收 | array                                                        | -                                                   |
+| isHideClearText  | 是否隐藏清空按钮                                                                            | boolean                                                      | -                                                   |
+| isHideOkTextText | 是否隐藏搜索按钮                                                                            | boolean                                                      | -                                                   |
+| onRef            | ref 调用子组件函数或者值                                                                    | function(this)                                               | -                                                   |
+| isReturnLabel    | 用于数据缓存                                                                                | boolean                                                      | -                                                   |
+| searchCodeKey    | 搜索区数据以对象形式存放到 redux 中,codeKey 表示对象的属性,建议用页面代码，具唯一性         | string                                                       | -                                                   |
 
 ### <a id="search-area-form-item-config">searchFormItem</a>
 
@@ -134,3 +137,12 @@ export default function SearchAreaDemo() {
 | childrenMultipleKey | string                  | 可选，是否递归遍历子对象                                                                                                                       |
 | showTime            | false                   | 可选，当 type 为 date 时，控制是否需要选择时间                                                                                                 |
 | allowClear          | true                    | 可选，是否允许清除                                                                                                                             |
+
+## SearchAreaLov
+
+- 属性同 SearchArea，一些属性的默认值不同
+  | 属性 | 默认值 |
+  | ---- | ----- |
+  | defaultSpan | 8 |
+  | maxLength(同 defaultLength) | 2 |
+  | formLayout | { labelCol: { span: 5 }, wrapperCol: { span: 17 } } |

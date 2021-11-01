@@ -70,12 +70,12 @@ class BatchDownLoadAttachments extends React.Component<
   componentWillReceiveProps(nextProps: BatchDownloadProps) {
     const { visible } = this.props;
     if (nextProps.visible && nextProps.visible !== visible) {
-      this.getAttachmentsByPkValues();
+      this.getAttachmentsByPkValues(nextProps);
     }
   }
 
   // 根据 pkValue List 获取附件
-  getAttachmentsByPkValues = () => {
+  getAttachmentsByPkValues = (props = this.props) => {
     const {
       pkValueList,
       queryMethod,
@@ -83,7 +83,7 @@ class BatchDownLoadAttachments extends React.Component<
       allSelectedRows,
       pkName,
       linePKValueField,
-    } = this.props;
+    } = props;
     if (queryUrl && pkValueList && pkValueList.length) {
       const { header, line } = pkName;
       const httpList = header
@@ -341,4 +341,4 @@ class BatchDownLoadAttachments extends React.Component<
 
 export default BatchDownLoadAttachments;
 
-export { transformSelectRows, filterAndSetSortIndex };
+export { transformSelectRows, filterAndSetSortIndex, AttachmentsWrap };
