@@ -8,46 +8,28 @@
       background-color: #fff;
 
       .ant-form-item {
-        display: flex;
-        margin-right: 0;
-        margin-bottom: 0;
-        min-height: 48px;
-      }
-
-      .ant-legacy-form-item-label {
-        width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        flex: 0 0 100px;
-        max-width: 100%;
-      }
-
-      .ant-legacy-form-item-control-wrapper {
-        width: calc(100% - 100px);
-        max-width: 100%;
-      }
-
-      .ant-legacy-form-item-label {
-        width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        flex: 0 0 100px;
-        max-width: 100%;
-      }
-
-      .ant-legacy-form-item-control-wrapper {
-        width: calc(100% - 100px);
-        max-width: 100%;
-      }
-
-      .ant-legacy-form-item {
         width: 100%;
         display: flex;
         margin-right: 0;
         margin-bottom: 0;
         min-height: 48px;
+      }
+
+      .ant-form-item-label {
+        width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 0 0 100px;
+        max-width: 100%;
+        label {
+          color: #666;
+        }
+      }
+
+      .ant-form-item-control-wrapper {
+        width: calc(100% - 100px);
+        max-width: 100%;
       }
 
       overflow: visible;
@@ -65,10 +47,6 @@
       .toggle-button {
         margin-right: 16px;
         font-size: 12px;
-      }
-
-      .ant-legacy-form-item-label label {
-        color: #666;
       }
 
       .ant-input,

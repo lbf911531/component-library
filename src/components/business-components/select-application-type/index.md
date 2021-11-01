@@ -48,7 +48,6 @@ export default function Test() {
 
   function onClick() {
     if (eleRef.current) {
-      console.log(eleRef.current);
       eleRef.current.onDropdownVisibleChange(true);
     }
   }
