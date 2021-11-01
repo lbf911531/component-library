@@ -47,6 +47,10 @@ const config = {
       target: 'http://localhost:3000/',
       changeOrigin: true,
     },
+    '/workflow': {
+      target: 'http://localhost:3000/',
+      changeOrigin: true,
+    },
   },
   alias: {
     share: path.resolve(__dirname, './src/share'),
@@ -68,6 +72,8 @@ const config = {
     },
     httpFetch: path.resolve('./src/share/httpFetch.js'),
     config: path.resolve('./src/config/config.js'),
+    axios: 'axios',
+    qs: 'qs',
   },
   cssLoader: {
     modules: {
@@ -92,6 +98,9 @@ const config = {
       },
     },
   },
+  // targets: {
+  //   ie: 11,
+  // },
 };
 
 if (process.env.ENV_TYPE === 'native') {

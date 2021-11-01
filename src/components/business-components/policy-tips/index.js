@@ -1,14 +1,14 @@
 /*
  * @Author: cong.guo@hand-china.com
  * @Date: 2021-10-20 17:10:43
- * @LastEditors: cong.guo@hand-china.com
+ * @LastEditors: binfeng.long@hand-china.com
  * @Version: 1.0.0
  * @Description: 费用政策 提交原因 填写
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 import React, { Component } from 'react';
 import { Modal, Input } from 'antd';
-import Table from '../../table';
+import Table from '../../basic/table';
 
 const { TextArea } = Input;
 
