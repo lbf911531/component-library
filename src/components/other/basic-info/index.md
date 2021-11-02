@@ -6,7 +6,7 @@ group:
   path: /other
 ---
 
-## 信息展示 BasicInfo
+## 基本信息展示 BasicInfo
 
 ## 代码演示
 
