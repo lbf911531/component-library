@@ -59,7 +59,7 @@ function LanguageForm(props: IFormProps) {
                 },
                 {
                   max: isTextArea ? valueLength : 80,
-                  message: messages('base.no.more.than.limit', {
+                  message: messages('common.no.more.than.limit', {
                     params: { number: valueLength ?? 80 },
                     context,
                   }),

@@ -124,6 +124,7 @@ export default function CustomTableDemo() {
 | getAmountInfo    | 获取 res.headers['amount-info']                                     | function(info:string)                   | -        |
 | pagination       | 分页配置项，若设置，则与内部的 pagination 合并，相同属性以内部为主  | object                                  | -        |
 | headSettingKey   | 表格是否允许动态配置表头，并指定当前表格与页面的唯一映射关系        | string                                  | -        |
+| searchCodeKey    | 与 searchArea 组件 searchCodeKey 字段值保持一致，用于缓存列表页码   | string                                  | -        |
 
 ---
 

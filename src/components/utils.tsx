@@ -8,6 +8,9 @@ import PdfIcon from '@/assets/pdf.png';
 import UnknownIcon from '@/assets/unknown.jpg';
 import PackageIcon from '@/assets/package.jpg';
 
+import httpFetch from 'share/httpFetch';
+import config from 'config';
+
 import zhCN from './locale-language/zh_CN';
 import enUS from './locale-language/en_US';
 
@@ -141,3 +144,23 @@ export function messages(
   }
   return lang;
 }
+
+export const getSystemValueList = (code, all) => {
+  const url = `${config.baseUrl}/api/custom/enumerations/template/by/type`;
+  return httpFetch.get(url, { type: code, all }).then((res) => {
+    return new Promise((resolve) => {
+      if (res.data) {
+        const result = { data: { values: [] } };
+        result.data.values = res.data.map((item) => {
+          return {
+            ...item,
+            messageKey: item.name,
+          };
+        });
+        resolve(result);
+      } else {
+        resolve([]);
+      }
+    });
+  });
+};

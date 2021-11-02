@@ -11,6 +11,7 @@ export { default as CustomTable } from './components/basic/custom-table';
 export { default as SearchArea } from './components/basic/search-area';
 export { default as SearchAreaLov } from './components/basic/search-area-lov';
 export { default as ProTable } from './components/basic/pro-table';
+export { default as NewSearchArea } from './components/basic/new-search-area';
 // 其他
 export { default as CommonImporter } from './components/other/common-import';
 export { default as SlideFrame } from './components/other/slide-frame';

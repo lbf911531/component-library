@@ -280,7 +280,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
         ? {
             footer: (
               <Button onClick={onReturn || this.cancelHandle}>
-                {messages('budgetJournal.return')}
+                {messages('common.return')}
               </Button>
             ),
           }

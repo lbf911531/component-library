@@ -92,7 +92,7 @@ class ExcelExporter extends React.Component<IProps, IState> {
 
     if (!multiple && selectedRowKeys.length === 0) {
       message.error(
-        messages('please.select.export.column', { context: this.context }),
+        messages('common.select.export.column', { context: this.context }),
       ); /** 请选择导出列 */
       return;
     }
@@ -238,7 +238,7 @@ class ExcelExporter extends React.Component<IProps, IState> {
         destroyOnClose
         onCancel={onCancel}
         onOk={this.exportResult}
-        title={messages('select.columns.to.export', {
+        title={messages('common.columns.to.export', {
           context: this.context,
         })} /** 选择要导出的列 */
         bodyStyle={{
