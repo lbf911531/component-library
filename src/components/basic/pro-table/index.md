@@ -100,16 +100,16 @@ export default function ProTableDemo() {
 - searchFrom 的 id 默认取 columns 的 dataIndex，label 默认取 columns 的 title，也可在 columns 中添加 dataIndex、label
 - 若搜索和表格显示差距大时，也可再单独传入 searchForm 属性作为搜索项
 
-| 参数           | 说明                                              | 类型    | 默认值       |
-| -------------- | ------------------------------------------------- | ------- | ------------ | --- |
-| dataIndex      | 表格列（搜索）字段                                | string  |              |
-| id             | 搜索字段（不传和 dataIndex 值相同）               | string  |              |
-| title          | 表格列（搜索）显示文字                            | string  |              |
-| label          | 搜索项文字（不传和 title 值相同）                 | string  |              |
-| hideInSearch   | 不作为搜索项，不在搜索区域显示                    | boolean | false        |
-| hideInTable    | 不作为表格列，不在表格显示                        | boolean | false        |
-| type           | 同 SearchArea                                     | string  |              |
-| showFormat     | type 为 date 时，表格中日期显示格式               | string  | 'YYYY-MM-DD' |
-| searchFormat   | type 为 date 时，搜索时日期 moment.format()的格式 | string  |              |
-| precision      | type 为 inputNumber 时，小数位数                  | string  | number       | 2   |
-| defaultGetList | type 为 select 时是否自动调接口                   | boolean | false        |
+| 参数           | 说明                                              | 类型          | 默认值       |
+| -------------- | ------------------------------------------------- | ------------- | ------------ |
+| dataIndex      | 表格列（搜索）字段                                | string        | -            |
+| id             | 搜索字段（不传和 dataIndex 值相同）               | string        | -            |
+| title          | 表格列（搜索）显示文字                            | string        | -            |
+| label          | 搜索项文字（不传和 title 值相同）                 | string        | -            |
+| hideInSearch   | 不作为搜索项，不在搜索区域显示                    | boolean       | false        |
+| hideInTable    | 不作为表格列，不在表格显示                        | boolean       | false        |
+| type           | 同 SearchArea                                     | string        | -            |
+| showFormat     | type 为 date 时，表格中日期显示格式               | string        | 'YYYY-MM-DD' |
+| searchFormat   | type 为 date 时，搜索时日期 moment.format()的格式 | string        | -            |
+| precision      | type 为 inputNumber 时，小数位数                  | string/number | 2            |
+| defaultGetList | type 为 select 时是否自动调接口                   | boolean       | false        |
