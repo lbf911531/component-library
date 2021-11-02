@@ -69,4 +69,6 @@ export default {
   'common.add.filter': '添加筛选条件',
   'common.accounting.selected': '已选 {count} 项',
   'common.return': '返回',
+  'common.edit': '编辑',
+  'common.base.info': '基本信息',
 };

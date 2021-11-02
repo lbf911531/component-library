@@ -11,6 +11,8 @@ export default function CustomSwitch(props: IProps) {
     disabled,
     checkedDesc = messages('common.enabled', { context }),
     unCheckedDesc = messages('common.disabled', { context }),
+    checkedChildren,
+    unCheckedChildren,
   } = props;
 
   const [value, setValue] = useState(props.checked);
@@ -29,7 +31,13 @@ export default function CustomSwitch(props: IProps) {
 
   return (
     <span>
-      <Switch disabled={disabled} checked={value} onChange={onChange} />
+      <Switch
+        disabled={disabled}
+        checked={value}
+        onChange={onChange}
+        unCheckedChildren={unCheckedChildren}
+        checkedChildren={checkedChildren}
+      />
       <span style={{ marginLeft: 10 }}>
         {value ? checkedDesc : unCheckedDesc}
       </span>

@@ -66,4 +66,6 @@ export default {
   'common.add.filter': 'Add filter criteria',
   'common.accounting.selected': 'Selected {count} item',
   'common.return': 'return',
+  'common.edit': 'edit',
+  'common.base.info': 'The basic information',
 };

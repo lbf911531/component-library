@@ -31,6 +31,7 @@ import _ from 'lodash';
 import { messages } from '@/components/utils';
 import LocaleContext from '@/components/locale-lan-provider/context';
 import httpFetch from 'share/httpFetch';
+import CustomSwitch from '../../form/custom-switch';
 import InputNumber from '../../form/input-number';
 import SelectPartLoad from '../../form/select-part-load';
 import InputLanguage from '../../form/input-language';
@@ -1457,11 +1458,13 @@ class SearchAreaLov extends React.Component {
       //switch状态切换组件
       case 'switch': {
         return (
-          <Switch
+          <CustomSwitch
             checkedChildren={<CheckOutlined />}
             unCheckedChildren={<CloseOutlined />}
             onChange={handle}
             disabled={item.disabled}
+            checkedDesc={item?.linkageText?.['true']}
+            unCheckedDesc={item?.linkageText?.['false']}
           />
         );
       }
@@ -1582,11 +1585,6 @@ class SearchAreaLov extends React.Component {
               }
             >
               {this.renderFormItem(item)}
-              {item.type === 'switch' && item.linkageText ? (
-                <span style={{ marginLeft: 8 }}>
-                  {item.linkageText[String(!!getFieldValue(item.id))]}
-                </span>
-              ) : null}
             </Form.Item>
           )}
         </Col>,

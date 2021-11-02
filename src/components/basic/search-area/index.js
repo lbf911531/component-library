@@ -2112,7 +2112,6 @@ class SearchArea extends React.Component {
       >
         <Form
           className="ant-advanced-search-form search-area"
-          // layout="inline"
           labelAlign="right"
           ref={(ref) => {
             this.formRef = ref;
