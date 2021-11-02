@@ -54,7 +54,7 @@ let needBlurValidate = true; // 是否需要在blur时校验，点击搜索、�
  * @params eventHandle  表单项onChange事件，于searchForm内的event有联动，见底端注释
  * @params okText  搜索按钮的文字
  * @params clearText  重置按钮的文字
- * @params maxLength  最大项数，如果超过则隐藏支展开菜单中
+ * @params defaultLength  最大项数，如果超过则隐藏支展开菜单中
  * @params loading  搜索按钮的loading状态
  * TODO: 选项render函数、searchUrl和getUrl的method区分
  */
@@ -67,7 +67,6 @@ class SearchArea extends React.Component {
     this.state = {
       expand: props.searchForm.expand,
       searchForm: [],
-      maxLength: 3,
       searchCodeKey: '',
       isopen: false,
       amountRangeField: {},
@@ -1922,22 +1921,27 @@ class SearchArea extends React.Component {
       okText,
       isPopconfirmFlag,
       title,
-      btnSpan,
+      defaultSpan,
+      defaultLength,
+      formLayout: propsFormLayout,
+      btnCol,
     } = this.props;
-    const { searchForm, expand, maxLength } = this.state;
+    const { searchForm, expand } = this.state;
 
     const children = [];
 
-    const formLayout = {
+    const formLayout = propsFormLayout || {
       labelCol: { span: 6 },
       wrapperCol: { span: 15 },
     };
     searchForm.forEach((item, i) => {
       children.push(
         <Col
-          span={item.span || 6}
+          span={item.span || defaultSpan}
           key={item.id}
-          style={i >= 3 ? { display: expand ? 'block' : 'none' } : {}}
+          style={
+            i >= defaultLength ? { display: expand ? 'block' : 'none' } : {}
+          }
         >
           {item.type === 'items' ? (
             this.renderFormItem(item)
@@ -1977,12 +1981,12 @@ class SearchArea extends React.Component {
 
     children.push(
       <Col
-        span={expand ? 24 : btnSpan ?? 6}
+        span={expand ? 24 : btnCol ?? defaultSpan}
         key={-1}
         style={{ textAlign: 'right', marginBottom: 24 }}
       >
         {searchForm.length + (extraFields ? extraFields.length : 0) >
-        maxLength ? (
+        defaultLength ? (
           <a className="toggle-button" onClick={this.toggle}>
             {expand
               ? messages('common.fold', { context: this.context })
@@ -2017,15 +2021,16 @@ class SearchArea extends React.Component {
   };
 
   getFields = () => {
+    const { defaultLength, defaultSpan } = this.props;
     const { searchForm } = this.state;
 
     const children = [];
     searchForm.forEach((item, i) => {
       children.push(
         <Col
-          span={item.colSpan || 6}
+          span={item.span || defaultSpan}
           key={item.id}
-          style={{ display: i < 3 ? 'block' : 'none' }}
+          style={{ display: i < defaultLength ? 'block' : 'none' }}
         >
           {item.type === 'items' ? (
             this.renderFormItem(item)
@@ -2070,19 +2075,20 @@ class SearchArea extends React.Component {
 
   getExtraFields = () => {
     const { expand, searchForm } = this.state;
-    const { colSpan, extraFields, maxLength, isExtraFields } = this.props;
+    const { colSpan, extraFields, defaultLength, isExtraFields, defaultSpan } =
+      this.props;
 
     // 要使用extraFields，<Col span={8}设置为8,不然无法对齐
     const count = expand
       ? searchForm.length + (extraFields && extraFields.length)
-      : maxLength;
+      : defaultLength;
     const children = [];
     if (isExtraFields && extraFields && extraFields.length > 0) {
       extraFields.forEach((item, i) => {
         children.push(
           // eslint-disable-next-line react/no-array-index-key
           <Col
-            span={colSpan || 6}
+            span={colSpan || defaultSpan}
             key={`${i}extraFields`}
             style={{
               display: i + searchForm.length < count ? 'block' : 'none',
@@ -2106,14 +2112,14 @@ class SearchArea extends React.Component {
       >
         <Form
           className="ant-advanced-search-form search-area"
-          layout="inline"
+          // layout="inline"
           labelAlign="right"
           ref={(ref) => {
             this.formRef = ref;
           }}
         >
           <div>
-            <Row gutter={40} type="flex" align="top">
+            <Row gutter={12} type="flex" align="top">
               {this.renderAllFormItem()}
             </Row>
           </div>
@@ -2125,7 +2131,7 @@ class SearchArea extends React.Component {
 
 /**
  *
- * @type searchForm 表单列表，如果项数 > maxLength 则自动隐藏多余选项到下拉部分，每一项的格式如下：
+ * @type searchForm 表单列表，如果项数 > defaultLength 则自动隐藏多余选项到下拉部分，每一项的格式如下：
  * {
           type: '',  //必填，类型,为input、inputNumber、select、cascader、 date、radio、big_radio、checkbox、combobox、multiple、 list、 items、 value_list、 selput中的一种
           id: '',  //必填，表单id，搜索后返回的数据key
@@ -2166,7 +2172,7 @@ class SearchArea extends React.Component {
 //   clearHandle: PropTypes.func, // 重置事件
 //   okText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // 左侧ok按钮的文本
 //   clearText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // 右侧重置按钮的文本
-//   maxLength: PropTypes.number, // 搜索区域最大表单数量
+//   defaultLength: PropTypes.number, // 搜索区域最大表单数量
 //   loading: PropTypes.bool, // 用于base-info组件的保存按钮
 //   checkboxChange: PropTypes.func, // checkbox表单列表修改时返回选中value事件
 //   isExtraFields: PropTypes.bool, // 是否添加额外的自定义搜索参数
@@ -2179,7 +2185,8 @@ class SearchArea extends React.Component {
 // };
 
 SearchArea.defaultProps = {
-  maxLength: 3,
+  defaultLength: 3,
+  defaultSpan: 6,
   eventHandle: () => {},
   okText: 'common.search', // 搜索
   clearText: 'common.reset', // 重置
@@ -2196,5 +2203,14 @@ SearchArea.defaultProps = {
 };
 
 const WrappedSearchArea = SearchArea;
+
+export const SearchAreaLov = (props) => (
+  <SearchArea
+    defaultSpan={8}
+    defaultLength={props.maxLength || 2}
+    formLayout={{ labelCol: { span: 5 }, wrapperCol: { span: 17 } }}
+    {...props}
+  />
+);
 
 export default WrappedForm(WrappedSearchArea);

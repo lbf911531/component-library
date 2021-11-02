@@ -177,7 +177,9 @@ export default function SearchAreaLovDemo() {
 | clearHandle      | 重置事件                                                                                    | function()                                                   | -      |
 | okText           | 左侧 ok 按钮的文本                                                                          | string                                                       | -      |
 | clearText        | 右侧重置按钮的文本                                                                          | string                                                       | -      |
-| maxLength        | 搜索区域默认展示的最大表单数量                                                              | number                                                       | 3      |
+| defaultLength    | 搜索区域默认展示的最大表单数量                                                              | number                                                       | 3      |
+| defaultSpan      | 默认搜索项对应 Col 的 span                                                                  | number                                                       | 6      |
+| formLayout       | 同表单 formLayout                                                                           | object { labelCol: { span: 6 }, wrapperCol: { span: 15 } }   |
 | loading          | 用于 base-info 组件的保存按钮                                                               | boolean                                                      | -      |
 | isExtraFields    | 是否添加额外的自定义搜索参数                                                                | boolean                                                      | -      |
 | extraFields      | 额外的搜索配置:自己传入节点，不过加了额外的搜索，主要在外面的 submitHandle 函数里面进行接收 | array                                                        | -      |
@@ -186,7 +188,7 @@ export default function SearchAreaLovDemo() {
 | onRef            | ref 调用子组件函数或者值                                                                    | function(this)                                               | -      |
 | isReturnLabel    | 用于数据缓存                                                                                | boolean                                                      | -      |
 | searchCodeKey    | 搜索区数据以对象形式存放到 redux 中,codeKey 表示对象的属性,建议用页面代码，具唯一性         | string                                                       | -      |
-| btnSpan          | 设置操作栏栅格布局所占栅格数                                                                | number                                                       | -      |
+| btnCol           | 设置操作栏栅格布局所占栅格数                                                                | number                                                       | -      |
 
 ### <a id="search-area-form-item-config">searchFormItem</a>
 
@@ -222,3 +224,12 @@ export default function SearchAreaLovDemo() {
 | showTime            | boolean                 | 可选，当 type 为 date 时，控制是否需要选择时间 ,默认 false                                                                                     |
 | allowClear          | boolean                 | 可选，是否允许清除,默认为 true                                                                                                                 |
 | span                | number                  | 设置表单项栅格布局所占栅格数,仅用于`SearchAreaLov`组件,默认值为 8                                                                              |
+
+## SearchAreaLov
+
+- 属性同 SearchArea，一些属性的默认值不同
+  | 属性 | 默认值 |
+  | ---- | ----- |
+  | defaultSpan | 8 |
+  | maxLength(同 defaultLength) | 2 |
+  | formLayout | { labelCol: { span: 5 }, wrapperCol: { span: 17 } } |
