@@ -37,7 +37,7 @@ class ZipFileView extends React.Component {
           <img
             style={{ height: 24, width: 24, flex: '0 0 24px' }}
             src={FolderIcon}
-            alt={messages('base.picture')}
+            alt="pic"
           />
         ),
       };
@@ -55,7 +55,7 @@ class ZipFileView extends React.Component {
           <img
             style={{ height: 24, width: 24, flex: '0 0 24px' }}
             src={getImgIcon(obj.title)}
-            alt={messages('base.picture')}
+            alt="pic"
           />
         ),
       };
@@ -94,7 +94,9 @@ class ZipFileView extends React.Component {
           onCancel={() => this.onCancel()}
           width="50%"
           bodyStyle={{ minHeight: 480 }}
-          title={messages('base.compressed.package.preview')} /** 压缩包预览  */
+          title={messages(
+            'common.compressed.package.preview',
+          )} /** 压缩包预览  */
           footer={null}
           destroyOnClose
         >
@@ -102,7 +104,6 @@ class ZipFileView extends React.Component {
             showIcon
             blockNode
             onSelect={(value, node, extra) => this.onSelect(value, node, extra)}
-            // treeData={Array.isArray(treeData) ? treeData : typeof treeData === 'object' ? [treeData] : []}
             treeData={this.handleTreeData()}
           />
         </Modal>

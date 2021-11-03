@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
 import { Col, message, Popover, Row, Spin, Tag, Tooltip } from 'antd';
+import { messages } from '@/components/utils';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
 import TweenOne from 'rc-tween-one';
@@ -32,160 +33,166 @@ class DocumentBasicInfo extends Component {
     this.status = {
       // 未质检 ,质检中,已完成,关闭 这几个中文不要改成多语言,后端返回的字段就是中文
       未质检: {
-        label: this.$t('workbench.no.quality.inspection'),
+        label: messages('common.no.quality.inspection'),
         className: 'tag-reject',
       },
       质检中: {
-        label: this.$t('workbench.under.quality.inspection'),
+        label: messages('common.under.quality.inspection'),
         className: 'tag-edit',
       },
       已完成: {
-        label: this.$t('my.contract.state.finish'),
+        label: messages('common.state.finish'),
         className: 'tag-audit-pass',
       },
       关闭: {
-        label: this.$t('request.detail.loan.close'),
+        label: messages('common.close'),
         state: 'error',
         color: '#D9D9D9',
       },
       '1001D': {
-        label: this.$t('efs.entered' /* 已录入 */),
+        label: messages('common.entered' /* 已录入 */),
         className: 'tag-process',
       },
       '1002D': {
-        label: this.$t('efs.in.volume' /* 已成册 */),
+        label: messages('common.in.volume' /* 已成册 */),
         className: 'tag-process',
       },
       '1003D': {
-        label: this.$t('efs.in.the.book' /* 成册中 */),
+        label: messages('common.in.the.book' /* 成册中 */),
         className: 'tag-edit',
       },
       '1004D': {
-        label: this.$t('efs.entering' /* 录入中 */),
+        label: messages('common.entering' /* 录入中 */),
         className: 'tag-edit',
       },
       '1005D': {
-        label: this.$t('efs.destruction.in.progress' /* 销毁中 */),
+        label: messages('common.being.destroyed' /* 销毁中 */),
         className: 'tag-edit',
       },
       '1006D': {
-        label: this.$t('efs.destroyed' /* 已销毁 */),
+        label: messages('common.destroyed' /* 已销毁 */),
         className: 'tag-reject',
       },
       '1007D': {
-        label: this.$t('efs.boxed' /* 已入盒 */),
+        label: messages('efs.boxed' /* 已入盒 */),
         className: 'tag-process',
       },
       '1008D': {
-        label: this.$t('efs.Warehoused' /* 已入库 */),
+        label: messages('efs.Warehoused' /* 已入库 */),
         className: 'tag-process',
       },
-      '1001N': { label: this.$t('common.editing'), className: 'tag-edit' },
-      '1002N': { label: this.$t('common.approving'), className: 'tag-process' },
-      '1003N': { label: this.$t('common.withdraw'), className: 'tag-withdraw' },
+      '1001N': { label: messages('common.editing'), className: 'tag-edit' },
+      '1002N': {
+        label: messages('common.approving'),
+        className: 'tag-process',
+      },
+      '1003N': {
+        label: messages('common.withdraw'),
+        className: 'tag-withdraw',
+      },
       '1004N': {
-        label: this.$t('constants.documentStatus.audit.ing'),
+        label: messages('common.auditing'),
         className: 'tag-process',
       },
       '1005N': {
-        label: this.$t('common.approve.rejected'),
+        label: messages('common.approve.rejected'),
         className: 'tag-reject',
       },
       '1004Y': {
-        label: this.$t('batch.print.approved'),
+        label: messages('common.approved'),
         className: 'tag-audit-pass',
       },
       '1001R': {
-        label: this.$t('constants.approvelHistory.auditReject'),
+        label: messages('common.audit.reject'),
         className: 'tag-reject',
       },
-      1001: { label: this.$t('common.editing'), className: 'tag-edit' }, // 编辑中
-      1002: { label: this.$t('common.approving'), className: 'tag-process' }, // 审批中
-      1003: { label: this.$t('common.withdraw'), className: 'tag-withdraw' }, // 撤回
+      1001: { label: messages('common.editing'), className: 'tag-edit' }, // 编辑中
+      1002: { label: messages('common.approving'), className: 'tag-process' }, // 审批中
+      1003: { label: messages('common.withdraw'), className: 'tag-withdraw' }, // 撤回
       1004: {
-        label: this.$t('common.approve.pass'),
+        label: messages('common.approve.pass'),
         className: 'tag-approve-pass',
       }, // 审批通过
       1005: {
-        label: this.$t('common.approve.rejected'),
+        label: messages('common.approve.rejected'),
         className: 'tag-reject',
       }, // 审批驳回
-      6001: { label: this.$t('my.zan.gua'), className: 'tag-process' }, // 暂挂中
+      6001: { label: messages('common.pending'), className: 'tag-process' }, // 暂挂中
       6002: {
-        label: this.$t('my.contract.state.cancel'),
+        label: messages('common.canceled'),
         className: 'tag-cancel',
       }, // 已取消
       6003: {
-        label: this.$t('my.contract.state.finish'),
+        label: messages('common.state.finish'),
         className: 'tag-approve-pass',
       }, // 已完成
       1006: {
-        label: this.$t('batch.print.approved'),
+        label: messages('common.approved'),
         state: 'success',
         color: 'green',
       }, // 审核通过
       1007: {
-        label: this.$t('constants.approvelHistory.auditReject'),
+        label: messages('common.audit.reject'),
         state: 'error',
         color: 'red',
       }, // 审核驳回
       2002: {
-        label: this.$t('batch.print.approved'),
+        label: messages('common.approved'),
         state: 'success',
         color: 'green',
       }, // 审核通过
       2004: {
-        label: this.$t('base.reviewed.and.approved'),
+        label: messages('common.reviewed'),
         state: 'success',
         color: 'green',
       }, // 复核通过
       2005: {
-        label: this.$t('base.rejection.of.review'),
+        label: messages('common.rejection.of.review'),
         state: 'error',
         color: 'red',
       }, // 复核驳回
       3002: {
-        label: this.$t('constants.documentStatus.audit.ing'),
+        label: messages('common.auditing'),
         state: 'processing',
         color: 'geekblue',
       }, // 审核中
       5001: {
-        label: this.$t('base.review.post'),
+        label: messages('common.review.post'),
         state: 'processing',
         color: '#108ee9',
       }, // 复核(过账)
       5002: {
-        label: this.$t('base.backflush.submission'),
+        label: messages('common.recoil.submitted'),
         state: 'processing',
         color: '#108ee9',
       }, // 反冲提交
       5003: {
-        label: this.$t('base.backflush.audit'),
+        label: messages('common.recoil.audit'),
         state: 'processing',
         color: '#108ee9',
       }, // 反冲审核
       6004: {
-        label: this.$t('my.contract.cancel.hold'),
+        label: messages('common.cancel.pending'),
         state: 'success',
         color: '#87d068',
       }, // 取消暂挂
       9001: {
-        label: this.$t('menu.pay'),
+        label: messages('common.pay'),
         state: 'processing',
         color: '#108ee9',
       }, // 支付
       9002: {
-        label: this.$t('acp.payment.return'),
+        label: messages('common.payment.return'),
         state: 'processing',
         color: '#108ee9',
       }, // 退款
       9003: {
-        label: this.$t('constants.bookerType.refund'),
+        label: messages('common.refund'),
         state: 'processing',
         color: '#108ee9',
       }, // 退票
       9004: {
-        label: this.$t('acp.payment.reserved'),
+        label: messages('acp.payment.reserved'),
         state: 'processing',
         color: '#108ee9',
       }, // 反冲
@@ -305,7 +312,7 @@ class DocumentBasicInfo extends Component {
         copied: true,
       },
       () => {
-        message.success(this.$t('base.replication.success'));
+        message.success(messages('common.copy.success'));
         setTimeout(() => {
           this.setState({ copied: false });
         }, 600);
@@ -339,11 +346,11 @@ class DocumentBasicInfo extends Component {
             <div style={{ display: 'flex' }}>
               {index % num === 0 && index === 0 ? (
                 <label style={{ color: '#333', marginRight: 8 }}>
-                  {this.$t('common.attachments')}:
+                  {messages('common.attachments')}:
                 </label>
               ) : (
                 <label style={{ marginRight: 8, opacity: 0 }}>
-                  {this.$t('common.attachments')}:
+                  {messages('common.attachments')}:
                 </label>
               )}
               <FileItem
@@ -386,7 +393,7 @@ class DocumentBasicInfo extends Component {
       .then(() => {
         const { data } = this.state;
         data.attachments.splice(index, 1);
-        message.success(this.$t('base.delete.successfully.di18n'));
+        message.success(messages('common.delete.success'));
         this.setState({ data, previewVisible: false });
       })
       .catch((err) => {
@@ -485,7 +492,9 @@ class DocumentBasicInfo extends Component {
                       >
                         <Tooltip
                           title={
-                            this.$t('base.duplicate.odd.number') /** 复制单号 */
+                            messages(
+                              'base.duplicate.odd.number',
+                            ) /** 复制单号 */
                           }
                           getPopupContainer={() =>
                             document.querySelector('#copy-tip')
@@ -540,7 +549,7 @@ class DocumentBasicInfo extends Component {
                     style={{ textAlign: 'left', fontSize: '14px' }}
                     className="amount-title"
                   >
-                    {this.$t('common.amount')}: &nbsp;
+                    {messages('common.amount')}: &nbsp;
                     <span
                       style={{
                         fontSize: '16px',
@@ -629,7 +638,7 @@ class DocumentBasicInfo extends Component {
                   className="over-range remark"
                 >
                   <label style={{ color: '#333', paddingRight: 8 }}>
-                    {this.$t('common.comment')}:
+                    {messages('common.comment')}:
                   </label>
                   <span style={{ color: '#666' }}>
                     <Popover
@@ -648,7 +657,7 @@ class DocumentBasicInfo extends Component {
             {showEmpty && (data.attachments || []).length === 0 && (
               <Row style={{ marginTop: 8 }} className="attachments">
                 <label style={{ color: '#333', paddingRight: 8 }}>
-                  {this.$t('common.attachments')}:
+                  {messages('common.attachments')}:
                 </label>
               </Row>
             )}

@@ -72,18 +72,18 @@ export default function Test() {
 
 ## API
 
-| 参数          | 说明                                                                               | 类型                                   | 默认值                   |
-| ------------- | ---------------------------------------------------------------------------------- | -------------------------------------- | ------------------------ |
-| value         | 选中的值                                                                           | { id, name }                           |                          |
-| title         | 标题                                                                               | string                                 | expense.application.type |
+| 参数          | 说明                                                                               | 类型                                   | 默认值                  |
+| ------------- | ---------------------------------------------------------------------------------- | -------------------------------------- | ----------------------- |
+| value         | 选中的值                                                                           | { id, name }                           |                         |
+| title         | 标题                                                                               | string                                 | common.application.type |
 | onChange      | 选择类型，点确定后的回调                                                           | (values) => void                       |
-| handleOkCheck | onChange 前执行, callback 指 onChange 方法，selected 当前选中，preValue 上一个数据 | (callback, selected, preValue) => void |                          |
-| disabled      | 不可操作                                                                           | boolean                                |                          |
-| url           | 获取数据接口                                                                       | string                                 |                          |
-| method        | 接口 http method                                                                   | string                                 | get                      |
-| params        | 接口参数(拼接在 url 上)                                                            | object                                 |                          |
-| bodyParams    | post 参数                                                                          | object                                 |                          |
-| allowClear    | 是否允许清空                                                                       | boolean                                |                          |
-| placeholder   | 选择框 placeholder                                                                 | string                                 |                          |
-| hideSelect    | 隐藏选择框（通过 ref 调用组件 onDropdownVisibleChange，显示弹框）                  | boolean                                |                          |
-| historyNum    | 最近使用的数量                                                                     | boolean                                | 6                        |
+| handleOkCheck | onChange 前执行, callback 指 onChange 方法，selected 当前选中，preValue 上一个数据 | (callback, selected, preValue) => void |                         |
+| disabled      | 不可操作                                                                           | boolean                                |                         |
+| url           | 获取数据接口                                                                       | string                                 |                         |
+| method        | 接口 http method                                                                   | string                                 | get                     |
+| params        | 接口参数(拼接在 url 上)                                                            | object                                 |                         |
+| bodyParams    | post 参数                                                                          | object                                 |                         |
+| allowClear    | 是否允许清空                                                                       | boolean                                |                         |
+| placeholder   | 选择框 placeholder                                                                 | string                                 |                         |
+| hideSelect    | 隐藏选择框（通过 ref 调用组件 onDropdownVisibleChange，显示弹框）                  | boolean                                |                         |
+| historyNum    | 最近使用的数量                                                                     | boolean                                | 6                       |

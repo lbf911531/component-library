@@ -14,7 +14,6 @@ import {
 } from 'antd';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
-// import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { messages } from 'utils/utils';
 import './index.less';
@@ -38,7 +37,7 @@ function SearchAreaWrap(props) {
             {...formItemLayout}
             name=""
             typeCategoryId
-            label={messages('expense.large.class') /* 大类 */}
+            label={messages('common.large.class') /* 大类 */}
           >
             <Select
               style={{ width: '100%' }}
@@ -56,7 +55,7 @@ function SearchAreaWrap(props) {
           <Form.Item
             {...formItemLayout}
             name="name"
-            label={messages('base.the.name.of.the') /* 名称 */}
+            label={messages('common.name') /* 名称 */}
           >
             <Input
               placeholder={messages('common.please.enter')}
@@ -420,7 +419,7 @@ class SelectApplicationType extends Component {
         )}
 
         <Modal
-          title={title || messages('expense.application.type')}
+          title={title || messages('common.application.type')}
           visible={visible}
           onOk={this.handleOkCheck}
           confirmLoading={confirmLoading}
@@ -441,8 +440,8 @@ class SelectApplicationType extends Component {
             <Spin spinning={loading}>
               <div className="type-total">
                 {
-                  this.$t('expense.a.total.of.results', {
-                    total,
+                  messages('common.total.of.results', {
+                    params: { total },
                   }) /* 共{total}条结果 */
                 }
               </div>
@@ -467,7 +466,7 @@ class SelectApplicationType extends Component {
                         <Link
                           href="#recently-type"
                           title={
-                            this.$t('expense.recently.used') /* 最近使用 */
+                            messages('common.recently.used') /* 最近使用 */
                           }
                         />
                         <span className="type-item-num">
@@ -495,7 +494,7 @@ class SelectApplicationType extends Component {
                   {!!recentlyData.length && (
                     <div>
                       <div id="recently-type" className="type-title">
-                        {this.$t('expense.recently.used') /* 最近使用 */}
+                        {messages('common.recently.used') /* 最近使用 */}
                       </div>
                       <Row gutter={16}>
                         <RenderByType

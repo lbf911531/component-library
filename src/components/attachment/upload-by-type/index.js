@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Tooltip, Upload, message } from 'antd';
 import httpFetch from 'share/httpFetch';
-// import PropTypes from 'prop-types';
+import { messages } from '@/components/utils';
 import config from 'config';
 import Folder from '@/assets/folder@2x.png';
 import UploadFileList from '../upload-file-list';
@@ -112,25 +112,25 @@ class UploadByType extends React.Component {
     const title = (
       <div>
         <div className="tips-title">
-          {this.$t('base.attachment.upload.instructions') /* 附件上传说明 */}
+          {messages('common.attachment.upload.instructions') /* 附件上传说明 */}
         </div>
         <div className="nowrap">
           {
-            this.$t(
-              this.$t('base.upload.attachment.format'),
+            messages(
+              messages('common.upload.attachment.format'),
             ) /* 可上传附件格式 */
           }
-          ：{formatFlag ? this.$t('base.all') : accept.replace(/,/g, '/')}
+          ：{formatFlag ? messages('common.all') : accept.replace(/,/g, '/')}
         </div>
         <div className="nowrap">
-          {this.$t('base.size.of.attachments') /* 可上传附件大小 */}：
+          {messages('common.size.of.attachments') /* 可上传附件大小 */}：
           {sizeFlag
-            ? this.$t('base.attachment.any.size')
+            ? messages('common.attachment.any.size')
             : `${lowerLimit}${curSizeDes}-${upperLimit}${curSizeDes}`}
         </div>
         <div className="type-template">
           <span className="template-label">
-            {this.$t('base.attachment.template') /* 附件模板 */}：
+            {messages('common.attachment.template') /* 附件模板 */}：
           </span>
           <span className="type-template-list">
             {Array.isArray(attachments) && (
@@ -179,7 +179,7 @@ class UploadByType extends React.Component {
     const { disabled, isUseAttachmentId, backToNoType } = this.props;
     if (disabled) {
       message.warn(
-        this.$t('upload.not.allowed.delete' /* 该状态不允许删除附件 */),
+        messages('common.upload.not.allowed.delete' /* 该状态不允许删除附件 */),
       );
       return;
     }
@@ -206,7 +206,7 @@ class UploadByType extends React.Component {
       .delete(deleteUrl)
       .then(() => {
         this.deleteHandle(info, index);
-        message.success(this.$t('common.operate.success'));
+        message.success(messages('common.operate.success'));
       })
       .catch((err) => {
         console.error(err);
@@ -270,7 +270,7 @@ class UploadByType extends React.Component {
         >
           <UploadOutlined
             className="upload-ico theme-color"
-            title={this.$t('base.click.upload.attachment') /* 点击上传附件 */}
+            title={messages('common.click.to.upload') /* 点击上传附件 */}
           />
         </Upload>
       </>
@@ -295,21 +295,19 @@ class UploadByType extends React.Component {
     const isLimitNum = fileList.length < fileNum;
     if (!isLimitNum) {
       message.error(
-        `${fileName} ${this.$t('base.upload.failed.at.fileNum', { fileNum })}`,
+        `${fileName} ${messages('common.upload.num', {
+          params: { num: fileNum },
+        })}`,
       );
       // 上传失败，最多上传${fileNum}个附件
     } else if (!isType) {
-      message.error(
-        `${fileName} ${this.$t(
-          'base.upload.failed.the.current.attachment.type.format',
-        )}`,
-      );
+      message.error(`${fileName} ${messages('common.upload.failed.reason')}`);
       // 上传失败，当前附件类型格式设置不支持此类附件格式上传
     } else if (!isLimitUpper || !isLimitLower) {
       // `上传失败，文件大小应在${lowerLimit}${curUnit}-${upperLimit}${curUnit}范围内`
       message.error(
-        `${fileName} ${this.$t('base.upload.failed.for.file.size.range.limit', {
-          range: `${lowerLimit}${curUnit}-${upperLimit}${curUnit}`,
+        `${fileName} ${messages('common.upload.size.range', {
+          params: { range: `${lowerLimit}${curUnit}-${upperLimit}${curUnit}` },
         })}`,
       );
     }
@@ -355,7 +353,9 @@ class UploadByType extends React.Component {
       () => {
         if (status === 'done') {
           message.success(
-            `${info.file.name} ${this.$t('upload.success' /* 上传成功 */)}`,
+            `${info.file.name} ${messages(
+              'common.upload.success' /* 上传成功 */,
+            )}`,
           );
           Oids.push(info.file.response.id);
 
@@ -373,7 +373,9 @@ class UploadByType extends React.Component {
             message.error(response.message);
           } else {
             message.error(
-              `${info.file.name} ${this.$t('upload.fail' /* 上传失败 */)}`,
+              `${info.file.name} ${messages(
+                'common.upload.fail' /* 上传失败 */,
+              )}`,
             );
           }
         }

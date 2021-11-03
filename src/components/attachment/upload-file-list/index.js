@@ -1,10 +1,9 @@
 import React from 'react';
 import Icon, { LoadingOutlined } from '@ant-design/icons';
 import { Tooltip, Popconfirm, Col, Row } from 'antd';
-// import PropTypes from 'prop-types';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
-import { getImgIcon } from 'utils/utils';
+import { getImgIcon, messages } from 'utils/utils';
 import DownloadIcon from '@/assets/upload/download';
 import PreviewIcon from '@/assets/upload/preview';
 import DeleteIcon from '@/assets/upload/delete';
@@ -75,7 +74,7 @@ class RenderUploadFileItem extends React.Component {
     switch (type) {
       case 'preview':
         return item && item.fileType && item.fileType.includes('zip') ? (
-          <Tooltip title={this.$t('base.preview')}>
+          <Tooltip title={messages('common.preview')}>
             <Icon
               component={PreviewIcon}
               className="operation-btn preview"
@@ -85,7 +84,7 @@ class RenderUploadFileItem extends React.Component {
             />
           </Tooltip>
         ) : (
-          <Tooltip title={this.$t('base.preview')}>
+          <Tooltip title={messages('common.preview')}>
             <Icon
               component={PreviewIcon}
               className="operation-btn preview"
@@ -97,9 +96,9 @@ class RenderUploadFileItem extends React.Component {
         );
       case 'remove':
         return (
-          <Tooltip title={this.$t('base.delete')}>
+          <Tooltip title={messages('common.delete')}>
             <Popconfirm
-              title={this.$t('base.confirm.to.delete1')}
+              title={messages('common.confirm.to.delete')}
               onConfirm={() => {
                 onRemove(fileList[index], index);
               }}
@@ -121,7 +120,7 @@ class RenderUploadFileItem extends React.Component {
         );
       case 'download':
         return (
-          <Tooltip title={this.$t('base.download')}>
+          <Tooltip title={messages('common.download')}>
             <Icon
               component={DownloadIcon}
               className="operation-btn preview"

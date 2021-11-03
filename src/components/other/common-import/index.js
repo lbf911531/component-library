@@ -13,7 +13,6 @@ import {
 } from 'antd';
 import httpFetch from 'share/httpFetch';
 import FileSaver from 'file-saver';
-// import PropTypes from 'prop-types';
 import { messages } from 'utils/utils';
 import CustomTable from '../../basic/custom-table';
 import './index.less';
@@ -35,7 +34,7 @@ class CommonImporter extends React.Component {
       failureTotal: 0,
       columns: [
         {
-          title: this.$t('importer.line.number') /* 行号 */,
+          title: messages('common.line.number') /* 行号 */,
           dataIndex: 'idxNo',
           align: 'center',
           width: 100,
@@ -50,7 +49,7 @@ class CommonImporter extends React.Component {
         },
         {
           /* 状态 */
-          title: this.$t({ id: 'common.column.status' }),
+          title: messages('common.column.status'),
           key: 'errorFlag',
           width: 100,
           dataIndex: 'errorFlag',
@@ -60,13 +59,13 @@ class CommonImporter extends React.Component {
             <Badge
               status={!isEnabled ? 'success' : 'error'}
               text={
-                !isEnabled ? this.$t('base.successful') : this.$t('base.fail')
+                !isEnabled ? messages('base.successful') : messages('base.fail')
               }
             />
           ),
         },
         {
-          title: this.$t('importer.error.message') /* 错误信息 */,
+          title: messages('common.error.message') /* 错误信息 */,
           dataIndex: 'errorMsg',
           align: 'left',
           width: 300,
@@ -176,7 +175,7 @@ class CommonImporter extends React.Component {
     const url = `${templateProperties.prefixPatch}/api/excel/import/down/template?templateCode=${templateProperties.templateCode}`;
 
     const hide = message.loading(
-      this.$t('importer.spanned.file') /* 正在生成文件.. */,
+      messages('common.spanned.file') /* 正在生成文件.. */,
     );
     httpFetch
       .post(url, extraParams, {}, { responseType: 'arraybuffer' })
@@ -199,7 +198,7 @@ class CommonImporter extends React.Component {
     const url = `${templateProperties.prefixPatch}/api/excel/import/export/error/data?templateCode=${templateProperties.templateCode}&batchNo=${batchNo}`;
     const { extraParams } = this.props;
     const hide = message.loading(
-      this.$t('importer.spanned.file') /* 正在生成文件.. */,
+      messages('common.spanned.file') /* 正在生成文件.. */,
     );
     httpFetch
       .post(url, extraParams, {}, { responseType: 'arraybuffer' })
@@ -282,14 +281,14 @@ class CommonImporter extends React.Component {
     const { fileList, file } = info;
     const { status } = file;
     if (status === 'done') {
-      message.success(this.$t('upload.success' /* 上传成功 */));
+      message.success(messages('common.upload.success' /* 上传成功 */));
       const { tabKey } = this.state;
       const batchNo = file.response.data;
       this.setState({ batchNo }, () => {
         this.searchTable(tabKey);
       });
     } else if (status === 'error') {
-      message.error(this.$t('upload.fail' /* 上传失败 */));
+      message.error(messages('common.upload.fail' /* 上传失败 */));
     }
     this.setState({ fileList });
   };
@@ -319,10 +318,10 @@ class CommonImporter extends React.Component {
 
   render() {
     const defaultButton = {
-      downloadTemplate: this.$t('base.download.import.template'), // 下载导入模板
-      confirm: this.$t('importer.import'), // 导入
-      downloadError: this.$t('base.download.error.data'), // 下载错误数据
-      chooseFile: this.$t('importer.choose.file'), // 选择文件
+      downloadTemplate: messages('common.download.import.template'), // 下载导入模板
+      confirm: messages('common.import'), // 导入
+      downloadError: messages('common.download.error.data'), // 下载错误数据
+      chooseFile: messages('common.choose.file'), // 选择文件
       // alertMessage: "base.common.import.result.msg",
     };
     const {
@@ -363,8 +362,8 @@ class CommonImporter extends React.Component {
         const fileType = (file.name || '').split('.').pop().toLowerCase();
         if (!accept.includes(`.${fileType}`)) {
           message.error(
-            `${this.$t('upload.fail')}，${this.$t(
-              'base.please.upload.excel.file',
+            `${messages('common.upload.fail')}，${messages(
+              'common.upload.excel',
             )}`,
           ); // 上传失败，请上传Excel文件
         }
@@ -386,7 +385,7 @@ class CommonImporter extends React.Component {
         title={title || templateProperties.templateName}
         confirmLoading={uploading}
         okText={buttonInfo.confirm /* 导入 */}
-        cancelText={this.$t('common.cancel') /* 取消 */}
+        cancelText={messages('common.cancel') /* 取消 */}
         okButtonProps={{ disabled: !batchNo }}
         bodyStyle={{ padding: '16px 32px', height: 460 }}
       >
@@ -449,32 +448,32 @@ class CommonImporter extends React.Component {
                       <>
                         <div style={{ marginBottom: 16 }}>
                           <span style={{ color: '#333' }}>
-                            {this.$t('upload.success') /* 上传成功 */}：
+                            {messages('common.upload.success') /* 上传成功 */}：
                           </span>
                           <span style={{ color: '#4390FF' }}>
                             {successTotal}&nbsp;
                           </span>
                           <span style={{ color: '#666' }}>
-                            {this.$t('base.strip')}，
+                            {messages('base.strip')}，
                             {
-                              this.$t(
-                                'base.save.successfully.imported.data',
+                              messages(
+                                'common.click.tip',
                               ) /* 点击【导入】后将导入成功的数据进行保存 */
                             }
                           </span>
                         </div>
                         <div style={{ marginBottom: 16 }}>
                           <span style={{ color: '#333' }}>
-                            {this.$t('upload.fail') /* 上传失败 */}：
+                            {messages('common.upload.fail') /* 上传失败 */}：
                           </span>
                           <span style={{ color: '#F5222D' }}>
                             {failureTotal}&nbsp;
                           </span>
                           <span style={{ color: '#666' }}>
-                            {this.$t('base.strip')}，
+                            {messages('base.strip')}，
                             {
-                              this.$t(
-                                'base.please.modify.the.error.data',
+                              messages(
+                                'common.upload.again',
                               ) /* 请修改错误数据后、重新上传 */
                             }
                           </span>
@@ -519,9 +518,7 @@ class CommonImporter extends React.Component {
             <Spin />
           </div>
         ) : (
-          <div>
-            {this.$t('base.related.template.information.is.not.defined')}
-          </div>
+          <div>{messages('common.tpl.info.warning')}</div>
         )}
       </Modal>
     );

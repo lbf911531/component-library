@@ -173,19 +173,19 @@ function FilePreview(props) {
 
   function renderContent() {
     if (!getImgIcon(title, true)) {
-      return renderResult(messages('base.this.document.cannot.be.previewed!'));
+      return renderResult(messages('common.doc.preview.warning'));
     }
 
     if (isImg) {
       return renderImage();
     } else if (conversionStatus === 'CONVERTING') {
-      return renderResult(messages('base.the.document.is.converting'));
+      return renderResult(messages('common.doc.converting'));
     } else if (conversionStatus === 'FAILURE') {
-      return renderResult(messages('base.the.document.conversion.failed'));
+      return renderResult(messages('common.doc.conversion.failed'));
     } else if (conversionStatus === 'SUCCESS') {
       return renderDocument();
     } else {
-      return renderResult(messages('base.the.document.conversion.failed'));
+      return renderResult(messages('common.doc.conversion.failed'));
     }
   }
 
@@ -382,7 +382,7 @@ function FilePreview(props) {
             renderItem(
               downloadIcon,
               downloadActiveIcon,
-              messages('base.download'),
+              messages('common.download'),
               () => {
                 onDownload(attachmentOid);
               },
@@ -392,7 +392,7 @@ function FilePreview(props) {
               {renderItem(
                 increaseIcon,
                 increaseActiveIcon,
-                messages('base.enlarge'),
+                messages('common.enlarge'),
                 () => {
                   handleOperateImage('plus');
                 },
@@ -401,7 +401,7 @@ function FilePreview(props) {
               {renderItem(
                 reduceIcon,
                 reduceActiveIcon,
-                messages('asset.narrow'),
+                messages('common.narrow'),
                 () => {
                   handleOperateImage('minus');
                 },
@@ -410,7 +410,7 @@ function FilePreview(props) {
               {renderItem(
                 rotateIcon,
                 rotateActiveIcon,
-                messages('base.rotate'),
+                messages('common.rotate'),
                 () => {
                   handleOperateImage('right');
                 },
@@ -423,7 +423,7 @@ function FilePreview(props) {
             renderItem(
               trashIcon,
               trashActiveIcon,
-              messages('base.delete'),
+              messages('common.delete'),
               () => {
                 onDelete(attachmentOid, index);
               },

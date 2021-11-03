@@ -336,7 +336,7 @@ class BasicInfo extends React.Component<IProps, IState> {
           <div style={{ wordWrap: 'break-word', color: '#333' }}>
             {
               messages('common.accounting.selected', {
-                count: item.defaultValue.length,
+                params: { count: item.defaultValue.length },
               }) /* 已选 {total} 条 */
             }
           </div>

@@ -1,8 +1,3 @@
-import React from 'react';
-import { messages } from './components/utils';
-// @ts-ignore
-React.Component.prototype.$t = messages;
-
 // 统一导出
 export { default as LocaleProvider } from './components/locale-lan-provider';
 // 基础

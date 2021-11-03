@@ -112,17 +112,15 @@ class UploadButton extends React.Component {
             (!isNil(minHeightSize) && minHeightSize > this.height) ||
             (!isNil(minWidthSize) && minWidthSize > this.width)
           ) {
-            let errorMessage = messages(
-              'base.the.picture.size.does.not.meet.the.requirements',
-            ); // 图片尺寸不符合要求
+            let errorMessage = messages('common.pic.size.warning'); // 图片尺寸不符合要求
             if (!isNil(maxWidthSize) && !isNil(maxHeightSize)) {
               errorMessage = `${errorMessage}，${messages(
-                'base.size.cannot.be.greater.than',
+                'common.size.big.warning',
               )}${maxWidthSize}*${maxHeightSize}`; // 图片尺寸不符合要求，尺寸不可大于x*x
             }
             if (!isNil(minHeightSize) && !isNil(minWidthSize)) {
               errorMessage = `${errorMessage}，${messages(
-                'base.size.cannot.be.less.than',
+                'common.size.small.warning',
               )}${minWidthSize}*${minHeightSize}`; // 图片尺寸不符合要求，尺寸不可小于x*x
             }
             message.error(errorMessage);
@@ -145,9 +143,11 @@ class UploadButton extends React.Component {
     const isLt = size / 1024 ** this.sizeMap[unitSize] <= fileSize;
     if (!isLt) {
       message.error(
-        messages('base.common.attachment.size.limit.freedom', {
-          size: fileSize,
-          unit: unitSize,
+        messages('common.attachment.size.limit', {
+          params: {
+            size: fileSize,
+            unit: unitSize,
+          },
         }),
       );
     }
@@ -172,9 +172,7 @@ class UploadButton extends React.Component {
       if (fileTypeErrorMessage) {
         message.error(fileName + fileTypeErrorMessage);
       } else {
-        message.error(
-          messages('base.upload.failed.the.current.attachment.type.format'),
-        );
+        message.error(messages('common.upload.failed.reason'));
       }
     }
     return isQualified;
@@ -288,7 +286,9 @@ class UploadButton extends React.Component {
       const { status } = info.file;
       if (status === 'done') {
         message.success(
-          `${info.file.name} ${messages('upload.success' /* 上传成功 */)}`,
+          `${info.file.name} ${messages(
+            'common.upload.success' /* 上传成功 */,
+          )}`,
         );
         valueList.push(info.file.response.id);
         valueList = this.handleCutArray(valueList);
@@ -303,7 +303,7 @@ class UploadButton extends React.Component {
         });
       } else if (status === 'error') {
         message.error(
-          `${info.file.name} ${messages('upload.fail' /* 上传失败 */)}${
+          `${info.file.name} ${messages('common.upload.fail' /* 上传失败 */)}${
             info.file.response && info.file.response.message
               ? `，${info.file.response.message}`
               : ''
@@ -336,7 +336,7 @@ class UploadButton extends React.Component {
       this.props;
     if (disabled) {
       /* 该状态不允许删除附件 */
-      message.warn(messages('upload.not.allowed.delete'));
+      message.warn(messages('common.upload.not.allowed.delete'));
       return;
     }
     this.setState({ defaultListTag: false });
@@ -484,8 +484,7 @@ class UploadButton extends React.Component {
                       display: hideButtonIcon ? 'none' : 'inline-block',
                     }}
                   />
-                  {buttonText ||
-                    messages('constants.approvelHistory.addAttachment')}
+                  {buttonText || messages('common.upload.attachment')}
                 </Button>
               )}
             </Upload>

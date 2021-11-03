@@ -84,10 +84,10 @@ class CustomUpload extends React.Component {
           <InboxOutlined />
         </p>
         <p className="ant-upload-text">
-          {messages('upload.info') /* 点击或将文件拖拽到这里上传 */}
+          {messages('common.upload.info') /* 点击或将文件拖拽到这里上传 */}
         </p>
         <p className="ant-upload-hint">
-          {messages('upload.support.extension') /* 支持扩展名 */}：
+          {messages('common.upload.support.ext') /* 支持扩展名 */}：
           {extensionName}
         </p>
       </Fragment>
@@ -122,17 +122,15 @@ class CustomUpload extends React.Component {
             (!isNil(minHeightSize) && minHeightSize > this.height) ||
             (!isNil(minWidthSize) && minWidthSize > this.width)
           ) {
-            let errorMessage = messages(
-              'base.the.picture.size.does.not.meet.the.requirements',
-            ); // 图片尺寸不符合要求
+            let errorMessage = messages('common.pic.size.warning'); // 图片尺寸不符合要求
             if (!isNil(maxWidthSize) && !isNil(maxHeightSize)) {
               errorMessage = `${errorMessage}，${messages(
-                'base.size.cannot.be.greater.than',
+                'common.size.big.warning',
               )}${maxWidthSize}*${maxHeightSize}`; // 图片尺寸不符合要求，尺寸不可大于x*x
             }
             if (!isNil(minHeightSize) && !isNil(minWidthSize)) {
               errorMessage = `${errorMessage}，${messages(
-                'base.size.cannot.be.less.than',
+                'common.size.small.warning',
               )}${minWidthSize}*${minHeightSize}`; // 图片尺寸不符合要求，尺寸不可小于x*x
             }
             message.error(errorMessage);
@@ -155,9 +153,11 @@ class CustomUpload extends React.Component {
     const isLt = size / 1024 ** this.sizeMap[unitSize] <= fileSize;
     if (!isLt) {
       message.error(
-        messages('base.common.attachment.size.limit.freedom', {
-          size: fileSize,
-          unit: unitSize,
+        messages('common.attachment.size.limit', {
+          params: {
+            size: fileSize,
+            unit: unitSize,
+          },
         }),
       );
     }
@@ -178,9 +178,7 @@ class CustomUpload extends React.Component {
     const type = fileName.split('.').pop();
     const isQualified = extensions.includes(type);
     if (!isQualified) {
-      message.error(
-        messages('base.upload.failed.the.current.attachment.type.format'),
-      );
+      message.error(messages('common.upload.failed.reason'));
     }
     return isQualified;
   };
@@ -220,7 +218,9 @@ class CustomUpload extends React.Component {
       const { status } = info.file;
       if (status === 'done') {
         message.success(
-          `${info.file.name} ${messages('upload.success') /* 上传成功 */}`,
+          `${info.file.name} ${
+            messages('common.upload.success') /* 上传成功 */
+          }`,
         );
         valueList.push(info.file.response[valueKey]);
 
@@ -233,7 +233,7 @@ class CustomUpload extends React.Component {
         });
       } else if (status === 'error') {
         message.error(
-          `${info.file.name} ${messages('upload.fail') /* 上传失败 */}`,
+          `${info.file.name} ${messages('common.upload.fail') /* 上传失败 */}`,
         );
       }
     });
@@ -244,7 +244,7 @@ class CustomUpload extends React.Component {
     const { disabled } = this.props;
     if (disabled) {
       message.warn(
-        messages('upload.not.allowed.delete' /* 该状态不允许删除附件 */),
+        messages('common.upload.not.allowed.delete' /* 该状态不允许删除附件 */),
       );
       return true;
     }

@@ -84,15 +84,15 @@ function RenderItem(props) {
         <div className="title-right over-range">
           <span className="selected-num">
             {
-              messages('expense.selected.num', {
-                num: selectedNum,
+              messages('common.accounting.selected', {
+                params: { count: selectedNum },
               }) /* 已选中{num}个 */
             }
           </span>
           <span className="total-num">
             {
-              messages('expense.total.files', {
-                number: attachments.length,
+              messages('common.total.files', {
+                params: { number: attachments.length },
               }) /* 共{num}个文件 */
             }
           </span>

@@ -3,6 +3,7 @@ import { Modal, Popover, Tabs } from 'antd';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
 import { cloneDeep } from 'lodash';
+import { messages } from '@/components/utils';
 import CustomTable from '../../basic/custom-table';
 
 const { TabPane } = Tabs;
@@ -20,49 +21,49 @@ class BudgetProgressDetail extends React.Component {
       dimensionItemGroupColumns: [],
       columns: [
         {
-          title: this.$t('importer.line.number') /* 行号 */,
+          title: messages('common.line.number') /* 行号 */,
           dataIndex: 'lineNumber',
           align: 'left',
           width: '5%',
         },
         {
-          title: this.$t(
-            'expense.control.results.on.submission',
+          title: messages(
+            'common.control.results.on.submission',
           ) /* 提交时控制结果 */,
           dataIndex: 'controlLevel',
           align: 'left',
           width: '10%',
         },
         {
-          title: this.$t('budget.balance.budget.version'),
+          title: messages('common.budget.version'),
           dataIndex: 'versionName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.budget.structure'),
+          title: messages('common.budget.structure'),
           dataIndex: 'structureName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.budget.scenarios'),
+          title: messages('common.budget.scenarios'),
           dataIndex: 'scenarioName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.period'),
+          title: messages('common.period'),
           dataIndex: 'periodName',
           align: 'left',
           width: '8%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t(
+          title: messages(
             'budget.strategy.detail.control.period',
           ) /* 控制期段 */,
           dataIndex: 'periodStrategy',
@@ -71,7 +72,7 @@ class BudgetProgressDetail extends React.Component {
           render: (value) => <Popover content={value}>{value}</Popover>,
         },
         {
-          title: this.$t('budget.balance.item') /* 预算项目 */,
+          title: messages('common.budget.item') /* 预算项目 */,
           dataIndex: 'itemName',
           align: 'left',
           width: '10%',
@@ -79,36 +80,36 @@ class BudgetProgressDetail extends React.Component {
         },
         {
           title: isReserve
-            ? this.$t('expense.application.type')
-            : this.$t('common.expense.type'),
+            ? messages('common.application.type')
+            : messages('common.expense.type'),
           dataIndex: 'expenseTypeName',
           align: 'left',
           width: '10%',
           render: (value) => <Popover content={value}>{value}</Popover>,
         },
         {
-          title: this.$t('budget.balance.company'),
+          title: messages('common.company'),
           dataIndex: 'companyName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.company.group'),
+          title: messages('common.company.group'),
           dataIndex: 'companyGroupName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.department'),
+          title: messages('common.department'),
           dataIndex: 'unitName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.department.group'),
+          title: messages('common.department.group'),
           dataIndex: 'unitGroupName',
           align: 'left',
           width: '10%',
@@ -116,7 +117,7 @@ class BudgetProgressDetail extends React.Component {
         },
         // 责任中心
         {
-          title: this.$t('budget.balance.responsibility.center'),
+          title: messages('common.responsibility.center'),
           dataIndex: 'responsibilityCenterName',
           align: 'left',
           width: '10%',
@@ -124,35 +125,35 @@ class BudgetProgressDetail extends React.Component {
         },
         // 责任中心组
         {
-          title: this.$t('budget.balance.responsibility.center.group'),
+          title: messages('common.responsibility.center.group'),
           dataIndex: 'responsibilityCenterGroupName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.user'),
+          title: messages('common.user'),
           dataIndex: 'employeeName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.user.group'),
+          title: messages('common.user.group'),
           dataIndex: 'employeeGroupName',
           align: 'left',
           width: '10%',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.item.type'),
+          title: messages('common.budget.item.type'),
           dataIndex: 'itemTypeName',
           width: '15%',
           align: 'left',
           render: (record) => <Popover content={record}>{record}</Popover>,
         },
         {
-          title: this.$t('budget.balance.item.group'),
+          title: messages('common.budget.item.group'),
           dataIndex: 'itemGroupName',
           align: 'left',
           width: '10%',
@@ -161,13 +162,13 @@ class BudgetProgressDetail extends React.Component {
       ],
       amountColumns: [
         {
-          title: this.$t('common.currency'),
+          title: messages('common.currency'),
           width: '8%',
           dataIndex: 'currency',
           align: 'left',
         },
         {
-          title: this.$t('budget.balance.budget.amt'),
+          title: messages('common.budget.amt'),
           dataIndex: 'bgtAmount',
           align: 'right',
           width: '8%',
@@ -178,7 +179,7 @@ class BudgetProgressDetail extends React.Component {
           ),
         },
         {
-          title: this.$t('budget.balance.budget.rsv'),
+          title: messages('common.budget.rsv'),
           dataIndex: 'expReserveAmount',
           align: 'right',
           width: '8%',
@@ -189,7 +190,7 @@ class BudgetProgressDetail extends React.Component {
           ),
         },
         {
-          title: this.$t('budget.balance.budget.usd'),
+          title: messages('common.budget.usd'),
           dataIndex: 'expUsedAmount',
           align: 'right',
           width: '8%',
@@ -200,7 +201,7 @@ class BudgetProgressDetail extends React.Component {
           ),
         },
         {
-          title: this.$t('budget.balance.budget.avb'),
+          title: messages('common.budget.avb'),
           dataIndex: 'expAvailableAmount',
           align: 'right',
           width: '8%',
@@ -211,7 +212,7 @@ class BudgetProgressDetail extends React.Component {
           ),
         },
         {
-          title: this.$t('budget.balance.schedule'),
+          title: messages('common.budget.schedule'),
           dataIndex: 'schedule',
           align: 'right',
           width: '8%',
@@ -335,7 +336,7 @@ class BudgetProgressDetail extends React.Component {
 
     return (
       <Modal
-        title={this.$t('budget.budget.progress.info') /** 预算进度信息 */}
+        title={messages('common.budget.progress.info') /** 预算进度信息 */}
         width={1000}
         visible={visible}
         onCancel={onCancel}

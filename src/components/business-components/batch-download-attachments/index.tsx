@@ -178,7 +178,7 @@ class BatchDownLoadAttachments extends React.Component<
     Object.entries(allSelected).forEach((item) => {
       const [documentNumber, attachments] = item;
       const folderName = `${documentNumber}-${attachments.length}${
-        messages('expense.a') /* 个 */
+        messages('common.a') /* 个 */
       }`;
       result[folderName] = attachments.map((file) => file.id);
       allFileList.push(...attachments);
@@ -186,7 +186,7 @@ class BatchDownLoadAttachments extends React.Component<
     let saveUrl = downloadCompressURL;
     const fileName = `${categoryType} ${moment().format('YYYYMMDD')}-${
       allFileList.length
-    }${messages('expense.a') /* 个 */}`;
+    }${messages('common.a') /* 个 */}`;
     if (downloadFormat === 'pdf') {
       saveUrl = downloadPdfURL;
       result = { [fileName]: allFileList.map((file) => file.id) };
@@ -275,9 +275,7 @@ class BatchDownLoadAttachments extends React.Component<
     return (
       <Modal
         visible={visible}
-        title={
-          messages('expense.bulk.download.of.attachments') /* 附件批量下载 */
-        }
+        title={messages('common.batch.download') /* 附件批量下载 */}
         confirmLoading={confirmLoading}
         onOk={this.onOkHandle}
         onCancel={this.onCancel}
@@ -291,7 +289,7 @@ class BatchDownLoadAttachments extends React.Component<
       >
         <div className="select-type-wrap clearfix">
           <span className="select-type-desc">
-            {messages('expense.choose.download.format') /* 选择下载格式 */}：
+            {messages('common.choose.download.format') /* 选择下载格式 */}：
           </span>
           <Radio.Group
             onChange={this.onTypeChange}
@@ -299,26 +297,26 @@ class BatchDownLoadAttachments extends React.Component<
             disabled={loading}
           >
             <Radio value="pdf">
-              {messages('expense.to.pdf.merge') /* 转pdf合并 */}
+              {messages('common.to.pdf.merge') /* 转pdf合并 */}
             </Radio>
             <Radio value="compression">
-              {messages('expense.original.compression') /* 原件压缩 */}
+              {messages('common.original.compression') /* 原件压缩 */}
             </Radio>
           </Radio.Group>
 
           <span className="title-right over-range">
             <span className="selected-num">
               {
-                messages('expense.selected.num', {
-                  num: selectedNum,
+                messages('common.accounting.selected', {
+                  params: { num: selectedNum },
                 }) /* 已选中{num}个 */
               }
             </span>
             /
             <span className="total-num">
               {
-                messages('expense.total.files', {
-                  number: allAttachments.length,
+                messages('common.total.files', {
+                  params: { number: allAttachments.length },
                 }) /* 共{num}个文件 */
               }
             </span>

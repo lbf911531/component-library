@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, Popover } from 'antd';
+import { messages } from '@/components/utils';
 import Table from '../../basic/table';
 
 class BudgetTips extends Component {
@@ -8,7 +9,7 @@ class BudgetTips extends Component {
     this.state = {
       columns: [
         {
-          title: this.$t('common.sequence'),
+          title: messages('common.sequence'),
           dataIndex: 'sort',
           width: 40,
           align: 'center',
@@ -20,12 +21,12 @@ class BudgetTips extends Component {
           },
         },
         {
-          title: this.$t('budget.control.method'), // 预算控制方法
+          title: messages('budget.control.method'), // 预算控制方法
           dataIndex: 'messageLevelName',
           width: 100,
         },
         {
-          title: this.$t('budget.verification.information'), // 校验信息
+          title: messages('common.verification.info'), // 校验信息
           dataIndex: 'errorMessage',
           width: 400,
           render: (value) => {
@@ -52,10 +53,12 @@ class BudgetTips extends Component {
         showQuickJumper: true,
         pageSizeOptions: this.$pageSizeOptions,
         showTotal: (total, range) =>
-          this.$t('common.show.total', {
-            range0: `${range[0]}`,
-            range1: `${range[1]}`,
-            total,
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
           }),
       },
       waringLevel: false,
@@ -90,9 +93,7 @@ class BudgetTips extends Component {
 
     return (
       <Modal
-        title={
-          this.$t('budget.budget.verification.information') /** 预算校验信息 */
-        }
+        title={messages('common.budget.verification.info') /** 预算校验信息 */}
         visible={visible}
         maskClosable={maskClosable !== undefined ? maskClosable : true}
         width={1000}
@@ -102,13 +103,13 @@ class BudgetTips extends Component {
             {waringLevel ? (
               <>
                 <Button type="primary" onClick={onOk}>
-                  {this.$t('itinerary.type.slide.and.modal.ok.btn')}
+                  {messages('common.ok')}
                 </Button>
-                <Button onClick={onCancel}>{this.$t('common.cancel')}</Button>
+                <Button onClick={onCancel}>{messages('common.cancel')}</Button>
               </>
             ) : (
               <Button type="primary" onClick={onCancel}>
-                {this.$t('expense.got.it') /* 知道了 */}
+                {messages('common.got.it') /* 知道了 */}
               </Button>
             )}
           </>

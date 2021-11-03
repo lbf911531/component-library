@@ -57,7 +57,7 @@ export default function SelectPartLoadDemo() {
 ## Select 滚动加载 用法（默认）
 
 ```javascript
-<FormItem {...formItemLayout} label={this.$t('adjust.applicable.personnel')}>
+<FormItem {...formItemLayout} label="字段">
   {getFieldDecorator('ABC', {
     initialValue: { key: '0010', label: '测试报账单类型拼接名称' },
   })(
@@ -76,7 +76,7 @@ export default function SelectPartLoadDemo() {
 ## Select 显示分页器 分页用法
 
 ```javascript
-<FormItem {...formItemLayout} label={this.$t('adjust.applicable.personnel')}>
+<FormItem {...formItemLayout} label="字段">
   {getFieldDecorator('ABC', {
     initialValue: { key: '0010', label: '测试报账单类型拼接名称' },
   })(
@@ -198,7 +198,7 @@ var dataSource = [{
 {
   type: 'select_part_load',
   id: 'companyId',
-  label: this.$t('base.documentary.company'), // 单据公司
+  label: '单据公司', // 单据公司
   getUrl: `${config.mdataUrl}/api/company/available/by/setOfBooks/enable/dataAuth`,
   getParams: { setOfBooksId: props.company.setOfBooksId },
   valueKey: 'id',

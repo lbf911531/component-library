@@ -6,6 +6,7 @@ import { Popover } from 'antd';
 import config from 'config';
 import moment from 'moment';
 import httpFetch from 'share/httpFetch';
+import { messages } from '@/components/utils';
 import CustomTable from '../../basic/table';
 
 class VoucherTable extends Component {
@@ -14,7 +15,7 @@ class VoucherTable extends Component {
     this.state = {
       columns: [
         {
-          title: this.$t('base.attachment.description' /* 说明 */),
+          title: messages('common.description' /* 说明 */),
           dataIndex: 'dimension1',
           align: 'left',
           render: (value) => {
@@ -22,7 +23,7 @@ class VoucherTable extends Component {
           },
         },
         {
-          title: this.$t('detail.voucher.date' /* 凭证日期 */),
+          title: messages('common.voucher.date' /* 凭证日期 */),
           dataIndex: 'accountingDate',
           align: 'center',
           render: (text) => {
@@ -34,27 +35,27 @@ class VoucherTable extends Component {
           },
         },
         {
-          title: this.$t('customField.currency'), // 币种
+          title: messages('common.currency'), // 币种
           dataIndex: 'currencyCode',
           align: 'left',
         },
         {
-          title: this.$t('expense.the.original.currency.debit' /* 原币借方 */),
+          title: messages('common.original.currency.debit' /* 原币借方 */),
           dataIndex: 'enteredAmountDr',
           align: 'right',
         },
         {
-          title: this.$t('tax.the.original.currency.credit' /* 原币贷方 */),
+          title: messages('common.original.currency.credit' /* 原币贷方 */),
           dataIndex: 'enteredAmountCr',
           align: 'right',
         },
         {
-          title: this.$t('tax.local.currency.debit' /* 本币借方 */),
+          title: messages('common.local.currency.debit' /* 本币借方 */),
           dataIndex: 'functionalAmountDr',
           align: 'right',
         },
         {
-          title: this.$t('tax.the.currency.credit' /* 本币贷方 */),
+          title: messages('common.local.currency.credit' /* 本币贷方 */),
           dataIndex: 'functionalAmountCr',
           align: 'right',
         },
@@ -93,12 +94,12 @@ class VoucherTable extends Component {
       .then((res) => {
         const fixed1 = [
           {
-            title: this.$t('base.attachment.description' /* 说明 */),
+            title: messages('common.description' /* 说明 */),
             dataIndex: 'dimension1',
             align: 'left',
           },
           {
-            title: this.$t('detail.voucher.date' /* 凭证日期 */),
+            title: messages('common.voucher.date' /* 凭证日期 */),
             dataIndex: 'accountingDate',
             align: 'center',
             render: (text) => {
@@ -113,11 +114,9 @@ class VoucherTable extends Component {
           },
         ];
         const fixed2 = [
-          { title: this.$t('customField.currency'), dataIndex: 'currencyCode' }, // 币种
+          { title: messages('common.currency'), dataIndex: 'currencyCode' }, // 币种
           {
-            title: this.$t(
-              'expense.the.original.currency.debit' /* 原币借方 */,
-            ),
+            title: messages('common.original.currency.debit' /* 原币借方 */),
             dataIndex: 'enteredAmountDr',
             align: 'right',
             render: (value) =>
@@ -130,7 +129,7 @@ class VoucherTable extends Component {
               ),
           },
           {
-            title: this.$t('tax.the.original.currency.credit' /* 原币贷方 */),
+            title: messages('common.original.currency.credit' /* 原币贷方 */),
             dataIndex: 'enteredAmountCr',
             align: 'right',
             render: (value) =>
@@ -143,7 +142,7 @@ class VoucherTable extends Component {
               ),
           },
           {
-            title: this.$t('tax.local.currency.debit' /* 本币借方 */),
+            title: messages('common.local.currency.debit' /* 本币借方 */),
             dataIndex: 'functionalAmountDr',
             align: 'right',
             render: (value) =>
@@ -156,7 +155,7 @@ class VoucherTable extends Component {
               ),
           },
           {
-            title: this.$t('tax.the.currency.credit' /* 本币贷方 */),
+            title: messages('common.local.currency.credit' /* 本币贷方 */),
             dataIndex: 'functionalAmountCr',
             align: 'right',
             render: (value) =>

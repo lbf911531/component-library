@@ -8,6 +8,7 @@
  */
 import React, { Component } from 'react';
 import { Modal, Input } from 'antd';
+import { messages } from '@/components/utils';
 import Table from '../../basic/table';
 
 const { TextArea } = Input;
@@ -18,13 +19,13 @@ class PolicyTips extends Component {
     this.state = {
       columns: [
         {
-          title: this.$t('importer.line.number'), // 行号
+          title: messages('common.line.number'), // 行号
           dataIndex: 'rowIndex',
           width: 100,
           align: 'center',
         },
         {
-          title: this.$t('base.tips'), // 提示信息
+          title: messages('common.tips'), // 提示信息
           dataIndex: 'tips',
           render: (value, record) => {
             const result = value ? value.split(',') : [];
@@ -41,7 +42,7 @@ class PolicyTips extends Component {
           },
         },
         {
-          title: this.$t('base.reasons.for.submission'), // '提交原因'
+          title: messages('common.reasons.for.submission'), // '提交原因'
           dataIndex: 'submitReason',
           width: 250,
           render: (value, record) => {
@@ -74,7 +75,7 @@ class PolicyTips extends Component {
         showQuickJumper: true,
         pageSizeOptions: this.$pageSizeOptions,
         showTotal: (total, range) =>
-          this.$t('common.show.total', {
+          messages('common.show.total', {
             range0: `${range[0]}`,
             range1: `${range[1]}`,
             total,
@@ -122,7 +123,7 @@ class PolicyTips extends Component {
     return (
       <Modal
         title={
-          this.$t('base.policy.verification.information') /** 政策校验信息 */
+          messages('base.policy.verification.information') /** 政策校验信息 */
         }
         visible={visible}
         footer={readOnly ? null : footer}

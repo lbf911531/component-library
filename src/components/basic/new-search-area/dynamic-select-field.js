@@ -98,7 +98,9 @@ function DynamicSelectField(props) {
     return (
       <div>
         <div className="custom-popover-subtitle">
-          {messages('common.accounting.selected', { count: selected.length })}
+          {messages('common.accounting.selected', {
+            params: { count: selected.length },
+          })}
           {!!selected.length && (
             <>
               <Divider type="vertical" />

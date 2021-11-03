@@ -122,7 +122,7 @@ export default function LovDemo() {
       valueKey="id"
       listExtraParams={{ ignoreUserId: user.id }}
       single
-      placeholder={this.$t({ id: 'common.please.select' })}
+      placeholder="请选择"
       searchList={[
         {
           type: 'input',

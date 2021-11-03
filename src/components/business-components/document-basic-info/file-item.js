@@ -48,13 +48,13 @@ function FileItem({
     }
 
     if (conversionStatus === 'CONVERTING') {
-      message.warning(messages('base.the.document.is.converting'));
+      message.warning(messages('common.doc.converting'));
     } else if (conversionStatus === 'FAILURE') {
-      message.error(messages('base.the.document.conversion.failed'));
+      message.error(messages('common.doc.conversion.failed'));
     } else if (conversionStatus === 'SUCCESS' && onPriview) {
       onPriview(index);
     } else {
-      message.error(messages('base.the.document.conversion.failed'));
+      message.error(messages('common.doc.conversion.failed'));
     }
   }
 
@@ -70,7 +70,7 @@ function FileItem({
       <img
         style={{ height: 24, width: 24, flex: '0 0 24px' }}
         src={getImgIcon(title)}
-        alt={messages('base.picture')}
+        alt="pic"
       />
       <div
         style={{
@@ -91,7 +91,7 @@ function FileItem({
         </span>
         <div className="attach-detail-operation">
           {getImgIcon(title, true) && (
-            <Tooltip title={messages('base.preview')}>
+            <Tooltip title={messages('common.preview')}>
               <img
                 style={{
                   height: 10,
@@ -100,7 +100,7 @@ function FileItem({
                   cursor: 'pointer',
                 }}
                 src={priviewActive ? priviewActiveIcon : priviewIcon}
-                alt={messages('base.picture')}
+                alt="pic"
                 onMouseEnter={() => {
                   setPriviewActive(true);
                 }}
@@ -111,7 +111,7 @@ function FileItem({
               />
             </Tooltip>
           )}
-          <Tooltip title={messages('base.download')}>
+          <Tooltip title={messages('common.download')}>
             <img
               style={{
                 height: 10,
@@ -121,7 +121,7 @@ function FileItem({
                 cursor: 'pointer',
               }}
               src={downloadActive ? downloadActiveIcon : downloadIcon}
-              alt={messages('base.picture')}
+              alt="pic"
               onClick={download}
               onMouseEnter={() => {
                 setDownloadActive(true);
@@ -132,9 +132,9 @@ function FileItem({
             />
           </Tooltip>
           {onDelete && (
-            <Tooltip title={messages('base.delete')}>
+            <Tooltip title={messages('common.delete')}>
               <Popconfirm
-                title={messages('base.sure.to.delete1')}
+                title={messages('common.confirm.to.delete')}
                 onConfirm={deleteFile}
                 onCancel={() => {
                   setClassNames('attach-detail-box');
@@ -153,7 +153,7 @@ function FileItem({
                     cursor: 'pointer',
                   }}
                   src={deleteActive ? deleteActiveIcon : deleteIcon}
-                  alt={messages('base.picture')}
+                  alt="pic"
                   onMouseEnter={() => {
                     setDeleteActive(true);
                   }}
