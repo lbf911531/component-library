@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Input, Cascader } from 'antd';
-import KeyCode from 'rc-util/lib/KeyCode';
 import { cloneDeep } from 'lodash';
 import './index.less';
 
@@ -26,7 +25,7 @@ function CascaderFilter(props) {
    */
   function handleKeyDown(e) {
     // SPACE => https://github.com/ant-design/ant-design/issues/16871
-    if (e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.SPACE) {
+    if (e.keyCode === 8 || e.keyCode === 32) {
       e.stopPropagation();
     }
   }
