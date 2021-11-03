@@ -9,9 +9,11 @@ const config = {
   title: 'polard',
   favicon: '/images/favicon.png',
   // 配置文档的Logo
-  logo: '/images/favicon.png',
+  logo: '/component/images/logo.png',
   // 指定输出路径
-  outputPath: 'docs-dist',
+  outputPath: 'component-dist',
+  base: '/component/',
+  publicPath: '/component/',
   // 设定文档的展现模式
   mode: 'site',
   // more config: https://d.umijs.org/config
@@ -104,7 +106,7 @@ const config = {
 };
 
 if (process.env.ENV_TYPE === 'native') {
-  // 本地启动的时候不需要配置 externals
+  // 本地启动的时候不需要配置 externals, 站点打包时也不需要externals(npm run docs:build)
   delete config.externals;
 }
 

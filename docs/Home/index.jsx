@@ -13,7 +13,6 @@ import {
   Content50DataSource,
   Footer00DataSource,
 } from './data.source';
-import './less/antMotionStyle.less';
 
 let isMobile;
 enquireScreen((b) => {
