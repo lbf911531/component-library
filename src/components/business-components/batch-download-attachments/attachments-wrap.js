@@ -1,9 +1,9 @@
 import React from 'react';
-import FilePreview from '../../attachment/image-preview';
-import ZipFileView from '../../attachment/image-preview';
 import httpFetch from 'share/httpFetch';
 import config from 'config';
-import { getImgIcon } from 'utils/utils';
+import FilePreview from '../../attachment/image-preview';
+import ZipFileView from '../../attachment/image-preview';
+import { getImgIcon } from '../../utils';
 
 const AttachmentsWrap = (AttachmentsContent, PreviewElement) => {
   return class Content extends React.Component {

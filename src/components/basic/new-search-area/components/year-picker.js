@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-20 17:07:38
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-01 11:06:21
+ * @LastEditTime: 2021-11-04 16:38:04
  * @Version: 1.0.0
  * @Description: 年份选择组件
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -12,7 +12,7 @@ import React, { useState, useRef } from 'react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import { CaretDownOutlined } from '@ant-design/icons';
-import { messages } from '@/components/utils';
+import { messages } from '../../../utils';
 import useWidthAdaptation from '../useWidth';
 import CloseSvg from '../images/close';
 

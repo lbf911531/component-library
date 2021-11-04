@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Input } from 'antd';
-
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 import SearchArea from '../search-area';
 import CustomTable from '../custom-table';
 import {

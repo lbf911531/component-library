@@ -10,7 +10,7 @@
 
 import React, { useState } from 'react';
 import { Modal, Row, Col, Input, Form, message } from 'antd';
-import { getUuid, messages } from 'utils/utils';
+import { getUuid, messages } from '../../utils';
 import Service from './service';
 
 function NewFilterConditions(props) {

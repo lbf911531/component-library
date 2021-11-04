@@ -10,8 +10,8 @@
 
 import React, { useState } from 'react';
 import { Select, Space } from 'antd';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { messages } from '../../../utils';
 import { preventOpen, hasValue } from '../utils';
 
 export default function CustomCheckbox(props) {

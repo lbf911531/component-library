@@ -1,4 +1,4 @@
-import { getImgIcon } from 'utils/utils';
+import { getImgIcon } from '../../utils';
 
 export const canExportPdf = (fileName: string) => {
   const fileType = (fileName || '').split('.').pop().toLowerCase();

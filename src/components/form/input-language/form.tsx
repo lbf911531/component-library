@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Modal, Input, Form } from 'antd';
 import { IFormProps } from './interface';
-import { messages } from '@/components/utils';
-import LocaleContext from '@/components/locale-lan-provider/context';
+import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 
 function LanguageForm(props: IFormProps) {
   const [form] = Form.useForm();

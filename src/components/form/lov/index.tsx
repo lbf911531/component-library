@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { messages, formatMoney } from '@/components/utils';
 //@ts-ignore
 import config from 'config';
 //@ts-ignore
 import httpFetch from 'share/httpFetch';
 import { Popover } from 'antd';
-import WrapperConnect from '@/components/custom-connect';
+import { messages, formatMoney } from '../../utils';
+import WrapperConnect from '../../custom-connect';
 import SelectPartLoad from '../select-part-load';
 import { IProps, AlignType, ILov } from './interface';
 import OriginLov from './entry';

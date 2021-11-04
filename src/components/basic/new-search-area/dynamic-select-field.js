@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-06-28 16:09:24
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-02 11:12:23
+ * @LastEditTime: 2021-11-04 16:35:01
  * @Version: 1.0.0
  * @Description: 下拉，动态选取搜索字段
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -15,10 +15,10 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { messages } from '@/components/utils';
 import { Popover, Input, Divider, Checkbox, Button } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 import { useSelections, useClickAway } from 'ahooks';
+import { messages } from '../../utils';
 import SearchSvg from './images/search';
 
 function DynamicSelectField(props) {

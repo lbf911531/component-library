@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'dva';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Result } from 'antd';
 
-import { messages, getImgIcon } from 'utils/utils';
 import { WaterMark } from '@ant-design/pro-layout';
+import Connect from '../../custom-connect';
+import { messages, getImgIcon } from '../../utils';
+import downloadIcon from '../../../assets/download.png';
+import downloadActiveIcon from '../../../assets/download-default.png';
 
-import downloadIcon from '@/assets/download.png';
-import downloadActiveIcon from '@/assets/download-default.png';
+import increaseIcon from '../../../assets/increase.png';
+import increaseActiveIcon from '../../../assets/increase-active.png';
 
-import increaseIcon from '@/assets/increase.png';
-import increaseActiveIcon from '@/assets/increase-active.png';
+import reduceIcon from '../../../assets/reduce.png';
+import reduceActiveIcon from '../../../assets/reduce-active.png';
 
-import reduceIcon from '@/assets/reduce.png';
-import reduceActiveIcon from '@/assets/reduce-active.png';
+import trashIcon from '../../../assets/trash.png';
+import trashActiveIcon from '../../../assets/trash-active.png';
 
-import trashIcon from '@/assets/trash.png';
-import trashActiveIcon from '@/assets/trash-active.png';
-
-import rotateIcon from '@/assets/rotate.png';
-import rotateActiveIcon from '@/assets/rotate.active.png';
+import rotateIcon from '../../../assets/rotate.png';
+import rotateActiveIcon from '../../../assets/rotate.active.png';
 
 import './index.less';
 
@@ -453,4 +452,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(FilePreview);
+export default Connect(mapStateToProps)(FilePreview);

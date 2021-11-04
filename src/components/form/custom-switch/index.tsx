@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Switch } from 'antd';
 import { IProps } from './interface';
-import { messages } from '@/components/utils';
-import LocaleContext from '@/components/locale-lan-provider/context';
+import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 
 export default function CustomSwitch(props: IProps) {
   const context = useContext(LocaleContext);

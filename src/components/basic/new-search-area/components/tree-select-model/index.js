@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-09-22 10:23:48
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-04 11:30:50
+ * @LastEditTime: 2021-11-04 16:38:22
  * @Version: 1.0.0
  * @Description: 弹窗 树形展示 公司数据，
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -10,11 +10,11 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Input, Modal, Tree, Spin, message, Pagination } from 'antd';
-import { messages } from 'utils/utils';
-import SearchAreaLov from '@/components/basic/search-area-lov';
 import httpFetch from 'share/httpFetch';
 import config from 'config';
 import { CloseOutlined, CaretDownOutlined } from '@ant-design/icons';
+import { messages } from '../../../../utils';
+import SearchAreaLov from '../../../../basic/search-area-lov';
 import useWidthAdaptation from '../../useWidth';
 import './style.less';
 

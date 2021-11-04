@@ -2,15 +2,15 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-28 14:23:21
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-28 15:04:13
+ * @LastEditTime: 2021-11-04 16:43:38
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 import React from 'react';
 import { Modal, message, Radio, Tabs } from 'antd';
-import { messages } from '@/components/utils';
-import LocaleContext from '@/components/locale-lan-provider/context';
+import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 import Table from '../../basic/table';
 import { IProps, IState } from './interface';
 

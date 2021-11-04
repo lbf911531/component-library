@@ -3,9 +3,9 @@ import React from 'react';
 import { Upload, Button, message } from 'antd';
 import { UploadOutlined, DownOutlined, RightOutlined } from '@ant-design/icons';
 import { isNil } from 'lodash';
-import { messages } from 'utils/utils';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
+import { messages } from '../../utils';
 import UploadFileList from '../upload-file-list';
 import './upload-button.less';
 

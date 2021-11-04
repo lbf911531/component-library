@@ -8,7 +8,7 @@
  */
 import React, { Component } from 'react';
 import { Modal, Input } from 'antd';
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 import Table from '../../basic/table';
 
 const { TextArea } = Input;

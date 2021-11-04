@@ -13,7 +13,7 @@ import {
 } from 'antd';
 import httpFetch from 'share/httpFetch';
 import FileSaver from 'file-saver';
-import { messages } from 'utils/utils';
+import { messages } from '../../utils';
 import CustomTable from '../../basic/custom-table';
 import './index.less';
 

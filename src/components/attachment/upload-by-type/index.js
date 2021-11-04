@@ -9,9 +9,9 @@ import {
 } from '@ant-design/icons';
 import { Tooltip, Upload, message } from 'antd';
 import httpFetch from 'share/httpFetch';
-import { messages } from '@/components/utils';
 import config from 'config';
-import Folder from '@/assets/folder@2x.png';
+import { messages } from '../../utils';
+import Folder from '../../../assets/folder@2x.png';
 import UploadFileList from '../upload-file-list';
 
 import './upload-by-type.less';

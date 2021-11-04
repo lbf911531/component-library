@@ -66,7 +66,7 @@ class Lov extends Component<IProps, IState> {
       if (!single) {
         this.setState({
           // value: messages("base.has.choose.count", { count: nextProps.value.length }),
-          value: `已选择${nextProps.value.length}`,
+          value: `已选择${nextProps.value.length}条`,
         });
       } else {
         this.setState({

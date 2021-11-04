@@ -10,8 +10,8 @@
 
 import React from 'react';
 import { Cascader } from 'antd';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { messages } from '../../../utils';
 import CloseSvg from '../images/close';
 import { preventOpen } from '../utils';
 import useWidthAdaptation from '../useWidth';

@@ -1,16 +1,16 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-21 10:09:51
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-27 17:04:49
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-04 16:37:52
  * @Version: 1.0.0
  * @Description: 值列表选择
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { Select, Tooltip, Input } from 'antd';
-import { messages, getSystemValueList } from '@/components/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { messages, getSystemValueList } from '../../../utils';
 import { preventOpen } from '../utils';
 import SearchSvg from '../images/search';
 import CloseSvg from '../images/close';

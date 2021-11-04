@@ -4,8 +4,8 @@ import { Input, Tooltip } from 'antd';
 import { DEFAULT_LANGUAGE_CONFIG } from './constant';
 import LanguageForm from './form';
 import { IProps } from './interface';
-import { messages } from '@/components/utils';
-import LocaleContext from '@/components/locale-lan-provider/context';
+import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 import './style.less';
 
 /**

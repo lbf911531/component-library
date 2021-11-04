@@ -1,17 +1,17 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-20 15:46:05
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-27 16:45:27
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-04 16:37:32
  * @Version: 1.0.0
  * @Description: 分页下拉框
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 
 import React from 'react';
-import SelectPartLoad from '@/components/form/select-part-load';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
+import SelectPartLoad from '../../../form/select-part-load';
+import { messages } from '../../../utils';
 import CloseSvg from '../images/close';
 
 export default function CustomSelectPartLoad(props) {

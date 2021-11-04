@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-02 10:17:15
+ * @LastEditTime: 2021-11-04 16:35:23
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -36,10 +36,10 @@ import {
   Tooltip,
   Form,
 } from 'antd';
-import { messages } from 'utils/utils';
 import moment from 'moment';
 import { useDebounceFn } from 'ahooks';
-import WrapperForm from '@/components/wrapped-form';
+import { messages } from '../../utils';
+import WrapperForm from '../../wrapped-form';
 import SearchFormItem from './search-form-item';
 import {
   getLastKey,

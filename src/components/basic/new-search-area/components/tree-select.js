@@ -9,10 +9,10 @@
  */
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
 import CloseSvg from '../images/close';
 import { preventOpen } from '../utils';
+import { messages } from '../../../utils';
 
 export default function CustomTreeSelect(props) {
   const {

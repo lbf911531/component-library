@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Modal, Spin, Button, Popover } from 'antd';
-import WrapperConnect from '@/components/custom-connect';
 import _ from 'lodash';
 // @ts-ignore
 import httpFetch from 'share/httpFetch';
 // @ts-ignore
 import config from 'config';
 import moment from 'moment';
-import { messages, formatMoney } from '@/components/utils';
+import WrapperConnect from '../../custom-connect';
+import { messages, formatMoney } from '../../utils';
 import { IListSelectorProps, ILov, AlignType } from './interface';
 import Lov from './lov';
 

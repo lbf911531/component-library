@@ -10,7 +10,7 @@
 
 import React, { useState } from 'react';
 import { Input, Popconfirm, Button, message } from 'antd';
-import { messages } from 'utils/utils';
+import { messages } from '../../utils';
 import Service from './service';
 import { customStringify } from './utils';
 

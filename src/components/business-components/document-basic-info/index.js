@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
 import { Col, message, Popover, Row, Spin, Tag, Tooltip } from 'antd';
-import { messages } from '@/components/utils';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
 import TweenOne from 'rc-tween-one';
 import Children from 'rc-tween-one/lib/plugin/ChildrenPlugin';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { messages } from '../../utils';
 import FileItem from './file-item';
 import ImagePriview from '../../attachment/image-preview';
 import ZipFileView from '../../attachment/image-preview';

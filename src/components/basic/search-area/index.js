@@ -31,9 +31,9 @@ import {
   Spin,
   Form,
 } from 'antd';
-import { messages } from '@/components/utils';
-import WrappedForm from '@/components/wrapped-form';
-import LocaleContext from '@/components/locale-lan-provider/context';
+import { messages } from '../../utils';
+import WrappedForm from '../../wrapped-form';
+import LocaleContext from '../../locale-lan-provider/context';
 import Lov from '../../form/lov';
 import SelectPartLoad from '../../form/select-part-load';
 import InputNumber from '../../form/input-number';

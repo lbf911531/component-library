@@ -10,9 +10,9 @@
 
 import React, { useState, useRef } from 'react';
 import { DatePicker } from 'antd';
-import { messages } from 'utils/utils';
 import moment from 'moment';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { messages } from '../../../utils';
 import useWidthAdaptation from '../useWidth';
 import CloseSvg from '../images/close';
 

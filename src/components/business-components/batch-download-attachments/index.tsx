@@ -4,8 +4,7 @@ import httpFetch from 'share/httpFetch';
 import config from 'config';
 import moment from 'moment';
 import FileSaver from 'file-saver';
-// import PropTypes from 'prop-types';
-import { messages } from 'utils/utils';
+import { messages } from '../../utils';
 import RenderAttachmentsItem from './render-attachments-item';
 import AttachmentsWrap from './attachments-wrap';
 import {

@@ -2,19 +2,18 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-29 14:23:27
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-29 15:38:47
+ * @LastEditTime: 2021-11-04 16:40:50
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 
 import React, { Component } from 'react';
-
 import { Button, Modal, Form } from 'antd';
-import { messages } from '@/components/utils';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
-import WrappedForm from '@/components/wrapped-form';
+import { messages } from '../../utils';
+import WrappedForm from '../../wrapped-form';
 import { IProps, IState } from './interface';
 import Lov from '../../form/lov';
 

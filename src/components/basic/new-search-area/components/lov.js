@@ -2,15 +2,15 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-20 11:56:40
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-01 11:37:21
+ * @LastEditTime: 2021-11-04 16:37:07
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 import React from 'react';
-import Lov from '@/components/form/lov';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
+import Lov from '../../../form/lov';
+import { messages } from '../../../utils';
 import CloseSvg from '../images/close';
 import { getLastKey, hasValue } from '../utils';
 import useWidthAdaptation from '../useWidth';

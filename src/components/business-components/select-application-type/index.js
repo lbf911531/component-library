@@ -14,8 +14,8 @@ import {
 } from 'antd';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
-import { connect } from 'dva';
-import { messages } from 'utils/utils';
+import Connect from '../../custom-connect';
+import { messages } from '../../utils';
 import './index.less';
 
 const { Link } = Anchor;
@@ -564,6 +564,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null, null, { forwardRef: true })(
+export default Connect(mapStateToProps, null, null, { forwardRef: true })(
   SelectApplicationType,
 );

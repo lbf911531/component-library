@@ -17,7 +17,6 @@ order: 1
 ```tsx
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import { messages } from 'utils/utils';
 import { DocumentBasicInfo } from 'polard';
 
 export default function Test() {

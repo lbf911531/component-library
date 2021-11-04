@@ -6,7 +6,7 @@ import { Popover } from 'antd';
 import config from 'config';
 import moment from 'moment';
 import httpFetch from 'share/httpFetch';
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 import CustomTable from '../../basic/table';
 
 class VoucherTable extends Component {

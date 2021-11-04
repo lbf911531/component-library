@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, Popover } from 'antd';
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 import Table from '../../basic/table';
 
 class BudgetTips extends Component {

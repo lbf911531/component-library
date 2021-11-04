@@ -10,10 +10,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { Select, Tooltip } from 'antd';
-import { messages } from 'utils/utils';
 import httpFetch from '@/share/httpFetch';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { getDataLabel, getLastKey } from '../utils';
+import { messages } from '../../../utils';
 
 export default function CustomSelectWithSearch(props) {
   const { formItem, value, onChange, onResetOptions } = props;

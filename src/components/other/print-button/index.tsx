@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-28 11:18:15
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-10-28 17:44:33
+ * @LastEditTime: 2021-11-04 16:43:45
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -11,7 +11,7 @@
 /** 按钮-打印 */
 import React, { Component } from 'react';
 import { Button } from 'antd';
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 /**
  * 需要打印的区域的标签id <div id="divId">这里是需要打印的地方，而这个div是你当前的组件</div>
  * <PrintBtn printId='divId' />

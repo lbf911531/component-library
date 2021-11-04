@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Tooltip, Popconfirm, message } from 'antd';
-import { messages, getImgIcon } from 'utils/utils';
+import { messages, getImgIcon } from '../../utils';
 
-import priviewIcon from '@/assets/priview-default.png';
-import priviewActiveIcon from '@/assets/priview-active.png';
-import downloadIcon from '@/assets/download-icon.png';
-import downloadActiveIcon from '@/assets/download-active.png';
-import deleteIcon from '@/assets/trash-default.png';
-import deleteActiveIcon from '@/assets/delete-active.png';
+import priviewIcon from '../../../assets/priview-default.png';
+import priviewActiveIcon from '../../../assets/priview-active.png';
+import downloadIcon from '../../../assets/download-icon.png';
+import downloadActiveIcon from '../../../assets/download-active.png';
+import deleteIcon from '../../../assets/trash-default.png';
+import deleteActiveIcon from '../../../assets/delete-active.png';
 
 import './file-item.less';
 

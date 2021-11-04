@@ -9,13 +9,13 @@
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { Select, Spin, Input } from 'antd';
-import { messages } from 'utils/utils';
+import { debounce } from 'lodash';
 import httpFetch from '@/share/httpFetch';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { getDataLabel, getLastKey, preventOpen } from '../utils';
 import CloseSvg from '../images/close';
 import SearchSvg from '../images/search';
-import { debounce } from 'lodash';
+import { messages } from '../../../utils';
 
 export default function CustomSelect(props) {
   const { formItem, value, onChange, onResetOptions } = props;

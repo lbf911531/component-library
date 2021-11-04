@@ -28,13 +28,14 @@ import {
 } from 'antd';
 import moment from 'moment';
 import _ from 'lodash';
-import { messages } from '@/components/utils';
-import LocaleContext from '@/components/locale-lan-provider/context';
 import httpFetch from 'share/httpFetch';
+import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 import CustomSwitch from '../../form/custom-switch';
 import InputNumber from '../../form/input-number';
 import SelectPartLoad from '../../form/select-part-load';
 import InputLanguage from '../../form/input-language';
+import WrappedForm from '../../wrapped-form';
 import Lov from '../../form/lov';
 
 import './style.less';
@@ -1751,4 +1752,4 @@ SearchAreaLov.defaultProps = {
   checkboxChange: () => {},
 };
 
-export default SearchAreaLov;
+export default WrappedForm(SearchAreaLov);

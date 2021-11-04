@@ -1,16 +1,16 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-21 10:25:43
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-03 17:00:49
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-04 16:36:10
  * @Version: 1.0.0
  * @Description: 数字输入框
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 
 import React from 'react';
-import InputNumber from '@/components/form/input-number';
-import { messages } from 'utils/utils';
+import InputNumber from '../../../form/input-number';
+import { messages } from '../../../utils';
 import useWidthAdaptation from '../useWidth';
 
 export default function CustomInputNumber(props) {

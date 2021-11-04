@@ -11,8 +11,8 @@
 import React, { useRef } from 'react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import { messages } from 'utils/utils';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { messages } from '../../../utils';
 import useWidthAdaptation from '../useWidth';
 import CloseSvg from '../images/close';
 

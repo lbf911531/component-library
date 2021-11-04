@@ -1,6 +1,5 @@
 import React from 'react';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import SearchArea from '@/components/basic/search-area-lov';
 import {
   Card,
   Row,
@@ -13,9 +12,10 @@ import {
   Switch,
 } from 'antd';
 import moment from 'moment';
-import WrappedForm from '@/components/wrapped-form';
+import SearchArea from '../../basic/search-area-lov';
+import WrappedForm from '../../wrapped-form';
 import config from 'config';
-import { messages } from 'utils/utils';
+import { messages } from '../../utils';
 import { IProps, IState } from './interface';
 
 import './style.less';

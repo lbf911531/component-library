@@ -3,7 +3,7 @@ import { Modal, Popover, Tabs } from 'antd';
 import config from 'config';
 import httpFetch from 'share/httpFetch';
 import { cloneDeep } from 'lodash';
-import { messages } from '@/components/utils';
+import { messages } from '../../utils';
 import CustomTable from '../../basic/custom-table';
 
 const { TabPane } = Tabs;

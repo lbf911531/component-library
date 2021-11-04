@@ -1,12 +1,12 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
-import ImageIcon from '@/assets/image.png';
-import PptIcon from '@/assets/ppt.png';
-import WordIcon from '@/assets/word.png';
-import ExcelIcon from '@/assets/excel.png';
-import PdfIcon from '@/assets/pdf.png';
-import UnknownIcon from '@/assets/unknown.jpg';
-import PackageIcon from '@/assets/package.jpg';
+import ImageIcon from '../assets/image.png';
+import PptIcon from '../assets/ppt.png';
+import WordIcon from '../assets/word.png';
+import ExcelIcon from '../assets/excel.png';
+import PdfIcon from '../assets/pdf.png';
+import UnknownIcon from '../assets/unknown.jpg';
+import PackageIcon from '../assets/package.jpg';
 
 import httpFetch from 'share/httpFetch';
 import config from 'config';
@@ -109,7 +109,7 @@ export interface IConfig {
   params?: {
     [key: string]: any;
   };
-  context: {
+  context?: {
     locale: string;
     localeMap?: {
       [key: string]: any;

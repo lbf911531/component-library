@@ -11,7 +11,7 @@
 import React from 'react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import { messages } from 'utils/utils';
+import { messages } from '../../../utils';
 
 export default function CustomRangePicker(props) {
   const {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'dva';
 import { Modal, Tree } from 'antd';
-import FolderIcon from '@/assets/folder@2x.png';
-import { messages, getImgIcon } from 'utils/utils';
+import Connect from '../../custom-connect';
+import FolderIcon from '../../../assets/folder@2x.png';
+import { messages, getImgIcon } from '../../utils';
 import FilePreview from '../image-preview';
 import './index.less';
 
@@ -131,4 +131,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ZipFileView);
+export default Connect(mapStateToProps)(ZipFileView);
