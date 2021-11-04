@@ -36,7 +36,7 @@ export const Banner50DataSource = {
         name: 'button',
         className: 'banner5-button-wrapper',
         children: {
-          href: '/components/basic/custom-table',
+          href: '/#/components/basic/custom-table',
           className: 'banner5-button',
           type: 'primary',
           children: '开始使用',
@@ -76,7 +76,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/basic/custom-table',
+            href: '/#/components/basic/custom-table',
           },
           img: {
             children: CaseOneImg,
@@ -92,7 +92,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/form/lov',
+            href: '/#/components/form/lov',
           },
           img: {
             children: CaseThirdImg,
@@ -108,7 +108,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/form/input-language',
+            href: '/#/components/form/input-language',
           },
           img: {
             children: CaseFourthImg,
@@ -124,7 +124,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/business-components/document-basic-info',
+            href: '/#/components/business-components/document-basic-info',
           },
           img: {
             children: CaseFifthImg,
@@ -140,7 +140,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/business-components/approve-history',
+            href: '/#/components/business-components/approve-history',
           },
           img: {
             children: CaseSixthImg,
@@ -156,7 +156,7 @@ export const Content50DataSource = {
         children: {
           wrapper: {
             className: 'content5-block-content',
-            href: '/components/other/common-import',
+            href: '/#/components/other/common-import',
           },
           img: {
             children: CaseSeventhImg,

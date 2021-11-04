@@ -7,7 +7,7 @@ class Feature extends React.PureComponent {
       <div className="feature">
         <h1 className="feature-title">特别感谢</h1>
         <p>
-          本站点 <s>抄袭</s> 参考了<a href="https://d.umijs.org/">dumi</a>以及
+          本站点参考了<a href="https://d.umijs.org/">dumi</a>以及
           <a href="https://landing.ant.design/docs/use/dumi-cn">
             Antd Design Landing
           </a>

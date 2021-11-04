@@ -9,15 +9,17 @@ const config = {
   title: 'polard',
   favicon: '/images/favicon.png',
   // 配置文档的Logo
-  logo: '/component/images/logo.png',
+  logo: '/images/logo.png',
   // 指定输出路径
   outputPath: 'component-dist',
-  base: '/component/',
-  publicPath: '/component/',
+  base: '/',
+  publicPath: '/',
   // 设定文档的展现模式
   mode: 'site',
   // more config: https://d.umijs.org/config
   forkTSChecker: false,
+  hash: true,
+  history: { type: 'hash' },
   extraBabelPlugins: [
     [
       'babel-plugin-import',
