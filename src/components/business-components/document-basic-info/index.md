@@ -12,28 +12,6 @@ order: 1
 
 单据头基本信息展示。
 
-## API
-
-| 参数              | 说明             | 类型                                                        | 默认值 |
-| ----------------- | ---------------- | ----------------------------------------------------------- | ------ |
-| params            | 单锯头信息       | object                                                      | 无     |
-| extarButton       | 操作按钮         | any                                                         | 无     |
-| deleteAttachments | 是否可以删除附件 | boolean                                                     |        |
-| extraStatus       | 补充额外的状态   | { [status]: { label, color?: string, className?: string } } |        |
-
-## params 属性
-
-| 参数                 | 说明               | 类型                                                           | 默认值 |
-| -------------------- | ------------------ | -------------------------------------------------------------- | ------ |
-| formName             | 单据类型名称       | string                                                         |        |
-| businessCode         | 单锯编号           | string                                                         |        |
-| statusCode           | 单据状态（status） | string                                                         |        |
-| currencyCode         | 币种               | string                                                         |        |
-| totalAmount          | 金额               | number 或者 number                                             |        |
-| infoList, customList | 其他字段           | [{ label, value, linkId?: string, onClick?: (linkId) => {}, }] |        |
-| remark               | 备注               | string                                                         |        |
-| attachments          | 附件               | array                                                          |        |
-
 ## 使用例子
 
 ```tsx
@@ -83,3 +61,25 @@ export default function Test() {
   );
 }
 ```
+
+## API
+
+| 参数              | 说明             | 类型                                                        | 默认值 |
+| ----------------- | ---------------- | ----------------------------------------------------------- | ------ |
+| params            | 单锯头信息       | object                                                      | 无     |
+| extarButton       | 操作按钮         | any                                                         | 无     |
+| deleteAttachments | 是否可以删除附件 | boolean                                                     |        |
+| extraStatus       | 补充额外的状态   | { [status]: { label, color?: string, className?: string } } |        |
+
+## params 属性
+
+| 参数                 | 说明               | 类型                                                           | 默认值 |
+| -------------------- | ------------------ | -------------------------------------------------------------- | ------ |
+| formName             | 单据类型名称       | string                                                         |        |
+| businessCode         | 单锯编号           | string                                                         |        |
+| statusCode           | 单据状态（status） | string                                                         |        |
+| currencyCode         | 币种               | string                                                         |        |
+| totalAmount          | 金额               | number 或者 number                                             |        |
+| infoList, customList | 其他字段           | [{ label, value, linkId?: string, onClick?: (linkId) => {}, }] |        |
+| remark               | 备注               | string                                                         |        |
+| attachments          | 附件               | array                                                          |        |

@@ -76,9 +76,11 @@ class PolicyTips extends Component {
         pageSizeOptions: this.$pageSizeOptions,
         showTotal: (total, range) =>
           messages('common.show.total', {
-            range0: `${range[0]}`,
-            range1: `${range[1]}`,
-            total,
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
           }),
       },
     };

@@ -24,6 +24,7 @@ export { default as CustomSwitch } from './components/form/custom-switch';
 export { default as InputLanguage } from './components/form/input-language';
 export { default as InputNumber } from './components/form/input-number';
 export { default as SelectPartLoad } from './components/form/select-part-load';
+export { default as ListerSelector } from './components/form/lov/list-selector';
 
 // 业务组件
 export { default as PolicyTips } from './components/business-components/policy-tips';

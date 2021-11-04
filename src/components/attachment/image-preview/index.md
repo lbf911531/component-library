@@ -10,25 +10,6 @@ order: 5
 
 ## 附件预览 ImagePriview
 
-## API
-
-| 参数             | 说明                                         | 默认值      |
-| ---------------- | -------------------------------------------- | ----------- |
-| visible          | 预览浮层展开或隐藏                           | false/true  |
-| title            | 图片名称                                     | -           |
-| onClose          | 关闭浮层事件                                 | () => {}    |
-| attachmentOid    | 附件 oid(来自后端返回数据[attachmentId])     | -           |
-| onDelete         | 删除图片                                     | (oid) => {} |
-| onDownload       | 下载图片                                     | (oid) => {} |
-| staticFileUrl    | 附件 url(来自后端返回数据[staticFileUrl])    | -           |
-| first            | 当前附件在附件数组中是否为第一成员           | false/true  |
-| last             | 当前附件在附件数组中是否为最后成员           |
-| onPrevious       | 翻前页                                       | () => {}    |
-| onLast           | 翻后页                                       | () => {}    |
-| index            | 当前附件在附件数组的下标                     | -           |
-| conversionStatus | 附件状态(来自后端返回数据[conversionStatus]) |
-| disabled         | 是否展示删除 icon 以便执行删除操作           | true/false  |
-
 ## 使用例子
 
 ```tsx
@@ -94,3 +75,22 @@ export default function Demo(props) {
   );
 }
 ```
+
+## API
+
+| 参数             | 说明                                         | 默认值      |
+| ---------------- | -------------------------------------------- | ----------- |
+| visible          | 预览浮层展开或隐藏                           | false/true  |
+| title            | 图片名称                                     | -           |
+| onClose          | 关闭浮层事件                                 | () => {}    |
+| attachmentOid    | 附件 oid(来自后端返回数据[attachmentId])     | -           |
+| onDelete         | 删除图片                                     | (oid) => {} |
+| onDownload       | 下载图片                                     | (oid) => {} |
+| staticFileUrl    | 附件 url(来自后端返回数据[staticFileUrl])    | -           |
+| first            | 当前附件在附件数组中是否为第一成员           | false/true  |
+| last             | 当前附件在附件数组中是否为最后成员           |
+| onPrevious       | 翻前页                                       | () => {}    |
+| onLast           | 翻后页                                       | () => {}    |
+| index            | 当前附件在附件数组的下标                     | -           |
+| conversionStatus | 附件状态(来自后端返回数据[conversionStatus]) |
+| disabled         | 是否展示删除 icon 以便执行删除操作           | true/false  |

@@ -174,10 +174,14 @@ export default function LovDemo() {
 ```
 
 ```text
-ps: chooser换lov，引用路径修改为components/common/lov,组件上添加lovType属性，值为chooser，然后如果有type的统一更换后端重订的code，code找后端要文档，如果是selectorItem，定义在本页面的可以保留，这样改动小一点。listSelector同样的修改方式，只是注意lovType值为listSelector
+ps: chooser组件替换为lov组件，lov组件上添加lovType属性，值为chooser，然后如果有type的统一更换后端重订的code，code找后端要文档，如果是selectorItem，定义在本页面的可以保留，这样改动小一点。listSelector同样的修改方式，只是注意lovType值为listSelector
 ```
 
 ---
+
+## ListSelector
+
+ListSelector 组件与 Lov 组件用法基本一致；但其仅仅是一个弹窗组件，窗口的显隐完全由外部自行控制
 
 ## 更新日志
 

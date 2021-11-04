@@ -12,6 +12,28 @@ order: 2
 
 点击按钮上传附件
 
+## 使用例子
+
+```tsx
+import React from 'react';
+import { UploadButton } from 'polard';
+import config from 'config';
+
+export default function Test() {
+  return (
+    <UploadButton
+      uploadUrl={`${config.fileUrl}/api/upload/static/attachment`}
+      pkName="EXP_REPORT_LINE"
+      // pkValue={record.id}
+      // uploadHandle={oidList => { this.setState({ attachmentOid: oidList }) }}
+      // uploadHandleFileList={list => { this.setState({ fileList: list }) }}
+      // defaultFileList={fileList}
+      // defaultOids={attachmentOid}
+    />
+  );
+}
+```
+
 ## API
 
 | 参数                 | 说明                                          | 默认值                                    |
@@ -37,25 +59,3 @@ order: 2
 | fileListFlag         | 用于刷新默认 defaultFileList,defaultOids 值   | false                                     |
 | noZoom               | 是否隐藏上传按钮                              | false                                     |
 | className            | 上传组件的 class 类型                         |                                           |
-
-## 使用例子
-
-```tsx
-import React from 'react';
-import { UploadButton } from 'polard';
-import config from 'config';
-
-export default function Test() {
-  return (
-    <UploadButton
-      uploadUrl={`${config.fileUrl}/api/upload/static/attachment`}
-      pkName="EXP_REPORT_LINE"
-      // pkValue={record.id}
-      // uploadHandle={oidList => { this.setState({ attachmentOid: oidList }) }}
-      // uploadHandleFileList={list => { this.setState({ fileList: list }) }}
-      // defaultFileList={fileList}
-      // defaultOids={attachmentOid}
-    />
-  );
-}
-```
