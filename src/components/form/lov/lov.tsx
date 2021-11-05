@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //@ts-ignore
-import httpFetch from 'share/httpFetch';
+import httpFetch from '@/share/httpFetch';
 import SearchArea from '../../basic/search-area-lov';
 import Table from '../../basic/table';
 import { ILovProps, ILovState } from './interface';

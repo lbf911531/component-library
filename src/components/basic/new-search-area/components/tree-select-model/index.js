@@ -10,8 +10,8 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Input, Modal, Tree, Spin, message, Pagination } from 'antd';
-import httpFetch from 'share/httpFetch';
-import config from 'config';
+import httpFetch from '@/share/httpFetch';
+import config from '@/config/config';
 import { CloseOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { messages } from '../../../../utils';
 import SearchAreaLov from '../../../../basic/search-area-lov';

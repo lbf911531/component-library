@@ -70,13 +70,33 @@ export default WrapperConnect(mapStateToProps)(CompatibleLov);
 - 修改为`babel`模式时，会生成`lib`,`es`文件夹，该模式下体积大，同时需要修改`package.json`文件
   修改如下：
 
-```json
-"main": "lib/index.js",
-"module": "lib/index.js",
-"typings": "lib/index.d.ts",
+```js
+{
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffect": false
+}
+// (改成这个貌似能实现一个假的按需加载，个人测试宿主项目中如果在babelrc中配置，经过依赖分析，也只是单独引用了某个组件)
+{
+  "main": "es/index.js",
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "sideEffect": false
+}
 ```
 
 且该模式下后续需要考虑做按需加载
+
+记录踩坑：
+babel 模式下打包，如果 tsx 文件中引入了.png 等，打包报错找不到图片，此时
+
+1. 方案一，将该 tsx 文件改为 js 文件
+2. 入口文件将 typings.d.ts 导入
+
+```js
+/// <reference path="../typings.d.ts" />
+```
 
 - 发布命令
 

@@ -8,10 +8,10 @@ import {
   UsbTwoTone,
 } from '@ant-design/icons';
 import { Tooltip, Upload, message } from 'antd';
-import httpFetch from 'share/httpFetch';
-import config from 'config';
+import httpFetch from '@/share/httpFetch';
+import config from '@/config/config';
 import { messages } from '../../utils';
-import Folder from '../../../assets/folder@2x.png';
+import Folder from '../../../assets/folder.png';
 import UploadFileList from '../upload-file-list';
 
 import './upload-by-type.less';

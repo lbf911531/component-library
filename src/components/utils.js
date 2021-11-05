@@ -8,8 +8,8 @@ import PdfIcon from '../assets/pdf.png';
 import UnknownIcon from '../assets/unknown.jpg';
 import PackageIcon from '../assets/package.jpg';
 
-import httpFetch from 'share/httpFetch';
-import config from 'config';
+import httpFetch from '@/share/httpFetch';
+import config from '@/config/config';
 
 import zhCN from './locale-language/zh_CN';
 import enUS from './locale-language/en_US';
@@ -82,6 +82,7 @@ export const getImgIcon = (title = '', canPreviewFile) => {
       fileType,
     );
   }
+
   if (ppt.includes(fileType)) {
     return PptIcon;
   } else if (imgs.includes(fileType)) {
@@ -105,22 +106,19 @@ export const getImgIcon = (title = '', canPreviewFile) => {
  * @param config： { params, context }
  * @returns
  */
-export interface IConfig {
-  params?: {
-    [key: string]: any;
-  };
-  context?: {
-    locale: string;
-    localeMap?: {
-      [key: string]: any;
-    };
-  };
-}
+// export interface IConfig {
+//   params?: {
+//     [key: string]: any;
+//   };
+//   context?: {
+//     locale: string;
+//     localeMap?: {
+//       [key: string]: any;
+//     };
+//   };
+// }
 
-export function messages(
-  title: string,
-  config: IConfig = defaultConfig,
-): string {
+export function messages(title, config = defaultConfig) {
   // 从session中取，是为了兼容调用messages方法在没有params时可以不必传递config
   const locale = window.sessionStorage.getItem('cur_locale');
 

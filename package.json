@@ -1,6 +1,6 @@
 {
   "name": "polard",
-  "version": "1.0.25",
+  "version": "1.0.27",
   "scripts": {
     "start": "cross-env ENV_TYPE=native dumi dev",
     "docs:build": "cross-env ENV_TYPE=native dumi build",
@@ -13,7 +13,7 @@
     "test:coverage": "umi-test --coverage"
   },
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -34,7 +34,6 @@
     "ahooks": "^2.10.0",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
-    "babel-plugin-import": "^1.13.3",
     "babel-runtime": "^6.26.0",
     "bignumber.js": "^9.0.1",
     "classnames": "^2.3.1",
@@ -65,6 +64,9 @@
     "typescript": "^4.1.0",
     "umi": "^3.5.20",
     "yorkie": "^2.0.0"
+  },
+  "resolutions": {
+    "@types/react": "16.14.2"
   },
   "sideEffects": [
     "./src/**/*.less"

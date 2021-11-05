@@ -17,7 +17,7 @@ order: 2
 ```tsx
 import React from 'react';
 import { UploadButton } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   return (

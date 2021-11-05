@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Tree } from 'antd';
 import Connect from '../../custom-connect';
-import FolderIcon from '../../../assets/folder@2x.png';
+import FolderIcon from '../../../assets/folder.png';
 import { messages, getImgIcon } from '../../utils';
 import FilePreview from '../image-preview';
 import './index.less';

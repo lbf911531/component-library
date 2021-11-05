@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-04 16:35:23
+ * @LastEditTime: 2021-11-05 14:32:51
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -13,7 +13,6 @@ import React, {
   useImperativeHandle,
   forwardRef,
   useRef,
-  useLayoutEffect,
 } from 'react';
 import {
   SearchOutlined,

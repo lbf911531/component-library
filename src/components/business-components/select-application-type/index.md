@@ -17,7 +17,7 @@ order: 6
 ```tsx
 import React from 'react';
 import { SelectApplicationType } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   return (
@@ -43,7 +43,7 @@ export default function Test() {
 import React, { useRef } from 'react';
 import { Button } from 'antd';
 import { SelectApplicationType } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   const eleRef = useRef();

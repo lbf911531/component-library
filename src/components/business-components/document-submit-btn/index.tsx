@@ -10,8 +10,8 @@
 
 import React, { Component } from 'react';
 import { Button, Modal, Form } from 'antd';
-import config from 'config';
-import httpFetch from 'share/httpFetch';
+import config from '@/config/config';
+import httpFetch from '@/share/httpFetch';
 import { messages } from '../../utils';
 import WrappedForm from '../../wrapped-form';
 import { IProps, IState } from './interface';

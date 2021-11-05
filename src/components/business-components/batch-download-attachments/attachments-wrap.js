@@ -1,6 +1,6 @@
 import React from 'react';
-import httpFetch from 'share/httpFetch';
-import config from 'config';
+import httpFetch from '@/share/httpFetch';
+import config from '@/config/config';
 import FilePreview from '../../attachment/image-preview';
 import ZipFileView from '../../attachment/image-preview';
 import { getImgIcon } from '../../utils';

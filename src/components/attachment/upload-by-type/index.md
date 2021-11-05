@@ -17,7 +17,7 @@ order: 3
 ```tsx
 import React, { useState } from 'react';
 import { UploadByType } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   const [params] = useState({

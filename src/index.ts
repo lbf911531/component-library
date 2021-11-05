@@ -1,3 +1,4 @@
+/// <reference path="../typings.d.ts" />
 // 统一导出
 export { default as LocaleProvider } from './components/locale-lan-provider';
 // 基础

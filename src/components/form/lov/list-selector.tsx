@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Modal, Spin, Button, Popover } from 'antd';
 import _ from 'lodash';
 // @ts-ignore
-import httpFetch from 'share/httpFetch';
+import httpFetch from '@/share/httpFetch';
 // @ts-ignore
-import config from 'config';
+import config from '@/config/config';
 import moment from 'moment';
 import WrapperConnect from '../../custom-connect';
 import { messages, formatMoney } from '../../utils';

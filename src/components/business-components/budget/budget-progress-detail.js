@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Popover, Tabs } from 'antd';
-import config from 'config';
-import httpFetch from 'share/httpFetch';
+import config from '@/config/config';
+import httpFetch from '@/share/httpFetch';
 import { cloneDeep } from 'lodash';
 import { messages } from '../../utils';
 import CustomTable from '../../basic/custom-table';

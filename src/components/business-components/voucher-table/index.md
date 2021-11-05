@@ -19,7 +19,7 @@ order: 5
 ```tsx
 import React from 'react';
 import { VoucherTable } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   const headerInfo = { businessCode: 'BZD001' };

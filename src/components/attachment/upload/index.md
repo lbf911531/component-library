@@ -16,7 +16,7 @@ group:
 ```tsx
 import React from 'react';
 import { Upload } from 'polard';
-import config from 'config';
+import config from '@/config/config';
 
 export default function Test() {
   return (

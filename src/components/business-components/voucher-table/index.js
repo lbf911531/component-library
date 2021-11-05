@@ -3,9 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Popover } from 'antd';
-import config from 'config';
+import config from '@/config/config';
 import moment from 'moment';
-import httpFetch from 'share/httpFetch';
+import httpFetch from '@/share/httpFetch';
 import { messages } from '../../utils';
 import CustomTable from '../../basic/table';
 
