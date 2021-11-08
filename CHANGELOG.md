@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.28](https://github.com/lbf911531/component-library/compare/v1.0.25...v1.0.28) (2021-11-08)
+
 ### [1.0.27] 测试 rollup 打包 umd
 
 ### [1.0.26] 测试 babel 打包模式，尝试按需加载

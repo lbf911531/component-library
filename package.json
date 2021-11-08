@@ -1,11 +1,11 @@
 {
   "name": "polard",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "scripts": {
     "start": "cross-env ENV_TYPE=native dumi dev",
     "docs:build": "cross-env ENV_TYPE=native dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "father-build",
+    "build": "cross-env NODE_ENV=production NODE_OPTIONS=--max_old_space_size=4096 father-build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npx standard-version && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
@@ -65,10 +65,5 @@
     "umi": "^3.5.20",
     "yorkie": "^2.0.0"
   },
-  "resolutions": {
-    "@types/react": "16.14.2"
-  },
-  "sideEffects": [
-    "./src/**/*.less"
-  ]
+  "sideEffects": false
 }
