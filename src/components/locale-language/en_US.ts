@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-03 16:41:09
+ * @LastEditTime: 2021-11-09 15:36:02
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -205,4 +205,6 @@ export default {
   'common.click.tip': 'Click Import To Save The Successfully Imported Data',
   'common.upload.again': 'Please Modify The Error Data And Upload Again',
   'common.control.results.on.submission': 'Control Results On Submission',
+  'common.please.enter.a.filter.name': 'Please enter a filter name',
+  'common.filter.name.set.first': 'Please set the filter name first',
 };

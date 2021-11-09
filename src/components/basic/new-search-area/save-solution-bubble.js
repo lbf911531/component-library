@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-06-15 11:20:39
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-08-20 17:26:35
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-09 15:33:18
  * @Version: 1.0.0
  * @Description: 气泡框-存储筛选方案
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -29,9 +29,7 @@ export default function SaveSolutionBubble(props) {
     }
     if (!conditionName) {
       message.error(
-        messages(
-          'base.please.set.the.filter.name.first' /* 请先设置筛选条件名 */,
-        ),
+        messages('common.filter.name.set.first' /* 请先设置筛选条件名 */),
       );
       return;
     }
@@ -44,9 +42,7 @@ export default function SaveSolutionBubble(props) {
     };
     if (params.settingName.trim() === '') {
       message.error(
-        messages(
-          'base.filter.criteria.names.cannot.be.all.spaces' /* 筛选条件名字不能全为空格 */,
-        ),
+        messages('common.name.spaces.warning' /* 筛选条件名字不能全为空格 */),
       );
     } else {
       handleSaveCondition(params);
@@ -59,7 +55,7 @@ export default function SaveSolutionBubble(props) {
   function handleSaveCondition(params) {
     Service.onSaveCondition(params)
       .then((res) => {
-        message.success(messages('base.add.success'));
+        message.success(messages('common.save.success'));
         const { onAfterSave } = props;
         // 保存后，通过接口刷新数据
         if (onAfterSave) onAfterSave(res.data);
@@ -85,7 +81,7 @@ export default function SaveSolutionBubble(props) {
             value={conditionName}
             onChange={handleChangeName}
             placeholder={messages(
-              'common.please.enter....a.filter.name' /* 请输入筛选条件名称 */,
+              'common.please.enter.a.filter.name' /* 请输入筛选条件名称 */,
             )}
           />
         </>

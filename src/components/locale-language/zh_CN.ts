@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-03 16:37:57
+ * @LastEditTime: 2021-11-09 15:33:16
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -203,4 +203,6 @@ export default {
   'common.click.tip': '点击【导入】后将导入成功的数据进行保存',
   'common.upload.again': '请修改错误数据后，重新上传',
   'common.control.results.on.submission': '提交时控制结果',
+  'common.please.enter.a.filter.name': '请输入筛选条件名称',
+  'common.filter.name.set.first': '请先设置筛选条件名',
 };
