@@ -20,8 +20,8 @@ order: 6
 import React, { useState, useMemo } from 'react';
 import { Button } from 'antd';
 import { ZipFileView } from 'polard';
-import httpFetch from '@/share/httpFetch';
-import config from '@/config/config';
+import httpFetch from 'share/httpFetch';
+import config from 'config';
 
 export default function Demo(props) {
   const [treeData, setTreeData] = useState([]);

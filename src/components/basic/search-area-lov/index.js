@@ -28,7 +28,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import _ from 'lodash';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import { messages } from '../../utils';
 import LocaleContext from '../../locale-lan-provider/context';
 import CustomSwitch from '../../form/custom-switch';

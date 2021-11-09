@@ -1,8 +1,8 @@
 import React from 'react';
 import Icon, { LoadingOutlined } from '@ant-design/icons';
 import { Tooltip, Popconfirm, Col, Row } from 'antd';
-import config from '@/config/config';
-import httpFetch from '@/share/httpFetch';
+import config from 'config';
+import httpFetch from 'share/httpFetch';
 import { getImgIcon, messages } from '../../utils';
 import DownloadIcon from '../../../assets/upload/download';
 import PreviewIcon from '../../../assets/upload/preview';

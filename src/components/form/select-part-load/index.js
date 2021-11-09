@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Select, Spin, Pagination, Tag, Space, Tooltip, Input } from 'antd';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import _ from 'lodash';
 import CloseSvg from './images/close';
 import SearchSvg from './images/search';

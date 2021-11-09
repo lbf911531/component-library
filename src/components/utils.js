@@ -8,8 +8,8 @@ import PdfIcon from '../assets/pdf.png';
 import UnknownIcon from '../assets/unknown.jpg';
 import PackageIcon from '../assets/package.jpg';
 
-import httpFetch from '@/share/httpFetch';
-import config from '@/config/config';
+import httpFetch from 'share/httpFetch';
+import config from 'config';
 
 import zhCN from './locale-language/zh_CN';
 import enUS from './locale-language/en_US';

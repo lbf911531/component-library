@@ -14,7 +14,7 @@ import {
 import moment from 'moment';
 import SearchArea from '../../basic/search-area-lov';
 import WrappedForm from '../../wrapped-form';
-import config from '@/config/config';
+import config from 'config';
 import { messages } from '../../utils';
 import { IProps, IState } from './interface';
 

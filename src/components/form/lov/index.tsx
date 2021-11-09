@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 //@ts-ignore
-import config from '@/config/config';
+import config from 'config';
 //@ts-ignore
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import { Popover } from 'antd';
 import { messages, formatMoney } from '../../utils';
 import WrapperConnect from '../../custom-connect';

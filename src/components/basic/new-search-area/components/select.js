@@ -10,7 +10,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Select, Spin, Input } from 'antd';
 import { debounce } from 'lodash';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { getDataLabel, getLastKey, preventOpen } from '../utils';
 import CloseSvg from '../images/close';

@@ -2,9 +2,9 @@ import React from 'react';
 import { Collapse, Timeline, Spin, Row, Col, Empty, Badge } from 'antd';
 import moment from 'moment';
 // @ts-ignore
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 // @ts-ignore
-import config from '@/config/config';
+import config from 'config';
 import { messages } from '../../utils';
 import { IProps, IState } from './interface';
 import { modelInfoMap } from './config';

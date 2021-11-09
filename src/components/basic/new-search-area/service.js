@@ -8,8 +8,8 @@
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 
-import config from '@/config/config';
-import httpFetch from '@/share/httpFetch';
+import config from 'config';
+import httpFetch from 'share/httpFetch';
 
 export default {
   /**

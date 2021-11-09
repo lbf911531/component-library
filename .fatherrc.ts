@@ -1,15 +1,19 @@
+// import nodePolyfills from 'rollup-plugin-node-polyfills';
+// import commonjs from 'rollup-plugin-commonjs';
+
 export default {
   esm: 'rollup',
   cjs: 'rollup',
+  extractCSS: true,
   // umd: {
   //   name: 'polard',
-  //   minFile: true,
+  //   sourcemap: true,
   //   globals: {
-  //     'react': 'React',
-  //     'react-dom': 'ReactDOM',
-  //     antd: 'antd',
-  //     '@ant-design/icons': 'icons',
-  //     moment: 'moment',
-  //   }
+  //     react: 'React',
+  //     antd: 'antd'
+  //   },
   // },
+  // extraRollupPlugins: [
+  //   nodePolyfills(),
+  // ]
 };

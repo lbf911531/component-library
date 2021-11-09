@@ -15,7 +15,7 @@ group:
 import React, { useState, useMemo } from 'react';
 import { Button } from 'antd';
 import { CommonImporter } from 'polard';
-import config from '@/config/config';
+import config from 'config';
 
 export default function Test() {
   const [visible, setVisible] = useState(false);

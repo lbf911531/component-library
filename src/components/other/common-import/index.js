@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '@/config/config';
+import config from 'config';
 import { UploadOutlined } from '@ant-design/icons';
 import {
   Modal,
@@ -11,7 +11,7 @@ import {
   Badge,
   Spin,
 } from 'antd';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import FileSaver from 'file-saver';
 import { messages } from '../../utils';
 import CustomTable from '../../basic/custom-table';

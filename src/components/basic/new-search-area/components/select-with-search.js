@@ -10,7 +10,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Select, Tooltip } from 'antd';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { getDataLabel, getLastKey } from '../utils';
 import { messages } from '../../../utils';

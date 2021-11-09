@@ -4,9 +4,9 @@
 import React, { Fragment } from 'react';
 import { Upload, message } from 'antd';
 // import PropTypes from 'prop-types';
-import config from '@/config/config';
+import config from 'config';
 import { InboxOutlined } from '@ant-design/icons';
-import httpFetch from '@/share/httpFetch';
+import httpFetch from 'share/httpFetch';
 import { isNil } from 'lodash';
 import { messages } from '../../utils';
 import UploadFileList from '../upload-file-list';

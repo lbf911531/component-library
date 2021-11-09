@@ -12,8 +12,8 @@ import {
   Anchor,
   Form,
 } from 'antd';
-import config from '@/config/config';
-import httpFetch from '@/share/httpFetch';
+import config from 'config';
+import httpFetch from 'share/httpFetch';
 import Connect from '../../custom-connect';
 import { messages } from '../../utils';
 import './index.less';
