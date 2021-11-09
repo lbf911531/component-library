@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.31](https://github.com/lbf911531/component-library/compare/v1.0.30...v1.0.31) (2021-11-09)
+
 ### [1.0.30](https://github.com/lbf911531/component-library/compare/v1.0.28...v1.0.30) (2021-11-09)
 
 ### [1.0.28](https://github.com/lbf911531/component-library/compare/v1.0.25...v1.0.28) (2021-11-08)
