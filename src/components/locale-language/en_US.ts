@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-09 15:36:02
+ * @LastEditTime: 2021-11-10 17:26:15
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -193,8 +193,8 @@ export default {
   'common.total.files': 'A Total Of {number} Files',
   'common.column.status': 'status',
   'base.successful': 'success',
-  'base.fail': '失败',
-  'common.error.message': '错误信息',
+  'base.fail': 'fail',
+  'common.error.message': 'The error message',
   'common.status': 'Status: {status}',
   'common.spanned.file': 'Generating files',
   'common.import': 'Import',
@@ -207,4 +207,21 @@ export default {
   'common.control.results.on.submission': 'Control Results On Submission',
   'common.please.enter.a.filter.name': 'Please enter a filter name',
   'common.filter.name.set.first': 'Please set the filter name first',
+  'common.operation': 'operation',
+  'common.info': 'Info',
+  'common.table.search.warning':
+    'You Currently Have Unsaved Changes. If You Perform A Search, The Data Will Be Reset.',
+  'common.table.save.warning':
+    'You currently have unsaved changes, data will be reset if jump.',
+  'common.table.new.warning': 'There are unsaved data, please save it first!',
+  'common.import.success': 'Import succeeded',
+  'common.delete.warning': 'Are you sure to delete this row?',
+  'common.show.total': 'show {range0}-{range1} of {total} item',
+  'common.copy': 'copy',
+  'common.cancel.fix': 'Cancel the fixed',
+  'common.left.side.fix': 'Fixed on the left side',
+  'common.right.side.fix': 'Fixed on the right side',
+  'common.left.fix': 'Left fixed',
+  'common.right.fix': 'Right fixed',
+  'common.no.fix': 'Not fixed',
 };

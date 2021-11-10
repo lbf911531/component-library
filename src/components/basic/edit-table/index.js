@@ -14,6 +14,7 @@ import { validation } from './utils';
 import ErrorTooltip from './error-tooltip';
 import SaveSvg from './images/save';
 import CancelSvg from './images/cancel';
+import { messages } from '../../utils';
 
 import './index.less';
 
@@ -38,10 +39,12 @@ class EditTable extends Component {
         showSizeChanger: true,
         showQuickJumper: true,
         showTotal: (total, range) =>
-          this.$t('common.show.total', {
-            range0: `${range[0]}`,
-            range1: `${range[1]}`,
-            total,
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
           }),
         pageSizeOptions: ['5', '10', '20', '50', '100', '200', '500'],
         ...props.pagination,
@@ -55,9 +58,7 @@ class EditTable extends Component {
       excelVisible: false,
       importerVisible: false,
       optionColumn: {
-        title: this.$t(
-          'itinerary.form.component.allocation.operation' /* 操作 */,
-        ),
+        title: messages('common.operation' /* 操作 */),
         dataIndex: 'id',
         width: 120,
         align: 'center',
@@ -85,7 +86,7 @@ class EditTable extends Component {
                   this.okRowHandle(record, index);
                 }}
               >
-                {this.$t('itinerary.type.slide.and.modal.ok.btn')}
+                {messages('common.ok')}
               </a>
               <Divider type="vertical" />
               {/* 取消 */}
@@ -94,7 +95,7 @@ class EditTable extends Component {
                   this.cancleRowHandle(value, record, index);
                 }}
               >
-                {this.$t('common.cancel')}
+                {messages('common.cancel')}
               </a>
             </span>
           ) : (
@@ -107,25 +108,21 @@ class EditTable extends Component {
                     this.editRowHandle(value, record, index);
                   }}
                 >
-                  {this.$t('mdata.the.editor')}
+                  {messages('common.edit')}
                 </a>
               )}
               {!hideEdit && !hideDelete ? <Divider type="vertical" /> : null}
               {hideDelete ? null : (
                 <Popconfirm
-                  title={this.$t(
-                    'itinerary.form.component.allocation.delete.tip',
-                  )} /** 确认删除？ */
-                  okText={this.$t('request.detail.loan.confirm')} /** 确认 */
-                  cancelText={this.$t('common.cancel')} /** 取消 */
+                  title={messages('common.delete.warning')} /** 确认删除？ */
+                  okText={messages('common.ok')} /** 确认 */
+                  cancelText={messages('common.cancel')} /** 取消 */
                   onConfirm={() =>
                     this.deleteRowHandle(record[props.rowKey], record, index)
                   }
                 >
                   {/* 删除 */}
-                  <a disabled={disabledDelete}>
-                    {this.$t('itinerary.type.slide.and.modal.delete.btn')}
-                  </a>
+                  <a disabled={disabledDelete}>{messages('common.delete')}</a>
                 </Popconfirm>
               )}
             </span>
@@ -183,7 +180,9 @@ class EditTable extends Component {
       column.rules = column.rules || [
         {
           required: column.required,
-          message: this.$t('common.can.not.be.empty', { name: column.title }), // `${column.title}不能为空`,
+          message: messages('common.no.empty', {
+            params: { name: column.title },
+          }), // `${column.title}不能为空`,
           ...(column.whitespace
             ? { whitespace: column?.whitespace }
             : column.required &&
@@ -599,7 +598,7 @@ class EditTable extends Component {
   appendNumberCol = (columns, props) => {
     const { serialNumberAttr } = props;
     columns.unshift({
-      title: this.$t('common.sequence'),
+      title: messages('common.sequence'),
       dataIndex: 'sort',
       width: 90,
       align: 'center',
@@ -771,12 +770,12 @@ class EditTable extends Component {
     pagination.current = flag ? current : 1;
     if (dataSource.some((o) => ['EDIT', 'NEW'].includes(o._status))) {
       Modal.confirm({
-        title: this.$t('common.info'),
-        content: this.$t(
-          'base.edit.table.search.warning',
+        title: messages('common.info'),
+        content: messages(
+          'common.table.search.warning',
         ) /** 您当前有未保存的更改，如果执行搜索，数据将会重置。 */,
-        okText: this.$t('request.detail.loan.confirm'),
-        cancelText: this.$t('common.cancel'),
+        okText: messages('common.ok'),
+        cancelText: messages('common.cancel'),
         onOk: () => {
           if (flag) {
             const isLast =
@@ -820,10 +819,10 @@ class EditTable extends Component {
     const { dataSource, pagination: paginationFromState } = this.state;
     if (dataSource.some((o) => ['EDIT', 'NEW'].includes(o._status))) {
       Modal.confirm({
-        title: this.$t('common.info'),
-        content: this.$t('base.save.data.warning'),
-        okText: this.$t('request.detail.loan.confirm'),
-        cancelText: this.$t('common.cancel'),
+        title: messages('common.info'),
+        content: messages('common.table.save.warning'),
+        okText: messages('common.ok'),
+        cancelText: messages('common.cancel'),
         onOk: () => {
           const { total, pageSize, current } = pagination;
           const isLast =
@@ -1097,7 +1096,7 @@ class EditTable extends Component {
     const { dataSource, pagination } = this.state;
     const flag = dataSource.some((o) => ['NEW'].includes(o._status));
     if (flag) {
-      message.error(this.$t('base.desc.name5'));
+      message.error(messages('common.table.new.warning'));
       return;
     }
 
@@ -1272,7 +1271,7 @@ class EditTable extends Component {
     const { dataSource, pagination } = this.state;
     const flag = dataSource.some((o) => ['NEW'].includes(o._status));
     if (flag) {
-      message.error(this.$t('base.desc.name5'));
+      message.error(messages('common.table.new.warning'));
       return;
     }
     const { rowKey } = this.props;
@@ -1346,7 +1345,7 @@ class EditTable extends Component {
 
     const flag = dataSource.some((o) => ['NEW', 'EDIT'].includes(o._status));
     if (flag) {
-      message.error(this.$t('base.desc.name5'));
+      message.error(messages('common.table.new.warning'));
       return;
     }
 
@@ -1496,7 +1495,7 @@ class EditTable extends Component {
       .then(() => {
         this.setState({ importerVisible: false });
         this.getList();
-        message.success(this.$t('mdata.import.success')); /* 导入成功 */
+        message.success(messages('common.import.success')); /* 导入成功 */
       })
       .catch((err) => {
         this.setState({ importerVisible: false });
@@ -1507,7 +1506,7 @@ class EditTable extends Component {
   onOk = (exportConfig) => {
     const { searchParams: exportParams } = this.state;
     const hide = message.loading(
-      this.$t({ id: 'importer.spanned.file' } /* 正在生成文件.. */),
+      messages('common.spanned.file' /* 正在生成文件.. */),
     );
     let {
       exporterConfig: { url },
@@ -1755,7 +1754,7 @@ class EditTable extends Component {
               onClick={() => this.create()}
               disabled={!!disabledCreate}
             >
-              {this.$t(createButtonText)}
+              {messages(createButtonText)}
             </Button>
             {templateCode && (
               <Button
@@ -1763,7 +1762,7 @@ class EditTable extends Component {
                 style={{ marginLeft: '8px' }}
                 onClick={() => this.setState({ importerVisible: true })}
               >
-                {this.$t('common.importer')}
+                {messages('common.import')}
               </Button>
             )}
             {exporterConfig && (
@@ -1772,7 +1771,7 @@ class EditTable extends Component {
                 style={{ marginLeft: '8px' }}
                 onClick={() => this.setState({ excelVisible: true })}
               >
-                {this.$t('common.export')}
+                {messages('common.export')}
               </Button>
             )}
           </div>

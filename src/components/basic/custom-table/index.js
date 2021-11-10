@@ -14,6 +14,7 @@ import config from 'config';
 import Table from '../table';
 import SettingSvg from './images/setting';
 import './style.less';
+import { messages } from '../../utils';
 
 /**
  * 表格行操作菜单，鼠标移入才显示
@@ -28,9 +29,13 @@ export function OperateMenus(props) {
       return operateMenus;
     } else {
       return [
-        { label: '编辑', onClick: onEditHandle }, // 编辑
-        { label: '复制', onClick: onCopyHandle }, // 复制
-        { label: '删除', onClick: onDeleteHandle, className: 'menu-delete' }, // 删除
+        { label: messages('common.edit'), onClick: onEditHandle }, // 编辑
+        { label: messages('common.copy'), onClick: onCopyHandle }, // 复制
+        {
+          label: messages('common.delete'),
+          onClick: onDeleteHandle,
+          className: 'menu-delete',
+        }, // 删除
       ];
     }
   }, [operateMenus]);
@@ -312,14 +317,14 @@ export function HeaderSettingsDropDown(props) {
         <span className="fixed-col-ico-group">
           {item.fixed === 'left' ? (
             <VerticalAlignMiddleOutlined
-              title="取消固定"
+              title={messages('common.cancel.fix')}
               onClick={() => {
                 handleCancelFix(item, 'left');
               }}
             />
           ) : (
             <VerticalAlignTopOutlined
-              title="左固定"
+              title={messages('common.left.fix')}
               onClick={() => {
                 handleFixColumn(item, 'left');
               }}
@@ -327,14 +332,14 @@ export function HeaderSettingsDropDown(props) {
           )}
           {item.fixed === 'right' ? (
             <VerticalAlignMiddleOutlined
-              title="取消固定"
+              title={messages('common.cancel.fix')}
               onClick={() => {
                 handleCancelFix(item, 'right');
               }}
             />
           ) : (
             <VerticalAlignBottomOutlined
-              title="右固定"
+              title={messages('common.right.fix')}
               onClick={() => {
                 handleFixColumn(item, 'right');
               }}
@@ -348,7 +353,10 @@ export function HeaderSettingsDropDown(props) {
   // 根据固定左右的类型 渲染 列控制节点树上的分组
   const renderFixedColsByType = (type) => {
     const fixed = columns.filter((col) => col.fixed === type);
-    const text = type === 'left' ? '固定在左侧' : '固定在右侧';
+    const text =
+      type === 'left'
+        ? messages('common.left.side.fix')
+        : messages('common.right.side.fix');
     if (fixed.length) {
       return (
         <>
@@ -375,7 +383,7 @@ export function HeaderSettingsDropDown(props) {
       >
         {renderFixedColsByType('left')}
         {!!(fixedColumns?.left?.length || fixedColumns?.right?.length) && (
-          <div className="col-group-title">不固定</div>
+          <div className="col-group-title">{messages('common.no.fix')}</div>
         )}
         <Tree
           className="draggable-tree"
@@ -395,7 +403,7 @@ export function HeaderSettingsDropDown(props) {
       >
         <div style={{ float: 'right' }}>
           <Button size="small" onClick={onResetHandle}>
-            重置
+            {messages('common.reset')}
           </Button>
           <Button
             size="small"
@@ -403,7 +411,7 @@ export function HeaderSettingsDropDown(props) {
             style={{ marginLeft: 8 }}
             onClick={onOKHandle}
           >
-            确定
+            {messages('common.ok')}
           </Button>
         </div>
       </div>
@@ -454,7 +462,14 @@ class CustomTable extends Component {
       tableColumns: [],
       pagination: {
         total: 0,
-        showTotal: (total, range) => `显示${range[0]}-${range[1]} 共${total}条`,
+        showTotal: (total, range) =>
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
+          }),
         showSizeChanger: true,
         showQuickJumper: true,
         pageSize: props.pagination ? props.pagination.pageSize || 10 : 10,
@@ -464,7 +479,14 @@ class CustomTable extends Component {
       },
       frontPagination: {
         total: 0,
-        showTotal: (total, range) => `显示${range[0]}-${range[1]} 共${total}条`,
+        showTotal: (total, range) =>
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
+          }),
         showSizeChanger: true,
         showQuickJumper: true,
         pageSizeOptions: ['5', '10', '20', '30', '40'],
@@ -472,7 +494,7 @@ class CustomTable extends Component {
       loading: false,
       params: {},
       sortColumn: {
-        title: '序号',
+        title: messages('common.sequence'),
         dataIndex: 'sort',
         width: 90,
         align: 'left',

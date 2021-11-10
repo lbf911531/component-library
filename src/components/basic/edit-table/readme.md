@@ -8,6 +8,79 @@ group:
 
 ## 可编辑表格 edit-table
 
+## 代码演示
+
+```tsx
+import React, { useRef, useState } from 'react';
+import { EditTable } from 'polard';
+
+export default function EditTableDemo() {
+  const editTableRef = useRef();
+  const [editWithCellFlag, setFlag] = useState(false);
+  const columns = [
+    {
+      title: '数据权限代码',
+      dataIndex: 'dataAuthorityCode',
+      width: 200,
+    },
+    {
+      title: '数据权限名称',
+      dataIndex: 'dataAuthorityName',
+      width: 100,
+    },
+
+    {
+      title: '数据权限说明',
+      dataIndex: 'description',
+      width: 300,
+    },
+  ];
+
+  function handleDelete(id) {
+    console.log(id, 'delete');
+  }
+
+  function handleChangeStatus() {
+    setFlag((pre) => !pre);
+  }
+
+  return (
+    <div>
+            <a onClick={handleChangeStatus}>切换表格编辑模式</a>
+            <br />
+            <br />
+            <EditTable
+        url="/base/api/authority/query"
+        rowKey="dataAuthorityCode"
+        columns={columns}
+        wrappedComponentRef={(ref) => {
+          editTableRef.current = ref;
+        }}
+        operationMap={{
+          delete: {
+            label: '删除',
+            event: (value, record) => {
+              handleDelete(record.dataAuthorityCode);
+            },
+            hidden: (value, record) => true,
+          },
+          detail: {
+            // 通过如下配置，[key]自定义，格式如下，可自定义操作，与renderOption 属性作用一致
+            label: '详情',
+            disabled: false,
+            disabled: (record) => !record.detail, // disabled 可传入一个方法，去根据 record 的值进行判断与计算
+            event: (value, record) => {
+              this.detailClick(record);
+            },
+          },
+        }}
+        editWithCellFlag={editWithCellFlag}
+      />   {' '}
+    </div>
+  );
+}
+```
+
 ## API
 
 | 属性             | 说明                                               | 类型                                                                                                                                    | 默认值 |
@@ -71,7 +144,7 @@ group:
 4. 增加 ` hiddenEditMore` 属性，配置后，可编辑表格左侧的最左侧的操作栏 icon 不会默认显示，得搭配 `editWithCellFlag` 一起使用，单用无效
 5. render 方法拆分为 renderEditCell 和 renderNormalCell 属性，提供分别自定义 可编辑状态下以及常态下的单元格，也可继续使用之前的 render 方法
 
-## editWithCellFlag 和 hiddenEditMore 使用 demo
+## editWithCellFlag,hiddenEditMore 的使用
 
 ```javascript
   <EditTable
@@ -147,58 +220,59 @@ var columns = [
 
 - demo:
 
-  - ```markdown
-    {
+````javascript
+  {
     title: this.$t('budget.balance.params.value'),
-        dataIndex: 'queryScope',
-        width: '40%',
-        align: 'center',
-        type: 'input',
-        isCusRenderFormItem: true,
-        renderEditCell: (text, record) => {
+      dataIndex: 'queryScope',
+      width: '40%',
+      align: 'center',
+      type: 'input',
+      isCusRenderFormItem: true,
+      renderEditCell: (text, record) => {
+        return (
+          <div>
+            <Select
+                defaultValue={text.toString()}
+                value={text.toString()}
+                onChange={value => this.onQueryScopeChange(value, record)}
+                disabled={!record.parameterCode}
+            >
+              {record.queryScopeList.map(item => {
+                return <Option key={item.code}>{item.messageKey}</Option>;
+              })}
+            </Select>
+            <Input
+              value={"已选" + record.solutionParameterList.length + "条"}
+              onClick={e => this.onListSelectorOk(e, record)}
+              disabled={!(record.parameterCode && record.queryScope == '1002')}
+            />
+          </div>
+        );
+        },
+        renderNormalCell: (text, record) => {
+          let resultText = '';
+          if (record.queryScope.toString() === '1002') {
+            resultText = "已选" + record.solutionParameterList.length + "条"
+          } else if (record.queryScope.toString() === '1003') {
+            if (record.parameterCode === 'COMPANY') {
+              resultText = this.$t('budget.balance.current.company')
+            } else if (record.parameterCode === 'UNIT') {
+              resultText = this.$t('budget.balance.current.department')
+            } else if (record.parameterCode === 'EMPLOYEE') {
+              resultText = this.$t('budget.balance.current.user')
+            }
+          } else {
+              resultText = "全部";
+          }
           return (
-            <div>
-              <Select
-                  defaultValue={text.toString()}
-                  value={text.toString()}
-                  onChange={value => this.onQueryScopeChange(value, record)}
-                  disabled={!record.parameterCode}
-              >
-                {record.queryScopeList.map(item => {
-                  return <Option key={item.code}>{item.messageKey}</Option>;
-                })}
-              </Select>
-              <Input
-                value={"已选" + record.solutionParameterList.length + "条"}
-                onClick={e => this.onListSelectorOk(e, record)}
-                disabled={!(record.parameterCode && record.queryScope == '1002')}
-              />
+            <div
+              onClick={() => {
+              this.editTable.onChangeTdStatus(record.id, "queryScope",record, true);
+              }} >
+              {resultText}
             </div>
-          );
-         },
-         renderNormalCell: (text, record) => {
-            let resultText = '';
-            if (record.queryScope.toString() === '1002') {
-                resultText = "已选" + record.solutionParameterList.length + "条"
-            } else if (record.queryScope.toString() === '1003') {
-                if (record.parameterCode === 'COMPANY') {
-                    resultText = this.$t('budget.balance.current.company')
-    } else if (record.parameterCode === 'UNIT') {
-    resultText = this.$t('budget.balance.current.department')
-                } else if (record.parameterCode === 'EMPLOYEE') {
-                    resultText = this.$t('budget.balance.current.user')
-    }
-    } else {
-    resultText = "全部";
-    }
-    return (
-    <div
-    onClick={() => {
-    this.editTable.onChangeTdStatus(record.id, "queryScope",record, true);
-    }} >
-    {resultText}
-    </div>
-    )
-    },
-    }
+          )
+        },
+      }
     ```
+````

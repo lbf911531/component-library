@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-09 15:33:16
+ * @LastEditTime: 2021-11-10 17:06:30
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -205,4 +205,20 @@ export default {
   'common.control.results.on.submission': '提交时控制结果',
   'common.please.enter.a.filter.name': '请输入筛选条件名称',
   'common.filter.name.set.first': '请先设置筛选条件名',
+  'common.operation': '操作',
+  'common.info': '提示',
+  'common.table.search.warning':
+    '您当前有未保存的更改，如果执行搜索，数据将会重置。',
+  'common.table.save.warning': '您当前有未保存的更改，如果跳转数据将会重置。',
+  'common.table.new.warning': '有未保存的数据，请先保存！',
+  'common.import.success': '导入成功',
+  'common.delete.warning': '确认删除？',
+  'common.show.total': '显示${range0}-${range1} 共{total}条',
+  'common.copy': '复制',
+  'common.cancel.fix': '取消固定',
+  'common.left.fix': '左固定',
+  'common.right.fix': '右固定',
+  'common.left.side.fix': '固定在左侧',
+  'common.right.side.fix': '固定在右侧',
+  'common.no.fix': '不固定',
 };

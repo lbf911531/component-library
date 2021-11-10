@@ -4,6 +4,7 @@ import httpFetch from 'share/httpFetch';
 import SearchArea from '../../basic/search-area-lov';
 import Table from '../../basic/table';
 import { ILovProps, ILovState } from './interface';
+import { messages } from '../../utils';
 
 class Lov extends Component<ILovProps, ILovState> {
   static defaultProps = {
@@ -32,14 +33,28 @@ class Lov extends Component<ILovProps, ILovState> {
         pageSize: props.pagination ? props.pagination.pageSize : 10,
         // @ts-ignore
         pageSizeOptions: this.$pageSizeOptions,
-        showTotal: (total, range) => `显示${range[0]}-${range[1]} 共${total}条`,
+        showTotal: (total, range) =>
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
+          }),
       },
       searchParams: {},
       selectedRows: [],
       selectedRowKeys: [],
       frontPagination: {
         total: 0,
-        showTotal: (total, range) => `显示${range[0]}-${range[1]} 共${total}条`,
+        showTotal: (total, range) =>
+          messages('common.show.total', {
+            params: {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            },
+          }),
         showSizeChanger: true,
         showQuickJumper: true,
         pageSizeOptions: ['5', '10', '20', '30', '40'],

@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-06-10 10:29:49
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-04 15:08:23
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-10 17:15:08
  * @Version: 1.0.0
  * @Description: 滑入表格行，展示可操作下拉菜单
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { Dropdown, Menu, Popconfirm } from 'antd';
 // import { MoreOutlined } from '@ant-design/icons';
 import _ from 'lodash';
-import { messages } from 'utils/utils';
+import { messages } from '../../../utils';
 import EditMoreSvg from '../images/editMore';
 
 const EDIT = 'edit';
@@ -35,7 +35,7 @@ export default function HoverOperation(props) {
 
   const eventTemplate = {
     [EDIT]: {
-      label: messages('mdata.the.editor' /* 编辑 */),
+      label: messages('common.edit' /* 编辑 */),
       event: onEdit,
       disabled: false,
     },
@@ -45,7 +45,7 @@ export default function HoverOperation(props) {
       disabled: false,
     },
     [DELETE]: {
-      label: messages('itinerary.type.slide.and.modal.delete.btn' /* 删除 */),
+      label: messages('common.delete' /* 删除 */),
       event: onDelete,
       danger: true,
       disabled: false,
@@ -130,10 +130,8 @@ export default function HoverOperation(props) {
               <>
                 <Menu.Divider />
                 <Popconfirm
-                  title={messages(
-                    'itinerary.form.component.allocation.delete.tip',
-                  )} /** 确认删除？ */
-                  okText={messages('request.detail.loan.confirm')} /** 确认 */
+                  title={messages('common.delete.warning')} /** 确认删除？ */
+                  okText={messages('common.ok')} /** 确认 */
                   cancelText={messages('common.cancel')} /** 取消 */
                   onConfirm={handleDelete}
                   destroyTooltipOnHide
