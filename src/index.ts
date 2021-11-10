@@ -8,6 +8,7 @@ export { default as SearchArea } from './components/basic/search-area';
 export { default as SearchAreaLov } from './components/basic/search-area-lov';
 export { default as ProTable } from './components/basic/pro-table';
 export { default as NewSearchArea } from './components/basic/new-search-area';
+export { default as EditTable } from './components/basic/edit-table';
 // 其他
 export { default as CommonImporter } from './components/other/common-import';
 export { default as SlideFrame } from './components/other/slide-frame';
@@ -26,6 +27,7 @@ export { default as InputLanguage } from './components/form/input-language';
 export { default as InputNumber } from './components/form/input-number';
 export { default as SelectPartLoad } from './components/form/select-part-load';
 export { default as ListerSelector } from './components/form/lov/list-selector';
+export { default as CustomAmount } from './components/form/custom-amount';
 
 // 业务组件
 export { default as PolicyTips } from './components/business-components/policy-tips';

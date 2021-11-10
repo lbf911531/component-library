@@ -1,0 +1,272 @@
+:global {
+  .ant-popconfirm {
+    z-index: 1060;
+  }
+
+  .edit-table {
+    color: #212d40;
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+    .ant-table-thead > tr > th {
+      font-weight: 600;
+      color: #212d40;
+    }
+    .ant-table-tbody td {
+      padding: 4px 8px;
+    }
+
+    .ant-form-item-control {
+      line-height: 30px;
+    }
+
+    // 设置 滚动条样式
+    .ant-table-content {
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background: #dbdbdb;
+      }
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: none;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        border-radius: 0;
+      }
+    }
+    .ant-table-thead > tr {
+      .ant-table-cell:nth-last-of-type(2) {
+        padding-right: 65px;
+      }
+    }
+    .ant-table-row {
+      .ant-table-cell:nth-last-of-type(2) {
+        padding-right: 65px;
+      }
+    }
+
+    .ant-table-cell {
+      .ant-legacy-form-item-control {
+        line-height: inherit;
+      }
+    }
+    // 表格单元格 并且 disable 为 false 时，鼠标放上去有背景颜色
+    .ant-table-cell.no-disabled {
+      &:hover {
+        background: #f2f4f6 !important;
+      }
+    }
+
+    .ant-space {
+      .ant-select {
+        width: 100%;
+      }
+    }
+    .ant-table-row:hover {
+      .operation-group-box {
+        background: #fafafa;
+      }
+    }
+
+    .ant-table-tbody > tr.ant-table-row {
+      .dropdown-menu-icon {
+        // 操作下拉的 icon
+        display: block;
+      }
+      .hidden-edit-more.dropdown-menu-icon {
+        // 操作下拉的 icon
+        display: none;
+      }
+      .drop-down-menu-delete {
+        color: #f5222d;
+        &.ant-dropdown-menu-item-disabled {
+          color: rgba(0, 0, 0, 0.25);
+          cursor: not-allowed;
+        }
+      }
+      .operation-group-box {
+        position: relative;
+        .cell-outer-box {
+          width: 44px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0px;
+          //  display: none;
+          background: linear-gradient(
+            90deg,
+            rgba(250, 251, 251, 0),
+            #fafbfb 35%,
+            #fafafa 35%
+          );
+          .cell-inner-box {
+            position: relative;
+            top: 50%;
+            transform: translate3d(0px, -50%, 0);
+          }
+          .operation-group {
+            cursor: pointer;
+            color: #1790ff;
+            & + span {
+              margin-left: 24px;
+            }
+          }
+        }
+        .expand-cell {
+          width: 90px;
+          .operation-group {
+            transform: rotateY(180deg);
+          }
+        }
+      }
+
+      .cell-outer-box {
+        display: none;
+      }
+
+      &:hover {
+        .dropdown-menu-icon {
+          display: block;
+        }
+        .cell-outer-box {
+          display: block;
+        }
+      }
+    }
+    .display-none {
+      display: none;
+    }
+    .edit-table-cell-box {
+      min-height: 20px;
+      .edit-table-hover-status {
+        display: none;
+        margin-left: 4px;
+        min-height: 20px;
+        vertical-align: top;
+      }
+      &:hover {
+        .edit-table-hover-status {
+          display: inline-block;
+          &:hover {
+            color: #4390ff;
+            path {
+              fill: #4390ff;
+            }
+          }
+        }
+      }
+    }
+    .ant-table-bordered .ant-table-thead > tr > th,
+    .ant-table-bordered .ant-table-tbody .ant-table-row td,
+    .ant-table .ant-table-thead > tr > th,
+    .ant-table .ant-table-tbody .ant-table-row td {
+      overflow: unset !important;
+      vertical-align: unset !important;
+    }
+    .edit-table-over-range {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // white-space: nowrap;
+      position: relative;
+      min-height: 20px;
+      display: inline-block;
+      max-width: calc(100% - 22px);
+    }
+    .ant-popover-inner {
+      .edit-table-over-range {
+        max-width: 100%;
+      }
+
+      .edit-table-cell-box {
+        .edit-table-hover-status {
+          display: none;
+        }
+      }
+    }
+    .ant-form-item-has-error.custom-td-style  {
+      input  {
+        box-shadow: none !important;
+      }
+      .ant-input-group {
+        .ant-input-search-button {
+          border-color: #ff4d4f;
+        }
+      }
+    }
+  }
+
+  .edit-table-no-cell-edit {
+    .edit-table-hover-status {
+      display: none !important;
+    }
+  }
+
+  .error-tooltip {
+    position: relative;
+    .tooltip-info {
+      position: absolute;
+      left: 50%;
+      top: -44px;
+      transform: translateX(-50%);
+      display: none;
+      min-width: 30px;
+      min-height: 32px;
+      padding: 6px 8px;
+      text-align: left;
+      text-decoration: none;
+      word-break: break-all;
+      word-wrap: break-word;
+      border-radius: 2px;
+      color: #fff;
+      background: rgb(255, 77, 79);
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -40px;
+        top: -6px;
+        display: block;
+        margin: auto;
+        width: 5px;
+        height: 5px;
+        background: rgb(255, 77, 79);
+        pointer-events: auto;
+        transform: translate3d(-50%, 0, 0) rotate(45deg);
+        z-index: 2;
+      }
+      &.visible {
+        display: inline-block;
+      }
+    }
+    .ant-input-group {
+      margin-top: -5px; // 取消 可编辑表格垂直居中后，ant-input-group 会下沉 5px
+
+      .ant-input-search-button {
+        height: 31px !important; // 取消 可编辑表格垂直居中后，按钮会超出 1px，强行设置成 31px 才没问题
+      }
+    }
+  }
+  .custom-td-style {
+    overflow: unset; // 搭配上面的 ant-input-group 的 -5px，才不会被遮挡
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .edit-table-over-range {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    display: block;
+  }
+  .ant-table-ping-right {
+    .operation-group-box.ant-table-cell-fix-right-first,
+    .operation-group-box.ant-table-cell-fix-right-last {
+      &::after {
+        box-shadow: inset -1px 0 8px -8px rgba(0, 0, 0, 0) !important;
+      }
+    }
+  }
+}
