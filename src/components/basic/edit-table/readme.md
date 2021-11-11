@@ -22,17 +22,21 @@ export default function EditTableDemo() {
       title: '数据权限代码',
       dataIndex: 'dataAuthorityCode',
       width: 200,
+      type: 'input',
+      disable: true,
     },
     {
       title: '数据权限名称',
       dataIndex: 'dataAuthorityName',
       width: 100,
+      type: 'language',
     },
 
     {
       title: '数据权限说明',
       dataIndex: 'description',
       width: 300,
+      type: 'input',
     },
   ];
 
@@ -44,12 +48,17 @@ export default function EditTableDemo() {
     setFlag((pre) => !pre);
   }
 
+  function handleSave(value, status, next) {
+    console.log(value);
+    next(true);
+  }
+
   return (
     <div>
             <a onClick={handleChangeStatus}>切换表格编辑模式</a>
             <br />
             <br />
-            <EditTable
+      <EditTable
         url="/base/api/authority/query"
         rowKey="dataAuthorityCode"
         columns={columns}
@@ -75,7 +84,8 @@ export default function EditTableDemo() {
           },
         }}
         editWithCellFlag={editWithCellFlag}
-      />   {' '}
+        onRowSave={handleSave}
+      />
     </div>
   );
 }

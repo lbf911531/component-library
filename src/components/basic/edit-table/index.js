@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, Divider, message, Popconfirm, Popover } from 'antd';
-import Table from 'widget/table';
+import Table from '../table';
 import httpFetch from 'share/httpFetch';
 import ExcelExporter from '../../other/excel-export';
 import CommonImporter from '../../other/common-import';

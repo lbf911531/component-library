@@ -221,4 +221,5 @@ export default {
   'common.left.side.fix': '固定在左侧',
   'common.right.side.fix': '固定在右侧',
   'common.no.fix': '不固定',
+  'base.establish': '创建',
 };
