@@ -307,8 +307,8 @@ class BatchDownLoadAttachments extends React.Component<
             <span className="selected-num">
               {
                 messages('common.accounting.selected', {
-                  params: { num: selectedNum },
-                }) /* 已选中{num}个 */
+                  params: { count: selectedNum },
+                }) /* 已选中{count}个 */
               }
             </span>
             /
@@ -316,7 +316,7 @@ class BatchDownLoadAttachments extends React.Component<
               {
                 messages('common.total.files', {
                   params: { number: allAttachments.length },
-                }) /* 共{num}个文件 */
+                }) /* 共{number}个文件 */
               }
             </span>
           </span>
@@ -336,6 +336,6 @@ class BatchDownLoadAttachments extends React.Component<
   }
 }
 
-export default BatchDownLoadAttachments;
-
 export { transformSelectRows, filterAndSetSortIndex, AttachmentsWrap };
+
+export default BatchDownLoadAttachments;

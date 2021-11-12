@@ -188,7 +188,7 @@ export default {
   'common.choose.download.format': '选择下载格式',
   'common.to.pdf.merge': '转pdf合并',
   'common.original.compression': '原件压缩',
-  'common.total.files': '共{num}个文件',
+  'common.total.files': '共{number}个文件',
   'common.column.status': '状态',
   'base.successful': '成功',
   'base.fail': '失败',
