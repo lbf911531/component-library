@@ -26,6 +26,31 @@ Build polard via `father-build`,
 $ npm run build
 ```
 
+## 本地开发步骤
+
+1. src/components 根据分类创建存放组件的文件夹 A
+2. 文件 A 中需至少有 index.ts/index.js , index.md
+3. md 格式：
+
+```markdown
+---
+nav:
+  title: 组件
+group:
+  title: 基础 (组件分类：基础，表单，附件，业务组件，其他，可自行归类或补充)
+  path: /basic
+---
+
+## 组件名
+
+## 代码演示
+
+## API
+```
+
+4. src/index.ts 导出上方自定义组件
+5. src/locale-language/zh-CN.ts, en-US.ts 维护多语言
+
 ## 本地开发注意事项
 
 1. 本地 node 版本建议使用 v12.0.0 （个人使用的是 v14.16.0）以上，否则安装依赖时，dumi 内部无法兼容，导致项目启动报错

@@ -1325,6 +1325,9 @@ class EditTable extends Component {
     // debugger
     if (value === '' || value === undefined) {
       value = null;
+    } else if (value?.constructor === Object) {
+      const isNull = Object.values(value).every((item) => !item);
+      if (isNull) value = null;
     }
     return value;
   };
