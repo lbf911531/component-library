@@ -36,7 +36,7 @@ export { default as BudgetTips } from './components/business-components/budget/b
 export { default as BudgetProgressDetail } from './components/business-components/budget/budget-progress-detail';
 export { default as DocumentBasicInfo } from './components/business-components/document-basic-info';
 export {
-  default as BatchDownLoadAttachments,
+  default as BatchDownloadAttachments,
   transformSelectRows,
   filterAndSetSortIndex,
   AttachmentsWrap,

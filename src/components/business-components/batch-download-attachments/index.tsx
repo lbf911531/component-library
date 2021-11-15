@@ -18,7 +18,7 @@ import './index.less';
 
 const AttachmentsList = AttachmentsWrap(RenderAttachmentsItem);
 
-class BatchDownLoadAttachments extends React.Component<
+class BatchDownloadAttachments extends React.Component<
   BatchDownloadProps,
   BatchDownloadState
 > {
@@ -338,4 +338,4 @@ class BatchDownLoadAttachments extends React.Component<
 
 export { transformSelectRows, filterAndSetSortIndex, AttachmentsWrap };
 
-export default BatchDownLoadAttachments;
+export default BatchDownloadAttachments;
