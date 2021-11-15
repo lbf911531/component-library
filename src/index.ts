@@ -35,7 +35,12 @@ export { default as VoucherTable } from './components/business-components/vouche
 export { default as BudgetTips } from './components/business-components/budget/budget-check-message';
 export { default as BudgetProgressDetail } from './components/business-components/budget/budget-progress-detail';
 export { default as DocumentBasicInfo } from './components/business-components/document-basic-info';
-export { default as BatchDownLoadAttachments } from './components/business-components/batch-download-attachments';
+export {
+  default as BatchDownloadAttachments,
+  transformSelectRows,
+  filterAndSetSortIndex,
+  AttachmentsWrap,
+} from './components/business-components/batch-download-attachments';
 export { default as SelectApplicationType } from './components/business-components/select-application-type';
 export { default as ApproveHistory } from './components/business-components/approve-history';
 export { default as DocumentSubmitBtn } from './components/business-components/document-submit-btn';
