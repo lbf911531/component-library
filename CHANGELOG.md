@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.34](https://github.com/lbf911531/component-library/compare/v1.0.33...v1.0.34) (2021-11-16)
+
 ### [1.0.33](https://github.com/lbf911531/component-library/compare/v1.0.31...v1.0.33) (2021-11-15)
 
 ### [1.0.32]rollup 打包 esm,cjs 发布开发阶段的较稳定版本 (2021-11-09)
