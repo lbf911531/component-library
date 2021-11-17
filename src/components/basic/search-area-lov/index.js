@@ -145,12 +145,10 @@ class SearchAreaLov extends React.Component {
         for (let i = 0; i < tags.length; i++) {
           if (
             tags[i].getElementsByClassName('ant-tag')[0].innerHTML !==
-            messages('common.all', { context: this.context })
+            messages('common.all')
           )
-            tags[i].getElementsByClassName('ant-tag')[0].innerHTML = messages(
-              'common.all',
-              { context: this.context },
-            );
+            tags[i].getElementsByClassName('ant-tag')[0].innerHTML =
+              messages('common.all');
         }
       },
     );
@@ -1037,10 +1035,7 @@ class SearchAreaLov extends React.Component {
 
         return (
           <Input
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             disabled={item.disabled}
             autoComplete="off"
@@ -1057,10 +1052,7 @@ class SearchAreaLov extends React.Component {
             precision={item.precision === undefined ? 2 : item.precision}
             {...min}
             step={item.step === undefined ? 0.01 : item.step}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             disabled={item.disabled}
             onKeyDown={(e) => {
@@ -1079,10 +1071,7 @@ class SearchAreaLov extends React.Component {
         }
         return (
           <Select
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             onChange={handle}
             allowClear={item.allowClear == undefined ? true : item.allowClear}
             disabled={item.disabled}
@@ -1094,7 +1083,7 @@ class SearchAreaLov extends React.Component {
               item.fetching ? (
                 <Spin size="small" />
               ) : (
-                messages('common.no.matching.result', { context: this.context })
+                messages('common.no.matching.result')
               )
             }
             getPopupContainer={this.getParentContainer}
@@ -1123,10 +1112,7 @@ class SearchAreaLov extends React.Component {
       case 'cascader': {
         return (
           <Cascader
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getPopupContainer={this.getParentContainer}
             onChange={handle}
             options={item.options}
@@ -1142,10 +1128,7 @@ class SearchAreaLov extends React.Component {
           <SelectPartLoad
             labelInValue={item.labelInValue}
             allowClear={item.allowClear === undefined ? true : item.allowClear}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             url={item.getUrl}
             params={item.getParams}
             renderOptions={item.renderOptions}
@@ -1165,10 +1148,7 @@ class SearchAreaLov extends React.Component {
       case 'value_list': {
         return (
           <Select
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             onChange={handle}
             allowClear={!item.clear}
             disabled={item.disabled}
@@ -1207,10 +1187,7 @@ class SearchAreaLov extends React.Component {
             onChange={handle}
             disabled={item.disabled}
             showTime={item.showTime}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getCalendarContainer={this.getParentContainer}
           />
         );
@@ -1225,10 +1202,7 @@ class SearchAreaLov extends React.Component {
             onChange={handle}
             disabled={item.disabled}
             showTime={item.showTime}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getCalendarContainer={this.getParentContainer}
           />
         );
@@ -1329,10 +1303,7 @@ class SearchAreaLov extends React.Component {
             labelInValue={!!item.entity}
             showSearch
             allowClear
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             onDropdownVisibleChange={
               item.getUrl
@@ -1376,10 +1347,7 @@ class SearchAreaLov extends React.Component {
           <Select
             mode="multiple"
             labelInValue={!!item.entity}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             filterOption={!item.searchUrl}
             optionFilterProp="children"
             onChange={handle}
@@ -1417,10 +1385,7 @@ class SearchAreaLov extends React.Component {
       case 'list': {
         return (
           <Lov
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             disabled={item.disabled}
             code={item.listType}
             listTitle={item.listTitle}
@@ -1440,10 +1405,7 @@ class SearchAreaLov extends React.Component {
       case 'lov': {
         return (
           <Lov
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             disabled={item.disabled}
             code={item.code}
             onChange={handle}
@@ -1606,8 +1568,8 @@ class SearchAreaLov extends React.Component {
         {this.state.searchForm.length > this.props.maxLength ? (
           <a className="toggle-button" onClick={this.toggle}>
             {this.state.expand
-              ? messages('common.fold', { context: this.context })
-              : messages('common.expand', { context: this.context })}
+              ? messages('common.fold')
+              : messages('common.expand')}
             {this.state.expand ? <UpOutlined /> : <DownOutlined />}
           </a>
         ) : null}
@@ -1619,7 +1581,7 @@ class SearchAreaLov extends React.Component {
             onClick={this.handleSearch}
             loading={this.props.loading}
           >
-            {messages(this.props.okText, { context: this.context })}
+            {messages(this.props.okText)}
           </Button>
         )}
 
@@ -1627,7 +1589,7 @@ class SearchAreaLov extends React.Component {
           ''
         ) : (
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-            {messages(this.props.clearText, { context: this.context })}
+            {messages(this.props.clearText)}
           </Button>
         )}
       </Col>,

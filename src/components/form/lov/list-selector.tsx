@@ -9,6 +9,7 @@ import moment from 'moment';
 import WrapperConnect from '../../custom-connect';
 import { messages, formatMoney } from '../../utils';
 import { IListSelectorProps, ILov, AlignType } from './interface';
+import LocaleContext from '../../locale-lan-provider/context';
 import Lov from './lov';
 
 interface IListSelectorState {
@@ -37,7 +38,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
   static defaultProps = {
     width: 800,
   };
-
+  static contextType = LocaleContext;
   constructor(props: IListSelectorProps) {
     super(props);
     this.state = {
@@ -105,7 +106,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
     if (selectorItem && selectorItem.constructor === Object) {
       selectorItem.columns = selectorItem.columns.map((item: any) => {
         let tempItem = item;
-        tempItem.title = messages(item.title);
+        tempItem.title = messages(item.title, { context: this.context });
         if (item.tooltips) {
           tempItem.render = (value: any) => (
             <Popover content={value}>{value}</Popover>
@@ -174,7 +175,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
 
                 const temp = {
                   ...cur,
-                  title: messages(cur.title),
+                  title: messages(cur.title, { context: this.context }),
                   width: cur.width || 200,
                 };
                 const tempObjAfterAdd = this.addRenderFnc(temp);
@@ -199,7 +200,10 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
                 if (cur.id in tempSearchMap) {
                   return pre;
                 }
-                pre.push({ ...cur, label: messages(cur.label) });
+                pre.push({
+                  ...cur,
+                  label: messages(cur.label, { context: this.context }),
+                });
                 return pre;
               }, []),
             ];
@@ -290,7 +294,7 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
 
     return (
       <Modal
-        title={messages(title || lov?.title)}
+        title={messages(title || lov?.title, { context: this.context })}
         visible={visible}
         bodyStyle={{ maxHeight: '65vh', overflow: 'auto', minHeight: '200px' }}
         onOk={this.onOk}

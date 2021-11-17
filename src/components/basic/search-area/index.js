@@ -272,12 +272,10 @@ class SearchArea extends React.Component {
         for (let i = 0; i < tags.length; i += 1) {
           if (
             tags[i].getElementsByClassName('ant-tag')[0].innerHTML !==
-            messages('common.all', { context: this.context })
+            messages('common.all')
           )
-            tags[i].getElementsByClassName('ant-tag')[0].innerHTML = messages(
-              'common.all',
-              { context: this.context },
-            );
+            tags[i].getElementsByClassName('ant-tag')[0].innerHTML =
+              messages('common.all');
         }
         this.getRangeField(newSearchForm);
       },
@@ -523,9 +521,7 @@ class SearchArea extends React.Component {
       ) {
         message.error(
           `${item.amountTo.label}${
-            messages('common.cannot.be.less.than', {
-              context: this.context,
-            }) /** 不能小于 */
+            messages('common.cannot.be.less.than') /** 不能小于 */
           }${item.amountFrom.label}`,
         );
         result = false;
@@ -1234,10 +1230,7 @@ class SearchArea extends React.Component {
 
         return (
           <Input
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             disabled={item.disabled}
             autoComplete="off"
@@ -1264,10 +1257,7 @@ class SearchArea extends React.Component {
             step={item.step || 0.01}
             formatter={item.formatter || undefined}
             parser={item.parser || undefined}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             disabled={item.disabled}
             onKeyDown={(e) => {
@@ -1289,10 +1279,7 @@ class SearchArea extends React.Component {
           <Select
             mode={item.multiple && 'multiple'} // 支持多选，默认单选
             showArrow
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             onChange={handle}
             allowClear={item.allowClear === undefined ? true : item.allowClear}
             disabled={item.disabled}
@@ -1304,7 +1291,7 @@ class SearchArea extends React.Component {
               item.fetching ? (
                 <Spin size="small" />
               ) : (
-                messages('common.no.matching.result', { context: this.context })
+                messages('common.no.matching.result')
               )
             }
             getPopupContainer={this.getParentContainer}
@@ -1343,10 +1330,7 @@ class SearchArea extends React.Component {
       case 'cascader': {
         return (
           <Cascader
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getPopupContainer={this.getParentContainer}
             onChange={handle}
             options={item.options}
@@ -1360,10 +1344,7 @@ class SearchArea extends React.Component {
       case 'value_list': {
         return (
           <Select
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             onChange={handle}
             allowClear={item.clear}
             disabled={item.disabled}
@@ -1413,10 +1394,7 @@ class SearchArea extends React.Component {
             onChange={handle}
             disabled={item.disabled}
             showTime={item.showTime}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getCalendarContainer={this.getParentContainer}
             disabledDate={(cur) => {
               const lowerLimit =
@@ -1451,10 +1429,7 @@ class SearchArea extends React.Component {
             format={item.format || formatValue}
             disabled={item.disabled}
             showTime={item.showTime}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getPopupContainer={this.getParentContainer}
             className={`item${unique}-${item.id}`}
             allowClear={item.allowClear === undefined ? true : item.allowClear}
@@ -1551,10 +1526,7 @@ class SearchArea extends React.Component {
                 isopen: false,
               });
             }}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             getPopupContainer={this.getParentContainer}
             disabledDate={(cur) => {
               const lowerLimit =
@@ -1651,10 +1623,7 @@ class SearchArea extends React.Component {
             labelInValue={!!item.entity}
             showSearch
             allowClear={item.allowClear !== false}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             onChange={handle}
             onDropdownVisibleChange={
               item.getUrl
@@ -1698,10 +1667,7 @@ class SearchArea extends React.Component {
           <SelectPartLoad
             labelInValue={item.labelInValue}
             allowClear={item.allowClear === undefined ? true : item.allowClear}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.enter', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.enter')}
             url={item.getUrl}
             params={item.getParams}
             renderOptions={item.renderOptions}
@@ -1726,10 +1692,7 @@ class SearchArea extends React.Component {
           <Select
             mode="multiple"
             labelInValue={!!item.entity}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             filterOption={!item.searchUrl}
             optionFilterProp="children"
             onChange={handle}
@@ -1767,10 +1730,7 @@ class SearchArea extends React.Component {
       case 'list': {
         return (
           <Lov
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             disabled={item.disabled}
             code={item.listType}
             listTitle={item.listTitle}
@@ -1798,10 +1758,7 @@ class SearchArea extends React.Component {
       case 'lov': {
         return (
           <Lov
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             disabled={item.disabled}
             code={item.code}
             onChange={handle}
@@ -1830,10 +1787,7 @@ class SearchArea extends React.Component {
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             treeData={item.treeData}
             onChange={handle}
-            placeholder={
-              item.placeholder ||
-              messages('common.please.select', { context: this.context })
-            }
+            placeholder={item.placeholder || messages('common.please.select')}
             allowClear={item.allowClear === undefined ? true : item.allowClear}
             disabled={item.disabled}
           />
@@ -1988,9 +1942,7 @@ class SearchArea extends React.Component {
         {searchForm.length + (extraFields ? extraFields.length : 0) >
         defaultLength ? (
           <a className="toggle-button" onClick={this.toggle}>
-            {expand
-              ? messages('common.fold', { context: this.context })
-              : messages('common.expand', { context: this.context })}
+            {expand ? messages('common.fold') : messages('common.expand')}
             {expand ? <UpOutlined /> : <DownOutlined />}
           </a>
         ) : null}
@@ -1999,12 +1951,12 @@ class SearchArea extends React.Component {
         ) : isPopconfirmFlag ? (
           <Popconfirm onConfirm={this.handleSearch} title={title}>
             <Button type="primary" loading={loading}>
-              {messages(okText, { context: this.context })}
+              {messages(okText)}
             </Button>
           </Popconfirm>
         ) : (
           <Button type="primary" onClick={this.handleSearch} loading={loading}>
-            {messages(okText, { context: this.context })}
+            {messages(okText)}
           </Button>
         )}
 
@@ -2012,7 +1964,7 @@ class SearchArea extends React.Component {
           ''
         ) : (
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-            {messages(clearText, { context: this.context })}
+            {messages(clearText)}
           </Button>
         )}
       </Col>,

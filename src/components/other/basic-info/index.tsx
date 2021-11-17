@@ -278,7 +278,7 @@ class BasicInfo extends React.Component<IProps, IState> {
           text={
             infoData[item.id]
               ? messages('common.enabled') /* 启用 */
-              : messages('common.disable') /* 禁用 */
+              : messages('common.disabled') /* 禁用 */
           }
         />
       );
@@ -294,7 +294,7 @@ class BasicInfo extends React.Component<IProps, IState> {
             &nbsp;&nbsp;
             {infoData[item.id]
               ? messages('common.enable')
-              : messages('common.disable')}
+              : messages('common.disabled')}
           </span>
         </span>
       );
