@@ -20,23 +20,23 @@ cat >> /etc/nginx/conf.d/hly-admin.conf <<EOF
     proxy_read_timeout 600;
 
     location /base/ {
-      proxy_pass http://49.235.130.71:3000/base/;
+      proxy_pass $server/base/;
     }
 
     location /workflow/ {
-      proxy_pass http://49.235.130.71:3000/workflow/;
+      proxy_pass $server/workflow/;
     }
 
     location /file/ {
-      proxy_pass http://49.235.130.71:3000/file/;
+      proxy_pass $server/file/;
     }
 
     location /budget/ {
-      proxy_pass http://49.235.130.71:3000/budget/;
+      proxy_pass $server/budget/;
     }
 
     location /expense/ {
-      proxy_pass http://49.235.130.71:3000/expense/;
+      proxy_pass $server/expense/;
     }
 
     location / {
