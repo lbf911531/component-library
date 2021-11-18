@@ -36,7 +36,7 @@ export const Banner50DataSource = {
         name: 'button',
         className: 'banner5-button-wrapper',
         children: {
-          href: '/#/components/basic/custom-table',
+          href: '/#/components/',
           className: 'banner5-button',
           type: 'primary',
           children: '开始使用',
