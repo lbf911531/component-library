@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-09-22 10:23:48
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-04 16:38:22
+ * @LastEditTime: 2021-11-22 10:37:28
  * @Version: 1.0.0
  * @Description: 弹窗 树形展示 公司数据，
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -15,7 +15,7 @@ import config from 'config';
 import { CloseOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { messages } from '../../../../utils';
 import SearchAreaLov from '../../../../basic/search-area-lov';
-import useWidthAdaptation from '../../useWidth';
+// import useWidthAdaptation from '../../useWidth';
 import './style.less';
 
 const ALL = 'all';
@@ -113,6 +113,7 @@ function TreeSelectModel(props) {
   const [valueText, setValueText] = useState('');
   // 当存在父级节点时，记录父级的子级个数，与当前勾选情况，从而方便自定义check方法时能联动
   const parentValueKeyMap = useRef({});
+  const spanRef = useRef();
 
   const [pageInfo, setPageInfo] = useState({
     size: 10,
@@ -125,11 +126,11 @@ function TreeSelectModel(props) {
     const checkedList = !searchParam.withChildren
       ? { checked: temp, halfChecked: [] }
       : temp;
-    setValueText(
-      Array.isArray(value)
-        ? messages('base.has.choose.count', { count: value.length })
-        : undefined,
-    );
+    const string = Array.isArray(value)
+      ? messages('base.has.choose.count', { count: value.length })
+      : undefined;
+    setValueText(string);
+    spanRef.current.innerText = string || '全部';
     setSelectedList(checkedList);
   }, [value]);
 
@@ -159,7 +160,7 @@ function TreeSelectModel(props) {
     }
   }, [visible]);
 
-  const width = useWidthAdaptation(30, valueText, 0);
+  // useWidthAdaptation(30, valueText || "全部", 0, null, spanRef);
   /**
    * 控制弹窗显隐
    * @returns
@@ -352,7 +353,9 @@ function TreeSelectModel(props) {
 
   function handleSubmit() {
     let checkedList = selectedList;
-    checkedList = Array.from(new Set(checkedList));
+    checkedList = Array.isArray(checkedList)
+      ? Array.from(new Set(checkedList))
+      : undefined;
     if (checkedList?.length > 1000) {
       message.error(
         messages('base.selected.limit.warning' /* 所选公司不能超过1000 */),
@@ -446,14 +449,20 @@ function TreeSelectModel(props) {
   return (
     <div className="tree-select-model">
       <span className="label">{label}</span>
-      <span className="value inputValue">
+      <span className="value inputValue position-relative">
+        <span
+          className="inputSpanText"
+          ref={spanRef}
+          style={{ padding: 0, minWidth: 30 }}
+        />
         <Input
           placeholder={messages('common.all')}
           disabled={disabled}
           autoComplete="off"
           ref={inputRef}
           onFocus={onInputFocus}
-          style={{ width }}
+          className="position-absolute"
+          style={{ left: 10 }}
           value={valueText}
           bordered={false}
         />
@@ -485,11 +494,12 @@ function TreeSelectModel(props) {
       <Modal
         visible={visible}
         title={messages(modalTitle || 'chooser.data.company')}
-        width={600}
+        width={580}
         onOk={handleSubmit}
         onCancel={handleClose}
         wrapClassName="ts-model"
         destroyOnClose
+        bodyStyle={{ maxHeight: 545 }}
       >
         <div className="ts-model-search-area">
           <SearchAreaLov
@@ -498,7 +508,7 @@ function TreeSelectModel(props) {
             submitHandle={handleSearch}
             clearHandle={handleClearSearchParams}
             maxLength={1}
-            btnCol={10}
+            btnCol={12}
           />
         </div>
         <Spin spinning={spinning}>
@@ -515,27 +525,24 @@ function TreeSelectModel(props) {
               expandedKeys={expandedKeys}
               onExpand={setExpandedKeys}
             />
-            <Pagination
-              size="small"
-              total={pageInfo.total}
-              current={pageInfo.current}
-              onChange={onPaginationChange}
-              style={{ margin: 10 }}
-              showTotal={(total, range) =>
-                messages('common.show.total', {
-                  params: {
-                    range0: `${range[0]}`,
-                    range1: `${range[1]}`,
-                    total,
-                  },
-                })
-              }
-              pageSizeOptions={['5', '10', '20', '50', '100', '200', '500']}
-              // showSizeChanger
-              // showQuickJumper
-            />
           </div>
         </Spin>
+        <Pagination
+          showLessItems
+          size="small"
+          total={pageInfo.total}
+          current={pageInfo.current}
+          onChange={onPaginationChange}
+          style={{ margin: 10 }}
+          showTotal={(total, range) =>
+            messages('common.show.total', {
+              range0: `${range[0]}`,
+              range1: `${range[1]}`,
+              total,
+            })
+          }
+          pageSizeOptions={['5', '10', '20', '50', '100', '200', '500']}
+        />
       </Modal>
     </div>
   );

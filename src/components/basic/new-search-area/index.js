@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-05 14:32:51
+ * @LastEditTime: 2021-11-22 10:27:59
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -25,7 +25,6 @@ import {
   Divider,
   Row,
   Col,
-  Input,
   message,
   Button,
   Menu,
@@ -72,6 +71,7 @@ function SearchArea(props) {
     refInstance,
     uniqueKey,
     selectAll = true,
+    hideDynamicSelFieldBtn = false,
   } = props;
 
   // 切换与旋转的参数
@@ -241,11 +241,19 @@ function SearchArea(props) {
    * 清空 搜索区条件
    */
   function clearHandle() {
-    const originSearchFormValue = {};
+    const originSearchFormValue = extraSearch
+      ? {
+          [extraSearch.id]: undefined,
+        }
+      : {};
     if (originSearchForm.current.length === searchForm.length) {
       // originSearchForm 如果与 searchForm 的长度一样，代表没有动态新添加字段
       flattenArray(originSearchForm.current).forEach((item) => {
-        originSearchFormValue[item.id] = item.defaultValue;
+        originSearchFormValue[item.id] = item.defaultValue?.key
+          ? item.defaultValue.key
+          : item.defaultValue?.value
+          ? item.defaultValue.value
+          : item.defaultValue;
       });
     } else {
       // 如果不一样长，则代表新添加了字段，这里只能将新添加字段的值直接清空，不能像原本就有的字段那样能回到初始默认值
@@ -477,7 +485,7 @@ function SearchArea(props) {
     e,
     isSearch = true,
     curSolution,
-    mixParams = {},
+    mixParams = { lastSize: undefined, lastPage: undefined },
     noCache = false,
   ) {
     if (e) e.preventDefault();
@@ -972,12 +980,14 @@ function SearchArea(props) {
         style={{ marginTop: 3 }}
       >
         {handleRenderFormItem(field.item)}
-        <CircleCloseSvg
-          className="delete-icon"
-          onClick={() => {
-            handleDeleteDefaultField(field.item.id);
-          }}
-        />
+        {hideDynamicSelFieldBtn || field.extraSearch ? null : (
+          <CircleCloseSvg
+            className="delete-icon"
+            onClick={() => {
+              handleDeleteDefaultField(field.item.id);
+            }}
+          />
+        )}
       </span>
     );
   }
@@ -1672,6 +1682,18 @@ function SearchArea(props) {
       : undefined;
   }
 
+  function handleRenderExtraSearch() {
+    const field = { item: { ...extraSearch }, value: undefined };
+    field.item.type = 'input';
+    field.item.col = 6;
+    field.extraSearch = true;
+    return (
+      <div className="default-field-form-items">
+        {renderDefaultField(field)}
+      </div>
+    );
+  }
+
   return (
     <div
       className={expand ? 'search-area expand' : 'search-area'}
@@ -1824,22 +1846,7 @@ function SearchArea(props) {
         </Row>
         <Row style={{ display: expand ? 'flex' : 'none', marginTop: -3 }}>
           {/* 渲染额外输入搜索框 */}
-          {extraSearch && (
-            <Form.Item
-              style={{ margin: '0 8px 0 0', width: 'unset' }}
-              name={extraSearch.id}
-            >
-              <Input
-                style={{ width: 180 }}
-                placeholder={
-                  extraSearch.placeholder || messages('common.please.enter')
-                }
-                suffix={<SearchOutlined onClick={handleSearch} />}
-                onPressEnter={handleSearch}
-                allowClear
-              />
-            </Form.Item>
-          )}
+          {extraSearch && handleRenderExtraSearch()}
           {/* 渲染固定字段 */}
           <div className="fixed-field-form-items">
             {handleRenderFixedFields()}
@@ -1847,12 +1854,14 @@ function SearchArea(props) {
           <div className="default-field-form-items">
             {handleRenderDefaultFields()}
           </div>
-          <DynamicSelFieldBtn
-            columns={dySearchForm}
-            onResetDynamicCols={resetDynamicCols}
-            defaultSelected={getDefaultFieldsWhenInSet()}
-            ref={filterBtn}
-          />
+          {hideDynamicSelFieldBtn ? null : (
+            <DynamicSelFieldBtn
+              columns={dySearchForm}
+              onResetDynamicCols={resetDynamicCols}
+              defaultSelected={getDefaultFieldsWhenInSet()}
+              ref={filterBtn}
+            />
+          )}
         </Row>
       </Form>
       <NewFilterConditions

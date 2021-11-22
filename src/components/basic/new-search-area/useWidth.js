@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-08-19 15:58:37
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-02 16:33:01
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-11-22 10:31:54
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -15,6 +15,7 @@ export default function useWidthAdaptation(
   value,
   padding = 8,
   fn,
+  refInstance,
 ) {
   const [curWidth, setWidth] = useState(defaultWidth);
 
@@ -22,6 +23,9 @@ export default function useWidthAdaptation(
     let lastValue = value;
     if (typeof fn === 'function') {
       lastValue = fn();
+    }
+    if (refInstance) {
+      return;
     }
     if (lastValue) {
       let eDiv = document.createElement('span');
