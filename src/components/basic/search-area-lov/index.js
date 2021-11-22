@@ -1477,7 +1477,7 @@ class SearchAreaLov extends React.Component {
                     rules={[
                       {
                         required: searchItem.isRequired,
-                        message: messages('common.can.not.be.empty', {
+                        message: messages('common.no.empty', {
                           params: { name: searchItem.label },
                           context: this.context,
                         }), //name 不可为空
@@ -1539,7 +1539,7 @@ class SearchAreaLov extends React.Component {
                   : [
                       {
                         required: item.isRequired,
-                        message: messages('common.can.not.be.empty', {
+                        message: messages('common.no.empty', {
                           params: { name: item.label },
                           context: this.context,
                         }), //name 不可为空

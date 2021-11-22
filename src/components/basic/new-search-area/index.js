@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-22 10:27:59
+ * @LastEditTime: 2021-11-22 11:29:07
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -328,8 +328,10 @@ function SearchArea(props) {
           rules={[
             {
               required: formItem.isRequired,
-              message: messages('common.can.not.be.empty', {
-                name: formItem.label,
+              message: messages('common.no.empty', {
+                params: {
+                  name: formItem.label,
+                },
               }), // name 不可为空
             },
             ...(formItem.validator
