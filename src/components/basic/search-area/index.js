@@ -1556,9 +1556,8 @@ class SearchArea extends React.Component {
         );
       }
       // 单日期组成的日期选择框
-      case 'rangePickerInput': {
-        return null;
-      }
+      case 'rangePickerInput':
+        break;
       // 日期范围组件，可选时分秒
       case 'rangeDateTimePicker': {
         return (

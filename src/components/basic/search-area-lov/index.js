@@ -1010,16 +1010,14 @@ class SearchAreaLov extends React.Component {
     switch (item.type) {
       case 'img': {
         return (
-          <div>
-            <ImageUpload
-              pkName="INVOICE_IMAGES"
-              defaultFileList={[]}
-              onChange={(file) => {
-                this.handleUploadImageChange(file, item.id);
-              }}
-              maxNum={1}
-            />
-          </div>
+          <ImageUpload
+            pkName="INVOICE_IMAGES"
+            defaultFileList={[]}
+            onChange={(file) => {
+              this.handleUploadImageChange(file, item.id);
+            }}
+            maxNum={1}
+          />
         );
       }
       //输入组件
