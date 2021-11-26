@@ -300,7 +300,7 @@ class RenderUploadFileItem extends React.Component {
           />
         )}
 
-        {attachment && attachment.id && attachment.fileType.includes('zip') && (
+        {attachment && attachment.id && attachment.fileType?.includes('zip') && (
           <ZipFileView
             {...this.props}
             onClose={() => {

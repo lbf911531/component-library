@@ -56,7 +56,7 @@ function CustomInput(props) {
           style={{ minWidth: 64 }}
         />
         <Input
-          placeholder={messages('base.please.enter' /* 请输入... */)}
+          placeholder={messages('common.please.enter...' /* 请输入... */)}
           onChange={dynamicChangeSize}
           disabled={disabled}
           autoComplete="off"

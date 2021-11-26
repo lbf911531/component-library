@@ -55,7 +55,7 @@ export default function CustomInputNumber(props) {
           step={step || 0.01}
           formatter={formatter || undefined}
           parser={parser || undefined}
-          placeholder={messages('base.please.enter' /* 请输入... */)}
+          placeholder={messages('common.please.enter...' /* 请输入... */)}
           onChange={onChange}
           disabled={disabled}
           onKeyDown={(e) => {
