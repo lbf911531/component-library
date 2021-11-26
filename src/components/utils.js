@@ -133,12 +133,6 @@ export function messages(title, config = defaultConfig) {
   const curLocale = locale || context.locale;
   let lang = defaultLocaleMap[curLocale]?.[title];
   if (!lang) lang = context.localeMap[curLocale]?.[title];
-  if (!lang) {
-    // 理论上，只要组件内部调用messages方法时，给了context属性则一定不会走到这里
-    // 如果还没有，则判断window.localStorage是否有（这里的缓存来自项目）
-    lang = JSON.parse(window.localStorage.getItem('message_cache') || '{}')
-      ?.value?.[title];
-  }
   // console.log('locale:', context.locale, locale);
   if (!lang) return title;
   if (params) {

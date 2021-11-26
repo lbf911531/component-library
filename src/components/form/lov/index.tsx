@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import moment from 'moment';
 //@ts-ignore
 import config from 'config';
@@ -10,6 +10,7 @@ import WrapperConnect from '../../custom-connect';
 import SelectPartLoad from '../select-part-load';
 import { IProps, AlignType, ILov } from './interface';
 import OriginLov from './entry';
+import LocaleContext from '../../locale-lan-provider/context';
 
 /**
  * TODO:
@@ -18,6 +19,7 @@ import OriginLov from './entry';
  */
 
 function CompatibleLov(props: IProps) {
+  const context = useContext(LocaleContext);
   const { code, selectorItem, isRenderSelect = true } = props;
   const [lov, setLov] = useState<ILov>({ columns: [], url: '' });
   const renderMap = {
@@ -74,7 +76,7 @@ function CompatibleLov(props: IProps) {
 
     selectorItem.columns = (selectorItem?.columns || []).map((item: any) => {
       let tempItem = item;
-      tempItem.title = messages(item.title);
+      tempItem.title = messages(item.title, { context });
       if (item.tooltips) {
         tempItem.render = (value: string | number) => (
           <Popover content={value}>{value}</Popover>
