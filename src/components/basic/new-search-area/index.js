@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-22 17:17:35
+ * @LastEditTime: 2021-11-29 18:01:42
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -1879,6 +1879,4 @@ function SearchArea(props) {
   );
 }
 
-export default WrapperForm(
-  forwardRef((props, ref) => <SearchArea {...props} refInstance={ref} />),
-);
+export default WrapperForm(SearchArea);
