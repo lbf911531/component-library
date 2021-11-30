@@ -65,6 +65,11 @@ export default function NewSearchAreaDemo() {
       labelKey: 'name',
       label: '员工',
     },
+    {
+      type: 'inputNumber',
+      id: 'num',
+      label: '数值',
+    },
   ]);
 
   function handleSubmit(values) {
