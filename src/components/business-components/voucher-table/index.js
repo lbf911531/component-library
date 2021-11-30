@@ -7,7 +7,7 @@ import config from 'config';
 import moment from 'moment';
 import httpFetch from 'share/httpFetch';
 import { messages } from '../../utils';
-import CustomTable from '../../basic/table';
+import CustomTable from '../../basic/custom-table';
 
 class VoucherTable extends Component {
   constructor(props) {
