@@ -68,7 +68,7 @@ export default function NewSearchAreaDemo() {
   ]);
 
   function handleSubmit(values) {
-    // console.log(searchAreaRef.current,'searchAreaRef.current')
+    console.log(searchAreaRef.current, 'searchAreaRef.current');
     console.log(values);
   }
 
