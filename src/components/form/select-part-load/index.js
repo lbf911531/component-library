@@ -89,6 +89,7 @@ class SelectPartLoad extends Component {
       searchKey,
       labelKey,
       extraOptionList,
+      listExtraParams,
     } = curProps || this.props;
     const {
       page: statePage,
@@ -103,6 +104,7 @@ class SelectPartLoad extends Component {
     const queryParams = {
       ...(params || {}),
       ...searchParams,
+      ...listExtraParams,
       page,
       size,
     };
@@ -308,8 +310,9 @@ class SelectPartLoad extends Component {
 
   onDropdownVisibleChange = (isOpen) => {
     const { options, searchText, forceGetList } = this.state;
-    const { showSearch } = this.props;
+    const { showSearch, beforeOpen } = this.props;
     if (isOpen) {
+      if (beforeOpen) beforeOpen();
       this.setState({ open: true, searchText: null });
       if (!options.length || forceGetList) {
         const { forceGetList: propsGet } = this.props;
@@ -470,6 +473,11 @@ class SelectPartLoad extends Component {
       e.preventDefault();
       e.stopPropagation();
     }
+  };
+
+  // 给外部用来 聚焦 select的
+  handleFocus = () => {
+    this.selectRef.focus();
   };
 
   render() {

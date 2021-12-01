@@ -153,6 +153,7 @@ export default function EditTableDemo() {
    （原组件内部只设置 valueMap 有隐藏的 bug，因此增加额外辅助字段，用法如下代码：）
 4. 增加 ` hiddenEditMore` 属性，配置后，可编辑表格左侧的最左侧的操作栏 icon 不会默认显示，得搭配 `editWithCellFlag` 一起使用，单用无效
 5. render 方法拆分为 renderEditCell 和 renderNormalCell 属性，提供分别自定义 可编辑状态下以及常态下的单元格，也可继续使用之前的 render 方法
+6. 更新下拉操作栏中需要气泡确认框的操作，在 optionMap 中配置 isPopConfirm 以及 title 属性
 
 ## editWithCellFlag,hiddenEditMore 的使用
 
@@ -177,6 +178,8 @@ export default function EditTableDemo() {
         disabled: false,
         disabled: (record) => !record.detail  // disabled 可传入一个方法，去根据 record 的值进行判断与计算
         event: (value, record) => { this.detailClick(record) },
+        isPopConfirm: true,		// 如果需要配置气泡确认框，配置该属性
+        title: messages('workbench.initializing.credit.management.will.empt.di18n'),	// 如果配置了气泡确认框，必须配置该项，代表气泡确认框的提示
       },
     }}
   />

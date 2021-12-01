@@ -29,6 +29,8 @@ function CustomLov(props) {
     isRenderSelect,
     valueKeySelect,
     labelKeySelect,
+    listType,
+    listExtraParams,
   } = props;
 
   const input = useRef();
@@ -103,7 +105,7 @@ function CustomLov(props) {
       }}
     >
       <Lov
-        code={code}
+        code={code || listType}
         onChange={onChange}
         value={value}
         labelKey={labelKey}
@@ -136,6 +138,7 @@ function CustomLov(props) {
         searchList={searchList}
         searchListIndex={searchListIndex}
         isRenderSelect={isRenderSelect}
+        listExtraParams={listExtraParams}
       />
     </div>
   );

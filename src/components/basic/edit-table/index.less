@@ -242,18 +242,26 @@
         display: inline-block;
       }
     }
-    .ant-input-group {
-      margin-top: -5px; // 取消 可编辑表格垂直居中后，ant-input-group 会下沉 5px
+    // .ant-input-group {
+    //   margin-top: -5px; // 取消 可编辑表格垂直居中后，ant-input-group 会下沉 5px
 
-      .ant-input-search-button {
-        height: 31px !important; // 取消 可编辑表格垂直居中后，按钮会超出 1px，强行设置成 31px 才没问题
-      }
+    //   .ant-input-search-button {
+    //     height: 31px !important; // 取消 可编辑表格垂直居中后，按钮会超出 1px，强行设置成 31px 才没问题
+    //   }
+    // }
+    .ant-input-group-wrapper {
+      vertical-align: middle;
     }
   }
   .custom-td-style {
-    overflow: unset; // 搭配上面的 ant-input-group 的 -5px，才不会被遮挡
+    // overflow: unset; // 搭配上面的 ant-input-group 的 -5px，才不会被遮挡
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    .ant-input-number {
+      width: 100%;
+    }
   }
   .edit-table-over-range {
     overflow: hidden;

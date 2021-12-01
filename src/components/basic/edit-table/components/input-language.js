@@ -72,8 +72,9 @@ function CustomInput(props) {
   function handleChange(result) {
     onChange(result);
     if (lock.current) {
-      const { afterBlur } = props;
-      afterBlur(result, cellKey);
+      // const { afterBlur } = props;
+      // afterBlur(result, cellKey);
+      input.current.focus();
       lock.current = false;
     }
   }
