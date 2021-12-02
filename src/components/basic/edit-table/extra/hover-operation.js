@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-06-10 10:29:49
- * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-10 17:15:08
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-12-01 10:48:15
  * @Version: 1.0.0
  * @Description: 滑入表格行，展示可操作下拉菜单
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -93,6 +93,10 @@ export default function HoverOperation(props) {
     if (onCopy) onCopy(row, rowIndex);
   }
 
+  function handleCustomEvent(customEvent, eventValue, eventRecord) {
+    customEvent(eventValue, eventRecord);
+  }
+
   const notNormal = ['NEW', 'EDIT'].includes(record._status);
   const isHideDelete =
     typeof hideDelete === 'function' ? hideDelete(record) : hideDelete;
@@ -112,42 +116,71 @@ export default function HoverOperation(props) {
           {Object.keys(eventMap).map((menu) => {
             if (!eventMap[menu] || menu === DELETE) return null;
             const lastEventMap = lastEventConfig(menu);
-            const { label, disabled, hidden } = lastEventMap;
+            const {
+              label,
+              disabled,
+              hidden,
+              isPopConfirm,
+              title,
+              event: customEvent,
+            } = lastEventMap;
             const isHidden =
               typeof hidden === 'function' ? hidden(record) : hidden;
             if (isHidden) return null;
             const forbidden =
               typeof disabled === 'function' ? disabled(record) : disabled;
-            return (
-              <Menu.Item key={menu} disabled={forbidden}>
-                {label}
-              </Menu.Item>
-            );
+            if (isPopConfirm) {
+              return (
+                <div onClick={(e) => e.stopPropagation()}>
+                  <Popconfirm
+                    title={title} /** 确认删除？ */
+                    okText={messages('common.ok')} /** 确认 */
+                    cancelText={messages('common.cancel')} /** 取消 */
+                    onConfirm={() => {
+                      handleCustomEvent(customEvent, value, record);
+                    }}
+                    destroyTooltipOnHide
+                  >
+                    <Menu.Item key={menu} disabled={forbidden}>
+                      {label}
+                    </Menu.Item>
+                  </Popconfirm>
+                </div>
+              );
+            } else
+              return (
+                <Menu.Item key={menu} disabled={forbidden}>
+                  {label}
+                </Menu.Item>
+              );
           })}
+
           {
             // 删除
             eventMap[DELETE] && !isHideDelete && (
               <>
                 <Menu.Divider />
-                <Popconfirm
-                  title={messages('common.delete.warning')} /** 确认删除？ */
-                  okText={messages('common.ok')} /** 确认 */
-                  cancelText={messages('common.cancel')} /** 取消 */
-                  onConfirm={handleDelete}
-                  destroyTooltipOnHide
-                >
-                  <Menu.Item
-                    key={DELETE}
-                    disabled={
-                      typeof eventMap[DELETE].disabled === 'function'
-                        ? eventMap[DELETE].disabled(record)
-                        : eventMap[DELETE].disabled
-                    }
-                    className="drop-down-menu-delete"
+                <div onClick={(e) => e.domEvent.stopPropagation()}>
+                  <Popconfirm
+                    title={messages('common.delete.warning')} /** 确认删除？ */
+                    okText={messages('common.ok')} /** 确认 */
+                    cancelText={messages('common.cancel')} /** 取消 */
+                    onConfirm={handleDelete}
+                    destroyTooltipOnHide
                   >
-                    {eventMap[DELETE].label}
-                  </Menu.Item>
-                </Popconfirm>
+                    <Menu.Item
+                      key={DELETE}
+                      disabled={
+                        typeof eventMap[DELETE].disabled === 'function'
+                          ? eventMap[DELETE].disabled(record)
+                          : eventMap[DELETE].disabled
+                      }
+                      className="drop-down-menu-delete"
+                    >
+                      {eventMap[DELETE].label}
+                    </Menu.Item>
+                  </Popconfirm>
+                </div>
               </>
             )
           }

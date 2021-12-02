@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-09-06 19:30:22
- * @LastEditTime: 2021-11-10 14:55:24
- * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-12-01 10:47:21
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \companyCode\polaris-web-mdata\polaris-web-mdata\src\components\Widget\Template\edit-table\components\select-part-load.js
  */
@@ -26,11 +26,17 @@ function CustomSelectPartLoad(props) {
   } = props;
 
   const input = useRef();
+  const lock = useRef(false);
+
   useEffect(() => {
     if (cellStatusMap[cellKey] && input.current?.selectRef) {
       input.current?.selectRef.focus();
     }
   }, [cellStatusMap[cellKey]]);
+
+  function handleBeforeOpen() {
+    lock.current = true;
+  }
 
   function handleFocus() {
     if (disabled || !editWithCellFlag) return;
@@ -41,10 +47,19 @@ function CustomSelectPartLoad(props) {
   function handleBlur(e, open) {
     const { afterBlur, onBlur } = props;
     if (!open) {
+      if (lock.current) return;
       if (onBlur) {
         onBlur(e);
       }
       afterBlur(value, cellKey);
+    }
+  }
+
+  function handleChange(result) {
+    onChange(result);
+    if (lock.current) {
+      input.current.handleFocus();
+      lock.current = false;
     }
   }
 
@@ -72,12 +87,13 @@ function CustomSelectPartLoad(props) {
     <SelectPartLoad
       {...props}
       params={{ ...(params || {}), ...(getParams || {}) }}
-      onChange={onChange}
+      onChange={handleChange}
       value={value || undefined}
       disabled={disabled}
       placeholder={placeholder || messages('common.please.select')}
       ref={input}
       onBlur={handleBlur}
+      beforeOpen={handleBeforeOpen}
     />
   );
 }
