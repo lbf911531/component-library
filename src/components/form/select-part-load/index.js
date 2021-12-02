@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Select, Spin, Pagination, Tag, Space, Tooltip, Input } from 'antd';
 import httpFetch from 'share/httpFetch';
 import _ from 'lodash';
+import { messages } from '../../utils';
 import CloseSvg from './images/close';
 import SearchSvg from './images/search';
+import MultipleOptionsRender from './multipleOptionsRender';
 import './index.less';
 
 class SelectPartLoad extends Component {
@@ -131,6 +133,27 @@ class SelectPartLoad extends Component {
       // post请求，且有额外参数要放到请求头上，那么将flag置为true,在axios上传第五参数
     }
 
+    if (!url) {
+      let extraOptions = [];
+      if (
+        Array.isArray(extraOptionList) &&
+        searchField &&
+        (!showPagination || page === 0)
+      ) {
+        extraOptions = searchText
+          ? extraOptionList.filter((item) =>
+              String(item[searchField]).includes(searchText),
+            )
+          : extraOptionList;
+      }
+      this.setState({
+        options: extraOptions,
+        canLoadMore: false,
+        loading: false,
+      });
+      return;
+    }
+
     httpFetch[method](
       url,
       requestBody,
@@ -140,7 +163,7 @@ class SelectPartLoad extends Component {
     )
       .then((res) => {
         if (!Array.isArray(res.data) || curTimes !== this.fetchTimes) return;
-        const total = Number(res.headers['x-total-count']) || 0;
+        const total = Number(res.headers['x-total-count'] || 0);
         const replaceOrAdd = showPagination || flag;
 
         let extraOptions = [];
@@ -161,14 +184,14 @@ class SelectPartLoad extends Component {
         this.allOptions = (this.allOptions || []).concat(res.data);
 
         const curTotal = Math.round((page + 1) * size);
-        const canLoadMore = total ? total > curTotal : res.data.length === size;
+        const canLoadMore = total ? total > curTotal : false;
         this.canGetList = true;
         this.setState({
           options: curData,
           extraOptions,
           loading: false,
           canLoadMore,
-          total,
+          total: total || curData.length,
           page,
           size,
         });
@@ -191,25 +214,24 @@ class SelectPartLoad extends Component {
   };
 
   dropdownRender = (menu) => {
-    const { loading, total, page } = this.state;
+    const { loading, total, page, options, extraOptions } = this.state;
     const { showPagination, showSearch } = this.props;
-
+    const hasData = !![...options, ...extraOptions].length;
     return (
       <div className="custom-dropdown-wrap">
         {showSearch && (
           <div
             className="select-dropdown-title"
             style={{
-              padding: '5px 12px 4px',
+              padding: '5px 16px 4px',
               borderBottom: '1px solid #f0f0f0',
             }}
+            onKeyDown={(e) => e.stopPropagation()}
           >
             <Input
               prefix={<SearchSvg style={{ marginRight: 8 }} />}
-              placeholder="搜索"
-              onChange={(e) => {
-                this.onSearch(e.target.value);
-              }}
+              placeholder={messages('common.search' /* 搜索 */)}
+              onChange={(e) => this.onSearch(e.target.value)}
               ref={(ref) => {
                 this.searchInput = ref;
               }}
@@ -222,7 +244,13 @@ class SelectPartLoad extends Component {
             />
           </div>
         )}
-        <Spin spinning={!!showPagination && loading}>{menu}</Spin>
+        {hasData ? (
+          <Spin spinning={!!showPagination && loading}>{menu}</Spin>
+        ) : (
+          <div className="empty-tips">
+            {messages('common.no.matching.result' /* 无匹配结果 */)}
+          </div>
+        )}
         <div
           style={{ lineHeight: '30px' }}
           onMouseDown={(e) => e.preventDefault()}
@@ -251,6 +279,7 @@ class SelectPartLoad extends Component {
     const {
       valueKey,
       labelKey,
+      labelKeySelect,
       renderOptions,
       componentType,
       optionLabelProp,
@@ -260,7 +289,7 @@ class SelectPartLoad extends Component {
       return renderOptions(currentOptions);
     } else {
       return currentOptions.map((item) => {
-        const label = this.getLabel(labelKey, item);
+        const label = this.getLabel(labelKeySelect || labelKey, item);
         return (
           <Select.Option
             key={item[valueKey]}
@@ -310,34 +339,78 @@ class SelectPartLoad extends Component {
 
   onDropdownVisibleChange = (isOpen) => {
     const { options, searchText, forceGetList } = this.state;
-    const { showSearch, beforeOpen } = this.props;
+    const { showSearch, mode, beforeOpen } = this.props;
     if (isOpen) {
       if (beforeOpen) beforeOpen();
       this.setState({ open: true, searchText: null });
       if (!options.length || forceGetList) {
         const { forceGetList: propsGet } = this.props;
         this.setState(
-          { page: 0, total: 0, options: [], forceGetList: propsGet },
+          {
+            page: 0,
+            total: 0,
+            options: [],
+            forceGetList: propsGet,
+          },
           () => {
             this.getList();
           },
         );
       }
       showSearch &&
+        mode !== 'multiple' &&
         setTimeout(() => {
           // 有搜索框才聚焦
-          this.searchInput.focus(); // 打开页面 下拉框中搜索框聚焦
+          this.searchInput?.focus?.(); // 打开页面 下拉框中搜索框聚焦
         }, 300);
     } else {
       this.setState({ open: false, searchText: null });
       showSearch &&
+        mode !== 'multiple' &&
+        this.searchInput &&
         setTimeout(() => {
-          this.searchInput.state.value = null; // 关闭页面清空 下拉框中搜索框的值
+          if (this.searchInput.state) this.searchInput.state.value = null; // 关闭页面清空 下拉框中搜索框的值
         }, 300);
       if (searchText) {
         this.setState({ page: 0, total: 0, options: [] });
       }
     }
+  };
+
+  // 渲染下拉框中的额外内容
+  dropDownMultipleRender = () => {
+    const { loading, options, extraOptions, value, open, total } = this.state;
+    const {
+      showPagination,
+      showSearch,
+      valueKey,
+      labelKey,
+      componentType,
+      optionLabelProp,
+    } = this.props;
+
+    return (
+      <MultipleOptionsRender
+        selectValue={value}
+        loading={loading}
+        showSearch={showSearch}
+        showPagination={showPagination}
+        options={options}
+        extraOptions={extraOptions}
+        valueKey={valueKey}
+        labelKey={labelKey}
+        componentType={componentType}
+        optionLabelProp={optionLabelProp}
+        getLabel={this.getLabel}
+        onSearch={this.onSearch}
+        onChange={this.onChange}
+        onSelect={this.handleSelectValue}
+        onDeselect={this.handleDesSelectValue}
+        onPopupScroll={this.onPopupScroll}
+        open={open}
+        total={total}
+      />
+    );
   };
 
   onChange = (value, rest) => {
@@ -417,6 +490,23 @@ class SelectPartLoad extends Component {
     }, []);
   };
 
+  filterProps = (rest = {}) => {
+    const props = { ...rest };
+    const filterFields = [
+      'valueKey',
+      'labelKey',
+      'searchKey',
+      'renderOptions',
+      'extraOptionList',
+    ];
+    for (const key in props) {
+      if ({}.hasOwnProperty.call(props, key) && filterFields.includes(key)) {
+        delete props[key];
+      }
+    }
+    return props;
+  };
+
   tagRender = (props) => {
     const { label, closable, onClose } = props;
     return (
@@ -425,7 +515,7 @@ class SelectPartLoad extends Component {
         onClose={onClose}
         className="ant-select-selection-item"
         title={label}
-        closeIcon={<CloseSvg />}
+        closeIcon={<CloseSvg onMouseDown={this.preventDefault} />}
       >
         <span className="ant-select-selection-item-content">{label}</span>
       </Tag>
@@ -457,7 +547,10 @@ class SelectPartLoad extends Component {
         overlayStyle={{ maxWidth: 300, maxHeight: 300, overflowY: 'unset' }}
         visible={omittedValues.length ? undefined : false}
       >
-        +{omittedValues.length}...
+        {messages('base.count.options' /* {count}个选项 */, {
+          params: { count: omittedValues.length },
+        })}
+        ...
       </Tooltip>
     );
   };
@@ -487,6 +580,7 @@ class SelectPartLoad extends Component {
       showPagination,
       mode,
       componentType,
+      onBlur,
       // 避免控制台警告，以下属性都不应该挂到select组件上
       // 以下属性来自lov组件，由于上级要求，强制lov组件内部整合当前组件渲染
       valueKey,
@@ -505,24 +599,37 @@ class SelectPartLoad extends Component {
       ...rest
     } = this.props;
     const { value, open, loading } = this.state;
+    const classNames = `${
+      mode === 'singleTag' ? 'single-tag' : 'multiple-tag'
+    } ${
+      value
+        ? allowClear === undefined || allowClear !== false
+          ? 'value'
+          : 'value notAllowClear'
+        : 'value valueNull'
+    }`;
     return (
       <Space
         style={{ width: rest?.style?.width || '100%' }}
         direction={rest.isSearchArea ? undefined : 'vertical'}
       >
         <Select
-          dropdownMatchSelectWidth={250}
-          {...rest}
+          {...this.filterProps(rest)}
           {...(mode === 'singleTag' ? { open } : {})}
           ref={(ref) => {
             this.selectRef = ref;
           }}
+          dropdownMatchSelectWidth={mode === 'multiple' ? 260 : 200}
           value={value}
-          dropdownRender={this.dropdownRender}
+          dropdownRender={
+            mode === 'multiple'
+              ? this.dropDownMultipleRender
+              : this.dropdownRender
+          }
           onPopupScroll={
             lazyLoad && !showPagination ? this.onPopupScroll : undefined
           }
-          onSearch={false}
+          onSearch={this.onSearch}
           onDropdownVisibleChange={this.onDropdownVisibleChange}
           onChange={this.onChange}
           onSelect={this.handleSelectValue}
@@ -531,17 +638,15 @@ class SelectPartLoad extends Component {
           defaultActiveFirstOption={false}
           mode={mode === 'singleTag' ? 'tags' : mode}
           loading={loading}
-          className={`select-part-load ${
-            mode === 'singleTag' ? 'single-tag' : 'multiple-tag'
-          } ${
-            value
-              ? allowClear === undefined || allowClear !== false
-                ? 'value'
-                : 'value notAllowClear'
-              : 'value valueNull'
-          }`}
+          className={`select-part-load ${classNames}`}
           tagRender={this.tagRender}
-          maxTagCount={componentType === 'select' ? 2 : undefined}
+          maxTagCount={
+            componentType === 'select'
+              ? rest.isSearchArea
+                ? 1
+                : 'responsive'
+              : undefined
+          }
           maxTagPlaceholder={
             componentType === 'select'
               ? this.renderMaxTagPlaceholder
@@ -549,6 +654,9 @@ class SelectPartLoad extends Component {
           }
           // UI设定：搜索区改造
           showSearch={false}
+          onBlur={(e) => {
+            onBlur && onBlur(e, open);
+          }}
           open={open}
           allowClear={rest?.cusRemoveIcon ? false : allowClear}
           suffixIcon={
@@ -563,10 +671,14 @@ class SelectPartLoad extends Component {
               </span>
             ) : rest?.cusRemoveIcon ? null : undefined
           }
-          dropdownStyle={{ paddingTop: 0 }}
+          dropdownStyle={{
+            paddingTop: 0,
+            minWidth: mode === 'multiple' ? 260 : 200,
+          }}
           optionLabelProp={rest.optionLabelProp ? 'label' : 'children'}
+          style={{ width: '100%' }}
         >
-          {this.renderOptions()}
+          {mode === 'multiple' ? null : this.renderOptions()}
         </Select>
         {/* UI设定：搜索区改造 */}
         {rest?.cusSuffixIcon ? (

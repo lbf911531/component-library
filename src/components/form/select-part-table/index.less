@@ -1,0 +1,106 @@
+:global {
+  .select-part-table {
+    .ant-select-selection-overflow {
+      flex-wrap: nowrap;
+
+      .ant-select-selection-overflow-item:not(.ant-select-selection-overflow-item-rest):not(.ant-select-selection-overflow-item-suffix) {
+        flex-shrink: 1;
+        overflow: hidden;
+      }
+    }
+    .ant-tag.ant-select-selection-item {
+      color: inherit;
+      font-size: inherit;
+      padding-left: 6px;
+      .ant-tag-close-icon {
+        margin-left: 0;
+      }
+      .anticon-close {
+        line-height: 24px;
+        margin-left: 0;
+      }
+    }
+    .ant-select-selection-overflow-item-rest .ant-select-selection-item {
+      padding-left: 6px;
+    }
+  }
+  .table-options-render {
+    .select-dropdown-title,
+    .custom-popover-subtitle {
+      padding-left: 16px;
+      font-size: 13px;
+    }
+
+    .option-table-content {
+      position: relative;
+      overflow: auto;
+      max-height: 256px;
+      min-width: 200px;
+
+      &.multiple-tag {
+        max-height: 266px;
+      }
+
+      .ant-table-thead {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 3;
+
+        & > tr > th {
+          color: #999;
+          font-size: 12px;
+          background-color: #fff;
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      .ant-table table tr .ant-table-cell {
+        padding: 5px 12px;
+        max-width: 150px;
+        &:first-child {
+          padding-left: 16px;
+        }
+        &.option-table-checkbox-col {
+          padding-right: 0;
+          width: 32px;
+        }
+      }
+
+      .ant-table-tbody > tr > td {
+        border-bottom: 0;
+        color: #333;
+
+        .ant-checkbox-wrapper {
+          z-index: 1;
+        }
+      }
+
+      &:not(.multiple) .ant-table-row.selected-row > td {
+        background-color: rgba(24, 144, 255, 0.1);
+      }
+
+      .ant-table-row.row-line-tr {
+        .option-table-checkbox-col {
+          display: none;
+        }
+        &:hover td {
+          background: #fff;
+        }
+
+        .line {
+          width: 100%;
+          height: 1px;
+          background-color: #eee;
+        }
+      }
+
+      .empty-tips {
+        padding: 8px 16px 10px 16px;
+        line-height: 22px;
+      }
+    }
+  }
+}

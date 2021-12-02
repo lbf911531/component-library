@@ -226,4 +226,6 @@ export default {
   'common.no.fix': 'Not fixed',
   'base.establish': 'establish',
   'common.download.import.template': 'Downloading and Importing a Template',
+  'base.has.choose.count': 'Selected {count}',
+  'base.count.options': 'Options:{count}',
 };

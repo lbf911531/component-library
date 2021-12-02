@@ -21,7 +21,7 @@ class CustomAmount extends React.Component<IProps, {}> {
     const integerLength = maxLength - precision; // 现在限制 整数位 加 小数位 共20位
     return (
       <InputNumber
-        placeholder={messages('common.enter')}
+        placeholder={messages('common.please.enter')}
         value={value}
         min={ignoreMin ? undefined : min}
         formatter={(values) =>
