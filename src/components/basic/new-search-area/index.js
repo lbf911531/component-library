@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
- * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-30 10:47:29
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-12-06 09:57:37
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -72,6 +72,7 @@ function SearchArea(props) {
     uniqueKey,
     selectAll = true,
     hideDynamicSelFieldBtn = false,
+    hideCondition = false,
   } = props;
 
   // 切换与旋转的参数
@@ -243,8 +244,8 @@ function SearchArea(props) {
   function clearHandle() {
     const originSearchFormValue = extraSearch
       ? {
-          [extraSearch.id]: undefined,
-        }
+        [extraSearch.id]: undefined,
+      }
       : {};
     if (originSearchForm.current.length === searchForm.length) {
       // originSearchForm 如果与 searchForm 的长度一样，代表没有动态新添加字段
@@ -252,8 +253,8 @@ function SearchArea(props) {
         originSearchFormValue[item.id] = item.defaultValue?.key
           ? item.defaultValue.key
           : item.defaultValue?.value
-          ? item.defaultValue.value
-          : item.defaultValue;
+            ? item.defaultValue.value
+            : item.defaultValue;
       });
     } else {
       // 如果不一样长，则代表新添加了字段，这里只能将新添加字段的值直接清空，不能像原本就有的字段那样能回到初始默认值
@@ -315,11 +316,10 @@ function SearchArea(props) {
     return (
       <span
         key={formItem.id}
-        className={`${
-          formItem.isRequired
+        className={`${formItem.isRequired
             ? 'field-value-required ant-legacy-form-item'
             : 'ant-legacy-form-item'
-        } ${formItem.className || ''}`}
+          } ${formItem.className || ''}`}
       >
         <Form.Item
           key={formItem.id}
@@ -336,11 +336,11 @@ function SearchArea(props) {
             },
             ...(formItem.validator
               ? [
-                  {
-                    validator: (...rest) =>
-                      formItem.validator(formRef.current, formItem, ...rest),
-                  },
-                ]
+                {
+                  validator: (...rest) =>
+                    formItem.validator(formRef.current, formItem, ...rest),
+                },
+              ]
               : []),
           ]}
         >
@@ -413,8 +413,7 @@ function SearchArea(props) {
           // 让blur的校验在点击搜索、清空的click之后执行
           if (needBlurValidate) {
             message.error(
-              `${amountToField.label}${messages('base.cannot.be.less.than')}${
-                amountFromField.label
+              `${amountToField.label}${messages('base.cannot.be.less.than')}${amountFromField.label
               }`,
             );
           } else {
@@ -940,8 +939,7 @@ function SearchArea(props) {
       ) {
         /** 不能小于 */
         message.error(
-          `${item.amountTo.label}${messages('base.cannot.be.less.than')}${
-            item.amountFrom.label
+          `${item.amountTo.label}${messages('base.cannot.be.less.than')}${item.amountFrom.label
           }`,
         );
         result = false;
@@ -1061,10 +1059,10 @@ function SearchArea(props) {
       if (amount) {
         amountRangeFieldMap[amount] = amountRangeFieldMap[amount] || {};
         amountRangeFieldMap[amount][item.amountTo ? 'amountTo' : 'amountFrom'] =
-          {
-            key: item.id,
-            label: item.label,
-          };
+        {
+          key: item.id,
+          label: item.label,
+        };
       } else if (date) {
         dateRangeFieldMap[date] = dateRangeFieldMap[date] || {};
         dateRangeFieldMap[date][item.dateTo ? 'dateTo' : 'dateFrom'] = {
@@ -1679,8 +1677,8 @@ function SearchArea(props) {
   function getDefaultFieldsWhenInSet() {
     return Array.isArray(defaultFields)
       ? defaultFields.filter(
-          ({ item }) => !(fixedFieldIdList.current || []).includes(item.id),
-        )
+        ({ item }) => !(fixedFieldIdList.current || []).includes(item.id),
+      )
       : undefined;
   }
 
@@ -1703,149 +1701,151 @@ function SearchArea(props) {
       style={style}
     >
       <Form layout="inline" ref={formRef}>
-        <Row style={{ marginBottom: 12 }} className="first-row">
-          <Col span={24} style={{ paddingLeft: 10 }}>
-            <AllIcon style={{ verticalAlign: 'unset' }} />
-            {/* 渲染可用的筛选方案，数据来自接口返回 */}
-            <Select
-              value={solution}
-              style={{
-                width: 'unset',
-                height: 28,
-                fontSize: 16,
-                marginRight: 6,
-              }}
-              dropdownMatchSelectWidth={206}
-              getPopupContainer={(node) => node.parentNode}
-              onChange={(value) => {
-                handleChangeSolution({ value, needSearch: true });
-              }}
-              className="select-solution"
-              suffixIcon={
-                <CaretDownOutlined
-                  style={{
-                    fontSize: 10,
-                    pointerEvents: 'unset',
-                    marginLeft: 4,
-                    marginTop: 1,
-                    color: '#333333',
-                  }}
-                />
-              }
-            >
-              {Array.isArray(conditions) &&
-                conditions.map((condition) => {
-                  return (
-                    <Select.Option key={condition.value}>
-                      <div className="filter-condition">
-                        <span
-                          className="margin-right-8"
-                          style={{ marginRight: 8 }}
-                        >
-                          {condition.label}
-                        </span>
-                        {condition.defaultFlag && (
-                          <Tag className="custom-default-tag-color">
-                            {messages('common.default')}
-                          </Tag>
-                        )}
-                        {changeFlag &&
-                          editInfo?.visible &&
-                          solution === condition.value && (
-                            <Tag
-                              className="custom-edit-tag"
-                              style={{ marginRight: 6 }}
-                            >
-                              {messages('common.modified' /* 已修改 */)}
+        {hideCondition ? null : (
+          <Row style={{ marginBottom: 12 }} className="first-row">
+            <Col span={24} style={{ paddingLeft: 10 }}>
+              <AllIcon style={{ verticalAlign: 'unset' }} />
+              {/* 渲染可用的筛选方案，数据来自接口返回 */}
+              <Select
+                value={solution}
+                style={{
+                  width: 'unset',
+                  height: 28,
+                  fontSize: 16,
+                  marginRight: 6,
+                }}
+                dropdownMatchSelectWidth={206}
+                getPopupContainer={(node) => node.parentNode}
+                onChange={(value) => {
+                  handleChangeSolution({ value, needSearch: true });
+                }}
+                className="select-solution"
+                suffixIcon={
+                  <CaretDownOutlined
+                    style={{
+                      fontSize: 10,
+                      pointerEvents: 'unset',
+                      marginLeft: 4,
+                      marginTop: 1,
+                      color: '#333333',
+                    }}
+                  />
+                }
+              >
+                {Array.isArray(conditions) &&
+                  conditions.map((condition) => {
+                    return (
+                      <Select.Option key={condition.value}>
+                        <div className="filter-condition">
+                          <span
+                            className="margin-right-8"
+                            style={{ marginRight: 8 }}
+                          >
+                            {condition.label}
+                          </span>
+                          {condition.defaultFlag && (
+                            <Tag className="custom-default-tag-color">
+                              {messages('common.default')}
                             </Tag>
                           )}
-                        {condition.value !== 'all' && (
-                          <Dropdown
-                            overlay={
-                              <Menu
-                                onClick={(e) => {
-                                  handleMenuClick(e, condition);
-                                }}
+                          {changeFlag &&
+                            editInfo?.visible &&
+                            solution === condition.value && (
+                              <Tag
+                                className="custom-edit-tag"
+                                style={{ marginRight: 6 }}
                               >
-                                <Menu.Item key="0">
-                                  {messages(
-                                    'common.set.default' /* 设置默认 */,
-                                  )}
-                                </Menu.Item>
-                                <Menu.Item key="1">
-                                  {messages('common.rename' /* 重命名 */)}
-                                </Menu.Item>
-                                <Menu.Divider />
-                                <Menu.Item key="2" style={{ color: '#F5222D' }}>
-                                  {messages('common.delete' /* 删除 */)}
-                                </Menu.Item>
-                              </Menu>
-                            }
-                            overlayStyle={{ width: 130 }}
-                          >
-                            <EllipsisOutlined className="filter-condition-icon" />
-                          </Dropdown>
-                        )}
-                      </div>
-                    </Select.Option>
-                  );
-                })}
-            </Select>
-            <div className="btnBox" style={{ display: 'inline-block' }}>
-              {renderSaveBtnGroup()}
-              {changeFlag && editInfo?.visible && (
-                <>
-                  <Button
-                    className="edit-btn"
-                    onClick={handleResetDefaultField}
-                  >
-                    {messages('common.reset' /* 重置 */)}
-                  </Button>
-                </>
-              )}
-            </div>
-            <Divider type="vertical" style={{ margin: '0 12px 0 -2px' }} />
-            <div
-              style={{
-                display: 'inline-flex',
-                width: 88,
-                height: 24,
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                position: 'relative',
-                top: -2,
-              }}
-            >
-              <div className="btnBG">
-                <div className="themeBG" />
-                <Tooltip title={expand ? '收起' : '展开'}>
-                  <DoubleArrowSvg
-                    className={expand ? 'expand-icon expand' : 'expand-icon'}
-                    onClick={handleExpand}
-                    style={{ marginLeft: 1 }}
-                  />
-                </Tooltip>
+                                {messages('common.modified' /* 已修改 */)}
+                              </Tag>
+                            )}
+                          {condition.value !== 'all' && (
+                            <Dropdown
+                              overlay={
+                                <Menu
+                                  onClick={(e) => {
+                                    handleMenuClick(e, condition);
+                                  }}
+                                >
+                                  <Menu.Item key="0">
+                                    {messages(
+                                      'common.set.default' /* 设置默认 */,
+                                    )}
+                                  </Menu.Item>
+                                  <Menu.Item key="1">
+                                    {messages('common.rename' /* 重命名 */)}
+                                  </Menu.Item>
+                                  <Menu.Divider />
+                                  <Menu.Item key="2" style={{ color: '#F5222D' }}>
+                                    {messages('common.delete' /* 删除 */)}
+                                  </Menu.Item>
+                                </Menu>
+                              }
+                              overlayStyle={{ width: 130 }}
+                            >
+                              <EllipsisOutlined className="filter-condition-icon" />
+                            </Dropdown>
+                          )}
+                        </div>
+                      </Select.Option>
+                    );
+                  })}
+              </Select>
+              <div className="btnBox" style={{ display: 'inline-block' }}>
+                {renderSaveBtnGroup()}
+                {changeFlag && editInfo?.visible && (
+                  <>
+                    <Button
+                      className="edit-btn"
+                      onClick={handleResetDefaultField}
+                    >
+                      {messages('common.reset' /* 重置 */)}
+                    </Button>
+                  </>
+                )}
               </div>
-              <div className="btnBG" style={{ marginLeft: 8 }}>
-                <div className="themeBG" />
-                <Tooltip title="刷新">
-                  <RefreshSvg
-                    id="refreshBtn"
-                    className="rotate-icon"
-                    onClick={handleRotate}
-                    style={{ transform: `rotate(${rotate}deg)` }}
-                  />
-                </Tooltip>
+              <Divider type="vertical" style={{ margin: '0 12px 0 -2px' }} />
+              <div
+                style={{
+                  display: 'inline-flex',
+                  width: 88,
+                  height: 24,
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  position: 'relative',
+                  top: -2,
+                }}
+              >
+                <div className="btnBG">
+                  <div className="themeBG" />
+                  <Tooltip title={expand ? '收起' : '展开'}>
+                    <DoubleArrowSvg
+                      className={expand ? 'expand-icon expand' : 'expand-icon'}
+                      onClick={handleExpand}
+                      style={{ marginLeft: 1 }}
+                    />
+                  </Tooltip>
+                </div>
+                <div className="btnBG" style={{ marginLeft: 8 }}>
+                  <div className="themeBG" />
+                  <Tooltip title="刷新">
+                    <RefreshSvg
+                      id="refreshBtn"
+                      className="rotate-icon"
+                      onClick={handleRotate}
+                      style={{ transform: `rotate(${rotate}deg)` }}
+                    />
+                  </Tooltip>
+                </div>
+                <div className="btnBG" style={{ marginLeft: 8 }}>
+                  <div className="themeBG" />
+                  <Tooltip title="清空搜索条件">
+                    <ResetSvg className="reset-icon" onClick={clearHandle} />
+                  </Tooltip>
+                </div>
               </div>
-              <div className="btnBG" style={{ marginLeft: 8 }}>
-                <div className="themeBG" />
-                <Tooltip title="清空搜索条件">
-                  <ResetSvg className="reset-icon" onClick={clearHandle} />
-                </Tooltip>
-              </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
         <Row style={{ display: expand ? 'flex' : 'none', marginTop: -3 }}>
           {/* 渲染额外输入搜索框 */}
           {extraSearch && handleRenderExtraSearch()}
@@ -1864,6 +1864,29 @@ function SearchArea(props) {
               ref={filterBtn}
             />
           )}
+          {
+            hideCondition ? (
+              <div className="hideConditionBtnBox flexLayout">
+                <div className="flexLayout" onClick={clearHandle}>
+                  <ResetSvg className="reset-icon" />
+                  <span className="btnText">清空</span>
+                </div>
+
+                <Divider type="vertical" style={{ margin: '0 10px', borderLeft: '1px solid #E9E9E9', height: '1.1em' }} />
+
+                <div className="flexLayout" onClick={handleRotate}>
+                  <span>
+                    <RefreshSvg
+                      className="rotate-icon"
+                      style={{ transform: `rotate(${rotate}deg)` }}
+                    />
+                  </span>
+                  <span className="btnText">刷新</span>
+                </div>
+              </div>
+            ) : null
+          }
+
         </Row>
       </Form>
       <NewFilterConditions
