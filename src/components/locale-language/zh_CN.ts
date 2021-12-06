@@ -223,4 +223,6 @@ export default {
   'common.no.fix': '不固定',
   'base.establish': '创建',
   'common.download.import.template': '下载导入模板',
+  'base.has.choose.count': '已选择 {count} 条',
+  'base.count.options': '{count}个选项',
 };

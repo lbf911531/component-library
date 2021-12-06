@@ -170,8 +170,16 @@ export default function EditTableDemo() {
     operationMap={{
       "delete": null, // 通过为内置的同名属性设置null，可去除删除操作
       "delete": {	// 如果 页面自己定义了 delete 方法，通过这个方式传给 editTable 才能使用
-         label: this.$t("mdata.delete" /* 删除 */),,
-         event: (value, record) => {this.handleDelete(record.id)},
+        label: this.$t("mdata.delete" /* 删除 */),
+        // next 方法接受两个参数 （flag：boolean | string，record.id） => void;
+        // 其作用在某种程度上可以替代外界调用table.getList操作，且是 停留在当前页的数据刷新
+        /*
+         * flag:
+            为true则调用接口刷新数据
+            为false则阻塞 删除数据后的逻辑操作（包含接口刷新数据）
+            为 "delete" 则不调用接口删除行数据
+        */
+        event: (value, record, index, next) => {this.handleDelete(record.id,next)},
       },
       "detail": { // 通过如下配置，[key]自定义，格式如下，可自定义操作，与renderOption 属性作用一致
         label: this.$t("my.contract.detail"),

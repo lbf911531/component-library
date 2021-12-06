@@ -1,8 +1,8 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-06-10 10:29:49
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-12-01 10:48:15
+ * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditTime: 2021-12-02 16:10:05
  * @Version: 1.0.0
  * @Description: 滑入表格行，展示可操作下拉菜单
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -31,6 +31,7 @@ export default function HoverOperation(props) {
     onCopy,
     hideEditMore = false,
     rowKey,
+    onAfterDelete,
   } = props;
 
   const eventTemplate = {
@@ -76,7 +77,7 @@ export default function HoverOperation(props) {
   }
 
   function handleDelete() {
-    eventMap[DELETE].event(record[rowKey], record, index);
+    eventMap[DELETE].event(record[rowKey], record, index, onAfterDelete);
   }
 
   function handleMenuClick(event, info) {
@@ -160,7 +161,7 @@ export default function HoverOperation(props) {
             eventMap[DELETE] && !isHideDelete && (
               <>
                 <Menu.Divider />
-                <div onClick={(e) => e.domEvent.stopPropagation()}>
+                <div onClick={(e) => (e.domEvent || e).stopPropagation()}>
                   <Popconfirm
                     title={messages('common.delete.warning')} /** 确认删除？ */
                     okText={messages('common.ok')} /** 确认 */

@@ -7,22 +7,72 @@
       width: 35px;
       margin-right: 0;
     }
+    .empty-tips {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
   }
   .select-part-load {
-    &.single-tag .ant-select-selection-overflow {
+    .ant-select-selection-overflow {
       flex-wrap: nowrap;
-      overflow: hidden;
+
+      .ant-select-selection-overflow-item:not(.ant-select-selection-overflow-item-rest):not(.ant-select-selection-overflow-item-suffix) {
+        flex-shrink: 1;
+        overflow: hidden;
+      }
     }
     .ant-tag.ant-select-selection-item {
       color: inherit;
       font-size: inherit;
+      padding-left: 6px;
+      .ant-tag-close-icon {
+        margin-left: 0;
+      }
       .anticon-close {
         line-height: 24px;
         margin-left: 0;
       }
     }
+    .ant-select-selection-overflow-item-rest .ant-select-selection-item {
+      padding-left: 6px;
+    }
+    .ant-select-item {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
     background-color: fade(@primary-color, 10%);
+  }
+
+  .custom-popover-subtitle {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .custom-popover-content {
+    padding: 8px 0px 10px;
+    max-height: 248px;
+    overflow-y: auto;
+    .field-item {
+      padding: 5px 16px;
+      .ant-checkbox-wrapper {
+        display: flex;
+      }
+      &:hover {
+        background-color: rgb(240, 247, 255);
+      }
+      .ant-checkbox-wrapper {
+        .ant-checkbox + span {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  .empty-tips {
+    padding: 0px 16px;
+    line-height: 22px;
   }
 }

@@ -64,6 +64,7 @@ export interface IProps {
   optionLabelProp?: string;
   customChooserTextValue?: any;
   inputStyle?: any;
+  onBlur?: (e: any, open: boolean) => void;
 }
 
 export interface ILov {

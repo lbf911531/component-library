@@ -52,6 +52,18 @@ class UploadButton extends React.Component {
     }
   }
 
+  checkUploadIsDone = () => {
+    const { fileList } = this.state;
+    const result = fileList.every((file) => {
+      return file.status !== 'uploading';
+    });
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   /**
    * 根据外传的fileList联动设置当前组件内部的valueList
    * @param {array} nextFileList

@@ -537,6 +537,7 @@ class EditTable extends Component {
             onCopy={this.handleCopy}
             hideEditMore={hideEditMore}
             rowKey={rowKey}
+            onAfterDelete={this.afterDeleteLineData}
           />
         );
       },
