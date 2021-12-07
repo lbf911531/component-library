@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-26 14:16:57
+ * @LastEditTime: 2021-12-07 16:01:01
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -225,4 +225,5 @@ export default {
   'common.download.import.template': '下载导入模板',
   'base.has.choose.count': '已选择 {count} 条',
   'base.count.options': '{count}个选项',
+  'common.download.error.data': '下载错误数据',
 };

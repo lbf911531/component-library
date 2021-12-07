@@ -45,6 +45,7 @@ export default function TableOptionsRender(props) {
   const columns = useMemo(() => {
     return propsColumns.map((col) => ({
       ...col,
+      title: messages(col.title, { context: this.context }),
       width: undefined,
       render:
         (['date', 'amount'].includes(col.fieldType) || !col.fieldType) &&

@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-16 10:29:50
+ * @LastEditTime: 2021-12-07 16:00:59
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -228,4 +228,5 @@ export default {
   'common.download.import.template': 'Downloading and Importing a Template',
   'base.has.choose.count': 'Selected {count}',
   'base.count.options': 'Options:{count}',
+  'common.download.error.data': 'Download Error Data',
 };

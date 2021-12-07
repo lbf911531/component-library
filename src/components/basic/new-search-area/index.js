@@ -413,7 +413,7 @@ function SearchArea(props) {
           // 让blur的校验在点击搜索、清空的click之后执行
           if (needBlurValidate) {
             message.error(
-              `${amountToField.label}${messages('base.cannot.be.less.than')}${
+              `${amountToField.label}${messages('common.cannot.be.less.than')}${
                 amountFromField.label
               }`,
             );
@@ -940,7 +940,7 @@ function SearchArea(props) {
       ) {
         /** 不能小于 */
         message.error(
-          `${item.amountTo.label}${messages('base.cannot.be.less.than')}${
+          `${item.amountTo.label}${messages('common.cannot.be.less.than')}${
             item.amountFrom.label
           }`,
         );

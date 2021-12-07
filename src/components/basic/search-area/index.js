@@ -565,7 +565,7 @@ class SearchArea extends React.Component {
           // 让blur的校验在点击搜索、清空的click之后执行
           if (needBlurValidate) {
             message.error(
-              `${amountToField.label}${messages('base.cannot.be.less.than', {
+              `${amountToField.label}${messages('common.cannot.be.less.than', {
                 context: this.context,
               })}${amountFromField.label}`,
             );
