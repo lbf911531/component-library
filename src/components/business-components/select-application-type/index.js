@@ -30,7 +30,7 @@ function SearchAreaWrap(props) {
     wrapperCol: { span: 16 },
   };
   return (
-    <Form labelAlign="right">
+    <Form labelAlign="right" form={form}>
       <Row>
         <Col span={8}>
           <Form.Item
