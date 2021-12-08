@@ -365,13 +365,8 @@ class SelectApplicationType extends Component {
   handleSearch = (e, form) => {
     e.preventDefault();
     const { validateFields } = form;
-    validateFields((err, value) => {
-      if (!err) {
-        this.setState(
-          { searchParams: value ? { ...value } : {} },
-          this.getList,
-        );
-      }
+    validateFields().then((value) => {
+      this.setState({ searchParams: value ? { ...value } : {} }, this.getList);
     });
   };
 
