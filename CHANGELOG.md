@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/lbf911531/component-library/compare/v1.1.6...v1.1.7) (2021-12-08)
+
+### Bug Fixes
+
+- 删除多余的 console.log ([b2d5f26](https://github.com/lbf911531/component-library/commit/b2d5f26fa8c092942b6d1c9d011f191bdff92c99))
+
 ### [1.1.6](https://github.com/lbf911531/component-library/compare/v1.1.5...v1.1.6) (2021-12-07)
 
 ### Bug Fixes
