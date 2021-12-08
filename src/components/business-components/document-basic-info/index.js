@@ -253,7 +253,6 @@ class DocumentBasicInfo extends Component {
       data: { attachments },
     } = this.state;
     const flag = attachments[index].fileType.includes('zip');
-    console.log(flag);
     if (flag) {
       this.zipFileView(index, attachments[index].id);
     } else {
