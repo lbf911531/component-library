@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/lbf911531/component-library/compare/v1.1.8...v1.1.9) (2021-12-08)
+
+### Bug Fixes
+
+- select-application-type 在不选择数据时点击确认仍然可以关闭按钮 ([e39f146](https://github.com/lbf911531/component-library/commit/e39f146f7463c95d59954b6de4cf7e123c928718))
+- select-application-type 组件搜索区域搜索失效问题修复 ([12df387](https://github.com/lbf911531/component-library/commit/12df38725717504f96fdaa01a520f0edd666ba26))
+
 ### [1.1.8](https://github.com/lbf911531/component-library/compare/v1.1.7...v1.1.8) (2021-12-08)
 
 ### Bug Fixes
