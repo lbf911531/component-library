@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/lbf911531/component-library/compare/v1.1.7...v1.1.8) (2021-12-08)
+
+### Bug Fixes
+
+- 费用类型组件搜索报错问题修复(validateFields 方法传参问题) ([7d1ab77](https://github.com/lbf911531/component-library/commit/7d1ab7710ab166d25259921fca36b158bb196fe7))
+
 ### [1.1.7](https://github.com/lbf911531/component-library/compare/v1.1.6...v1.1.7) (2021-12-08)
 
 ### Bug Fixes
