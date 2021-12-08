@@ -6,13 +6,15 @@
  * @Description: 下拉选择 展示2个字段以上
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
-import React, { useMemo, useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useEffect, useContext } from 'react';
 import { Input, Spin, Divider, Table, Checkbox, Tooltip } from 'antd';
 import { useDebounceFn } from 'ahooks';
 import SearchSvg from '../select-part-load/images/search';
 import { messages } from '../../utils';
+import LocaleContext from '../../locale-lan-provider/context';
 
 export default function TableOptionsRender(props) {
+  const context = useContext(LocaleContext);
   const {
     columns: propsColumns,
     showSearch,
@@ -45,7 +47,7 @@ export default function TableOptionsRender(props) {
   const columns = useMemo(() => {
     return propsColumns.map((col) => ({
       ...col,
-      title: messages(col.title, { context: this.context }),
+      title: messages(col.title, { context }),
       width: undefined,
       render:
         (['date', 'amount'].includes(col.fieldType) || !col.fieldType) &&
