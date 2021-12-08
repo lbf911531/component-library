@@ -35,8 +35,7 @@ function SearchAreaWrap(props) {
         <Col span={8}>
           <Form.Item
             {...formItemLayout}
-            name=""
-            typeCategoryId
+            name="typeCategoryId"
             label={messages('common.large.class') /* 大类 */}
           >
             <Select
@@ -337,6 +336,7 @@ class SelectApplicationType extends Component {
         });
     } else if (onChange) {
       onChange(value, ...rest);
+      this.setState({ visible: false, confirmLoading: false });
     }
   };
 
