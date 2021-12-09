@@ -86,7 +86,7 @@ export default function CustomCascade(props) {
               {/* <div className="select-dropdown-title">
                 <Input
                   prefix={<SearchSvg />}
-                  placeholder={messages('org.search')}
+                  placeholder={messages('common.search')}
                   onPressEnter={handleSearch}
                 />
               </div> */}

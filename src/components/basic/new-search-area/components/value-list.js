@@ -121,7 +121,7 @@ export default function CustomValueListSelector(props) {
                 <div className="select-dropdown-title">
                   <Input
                     prefix={<SearchSvg />}
-                    placeholder={messages('org.search' /* 搜索 */)}
+                    placeholder={messages('common.search' /* 搜索 */)}
                     onPressEnter={handleSearch}
                   />
                 </div>
