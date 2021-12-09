@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.11](https://github.com/lbf911531/component-library/compare/v1.1.10...v1.1.11) (2021-12-09)
+
+### Bug Fixes
+
+- 修复多语言输入框在非单元格状态下也触发聚焦切换编辑状态的 bug ([aef228e](https://github.com/lbf911531/component-library/commit/aef228ea142a555b2fe6a63eb4125d5b6551804d))
+
 ### [1.1.10](https://github.com/lbf911531/component-library/compare/v1.1.9...v1.1.10) (2021-12-09)
 
 ### Bug Fixes
