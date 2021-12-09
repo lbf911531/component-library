@@ -23,7 +23,7 @@ function CustomInputNumber(props) {
   const input = useRef();
   useEffect(() => {
     if (cellStatusMap[cellKey]) {
-      input.current.focus();
+      input.current?.focus?.();
     }
   }, [cellStatusMap[cellKey]]);
 
