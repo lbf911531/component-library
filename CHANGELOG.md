@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.10](https://github.com/lbf911531/component-library/compare/v1.1.9...v1.1.10) (2021-12-09)
+
+### Bug Fixes
+
+- 修复金额输入框在可编辑表格中 focus 错误 ([191cf5b](https://github.com/lbf911531/component-library/commit/191cf5bd0eef3533ff507eae98e47adc1927a4e8))
+
 ### [1.1.9](https://github.com/lbf911531/component-library/compare/v1.1.8...v1.1.9) (2021-12-08)
 
 ### Bug Fixes
