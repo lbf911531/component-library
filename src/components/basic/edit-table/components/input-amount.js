@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import CustomAmount from '../../../form/custom-amount';
 import { messages } from '../../../utils';
 import EditIcon from '../images/edit';
@@ -20,12 +20,12 @@ function CustomInputNumber(props) {
     editWithCellFlag,
   } = props;
 
-  const input = useRef();
-  useEffect(() => {
-    if (cellStatusMap[cellKey]) {
-      input.current?.focus?.();
-    }
-  }, [cellStatusMap[cellKey]]);
+  // const input = useRef();
+  // useEffect(() => {
+  //   if (cellStatusMap[cellKey]) {
+  //     input.current?.focus?.();
+  //   }
+  // }, [cellStatusMap[cellKey]]);
 
   function handleFocus() {
     if (disabled || !editWithCellFlag) return;
@@ -74,7 +74,8 @@ function CustomInputNumber(props) {
       disabled={disabled}
       placeholder={placeholder || messages('common.please.enter')}
       onBlur={handleBlur}
-      inputRef={input}
+      // inputRef={input}
+      autoFocus
     />
   );
 }

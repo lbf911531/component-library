@@ -13,6 +13,7 @@ function CustomInput(props) {
     renderValue,
     cellKey,
     cellStatusMap,
+    editWithCellFlag,
   } = props;
   const input = useRef(null);
   const lock = useRef(false);
@@ -43,7 +44,7 @@ function CustomInput(props) {
   }
 
   function handleFocus() {
-    if (disabled) return;
+    if (disabled || !editWithCellFlag) return;
     const { onClickCell } = props;
     onClickCell(cellKey);
   }
