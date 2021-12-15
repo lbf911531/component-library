@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/lbf911531/component-library/compare/v1.1.11...v1.2.0) (2021-12-15)
+
+### Features
+
+- 可编辑表格组件提供一个批量设置当前行指定单元格们的编辑状态的方法（onVolumeSetStatus） ([8e356b9](https://github.com/lbf911531/component-library/commit/8e356b9e4b585eccac35cbe3428f93b2771f73b8))
+
 ### [1.1.11](https://github.com/lbf911531/component-library/compare/v1.1.10...v1.1.11) (2021-12-09)
 
 ### Bug Fixes
