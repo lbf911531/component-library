@@ -171,7 +171,7 @@ export default function CustomSelect(props) {
           fetching ? (
             <Spin size="small" />
           ) : (
-            messages('agency.setting.no.result')
+            messages('common.no.matching.result')
           )
         }
         className={

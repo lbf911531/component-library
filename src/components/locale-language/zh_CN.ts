@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-09 10:26:17
+ * @LastEditTime: 2021-12-15 09:29:29
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing

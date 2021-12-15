@@ -1223,6 +1223,23 @@ class EditTable extends Component {
   };
 
   /**
+   * 批量设置当前行某些列的单元格编辑状态
+   * @param {string} row
+   * @param {array<string>} cols
+   * @param {boolean} isEdit
+   */
+  onVolumeSetStatus = (row, cols, isEdit) => {
+    const { cellStatusMap } = this.state;
+    if (Array.isArray(cols)) {
+      const temp = {};
+      cols.forEach((col) => {
+        temp[`${row}|${col}`] = isEdit;
+      });
+      this.setState({ cellStatusMap: { ...cellStatusMap, ...temp } });
+    }
+  };
+
+  /**
    * 方法：外界自行控制当前单元格的编辑状态，仅用于单元格编辑模式下，
    * 配置 属性 (isCusRenderFormItem: true)
    * @param {*} row record[rowKey || "id"]
