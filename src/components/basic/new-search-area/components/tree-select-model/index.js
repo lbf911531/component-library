@@ -51,7 +51,7 @@ function TreeSelectModel(props) {
   const searchForm = [
     {
       id: 'keywords',
-      label: messages('pay.company' /* 公司 */),
+      label: messages('common.company' /* 公司 */),
       placeholder: messages('common.input.name.or.code' /* 请输入代码或名称 */),
       type: 'input',
       allowClear: true,

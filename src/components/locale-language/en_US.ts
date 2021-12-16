@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-16 16:13:53
+ * @LastEditTime: 2021-12-16 18:06:48
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -236,4 +236,5 @@ export default {
   'base.sync.check.subsidiary':
     'Check the subordinate company at the same time',
   'base.policy.verification.info': 'Policy Verification Information',
+  'common.input.name.or.code': 'Please enter a code or name',
 };
