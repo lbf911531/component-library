@@ -124,9 +124,7 @@ class PolicyTips extends Component {
 
     return (
       <Modal
-        title={
-          messages('base.policy.verification.information') /** 政策校验信息 */
-        }
+        title={messages('base.policy.verification.info') /** 政策校验信息 */}
         visible={visible}
         footer={readOnly ? null : footer}
         width={800}

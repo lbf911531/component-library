@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:33:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-07 16:00:59
+ * @LastEditTime: 2021-12-16 16:13:53
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -229,4 +229,11 @@ export default {
   'base.has.choose.count': 'Selected {count}',
   'base.count.options': 'Options:{count}',
   'common.download.error.data': 'Download Error Data',
+  'common.yes': 'Yes',
+  'common.no': 'No',
+  'common.has.selected': 'Has selected',
+  'common.not.selected': 'Not selected',
+  'base.sync.check.subsidiary':
+    'Check the subordinate company at the same time',
+  'base.policy.verification.info': 'Policy Verification Information',
 };

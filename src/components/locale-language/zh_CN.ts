@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-10-22 15:13:14
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-15 09:29:29
+ * @LastEditTime: 2021-12-16 16:14:32
  * @Version: 1.0.0
  * @Description: 定义公有的多语言
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -226,4 +226,11 @@ export default {
   'base.has.choose.count': '已选择 {count} 条',
   'base.count.options': '{count}个选项',
   'common.download.error.data': '下载错误数据',
+  'common.yes': '是',
+  'common.no': '否',
+  'common.has.selected': '已选',
+  'common.not.selected': '未选',
+  'base.sync.check.subsidiary': '同时勾选下属公司',
+  'base.selected.limit.warning': '所选数据不能超过 {count} 条',
+  'base.policy.verification.info': '政策校验信息',
 };

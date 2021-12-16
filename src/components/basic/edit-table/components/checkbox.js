@@ -53,9 +53,9 @@ function CustomCheckbox(props) {
           style={{ minHeight: !value ? '20px' : 'unset' }}
         >
           {value === true
-            ? messages('request.detail.booker.yes')
+            ? messages('common.yes')
             : value === false
-            ? messages('request.detail.booker.no')
+            ? messages('common.no')
             : ''}
         </div>
       );

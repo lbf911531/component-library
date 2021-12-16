@@ -81,7 +81,7 @@ function TreeSelectModel(props) {
         { value: SELECT, label: messages('common.has.selected' /* 已选 */) },
         {
           value: NOT_SELECT,
-          label: messages('base.attachment.not.selected' /* 未选 */),
+          label: messages('common.not.selected' /* 未选 */),
         },
       ],
       allowClear: true,
@@ -92,9 +92,7 @@ function TreeSelectModel(props) {
       type: 'checkbox',
       options: [
         {
-          label: messages(
-            'base.check.the.subordinate.company.at.the.same.time' /* 同时勾选下属公司 */,
-          ),
+          label: messages('base.sync.check.subsidiary' /* 同时勾选下属公司 */),
           value: true,
         },
       ],
@@ -127,7 +125,7 @@ function TreeSelectModel(props) {
       ? { checked: temp, halfChecked: [] }
       : temp;
     const string = Array.isArray(value)
-      ? messages('base.has.choose.count', { count: value.length })
+      ? messages('base.has.choose.count', { params: { count: value.length } })
       : undefined;
     setValueText(string);
     spanRef.current.innerText = string || '全部';
@@ -358,7 +356,10 @@ function TreeSelectModel(props) {
       : undefined;
     if (checkedList?.length > 1000) {
       message.error(
-        messages('base.selected.limit.warning' /* 所选公司不能超过1000 */),
+        messages(
+          'base.selected.limit.warning',
+          { params: { count: 1000 } } /* 所选公司不能超过1000 */,
+        ),
       );
       return;
     }
