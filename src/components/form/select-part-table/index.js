@@ -1,7 +1,7 @@
 /*
  * @Author: cong.guo@hand-china.com
  * @Date: 2021-09-10 13:11:16
- * @LastEditors: binfeng.long@hand-china.com
+ * @LastEditors: Please set LastEditors
  * @Version: 1.0.0
  * @Description: 下拉选择 展示2个字段以上
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -388,6 +388,10 @@ function SelectPartTable(props) {
         open={open}
         onBlur={(e) => {
           handleBlur(e, open);
+        }}
+        onClear={() => {
+          setOptions([]); 
+          pageInfo.current = { ...pageInfo.current, page: -1 };
         }}
         allowClear={cusRemoveIcon ? false : allowClear}
         onChange={onSelectChange}
