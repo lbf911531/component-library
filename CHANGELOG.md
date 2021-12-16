@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/lbf911531/component-library/compare/v1.2.0...v1.3.0) (2021-12-16)
+
+### Features
+
+- new-search-area 组件支持表单字段删除后同步触发其绑定的联动事件 ([29311d3](https://github.com/lbf911531/component-library/commit/29311d3a484761e7c12ea84fb9b5b950817f3062))
+
 ## [1.2.0](https://github.com/lbf911531/component-library/compare/v1.1.11...v1.2.0) (2021-12-15)
 
 ### Features
