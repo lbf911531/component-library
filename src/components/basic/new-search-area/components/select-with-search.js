@@ -1,24 +1,25 @@
 /*
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-21 11:51:49
- * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-04 20:56:33
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-12-17 21:43:12
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
  */
 
 import React, { useEffect, useState } from 'react';
-import { Select, Tooltip } from 'antd';
+import { Select, Tooltip, Tag } from 'antd';
 import httpFetch from 'share/httpFetch';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { getDataLabel, getLastKey } from '../utils';
 import { messages } from '../../../utils';
+import CloseSvg from "../images/close";
+import SelectWithSearchOptionsRender from "./selectWithSearchOptionsRender";
 
 export default function CustomSelectWithSearch(props) {
   const { formItem, value, onChange, onResetOptions } = props;
   const {
-    allowClear,
     entity,
     getUrl,
     searchUrl,
@@ -40,6 +41,8 @@ export default function CustomSelectWithSearch(props) {
   const [newGetUrl, setNewGetUrl] = useState(getUrl);
   const [newGetParams, setNewGetParams] = useState(getParams);
   const [loading, setLoading] = useState(false);
+  const [optionsTotal, setOptionsTotal] = useState(0)
+  const [dropDownOpen, setDropDownOpen] = useState(false)
 
   useEffect(() => {
     setOptionList(options || []);
@@ -49,18 +52,21 @@ export default function CustomSelectWithSearch(props) {
    * 监听下拉
    * @param {boolean} visible
    */
-  function handleDropdownVisible(visible) {
-    if (visible && getUrl) {
-      if (
-        optionList.length &&
-        getUrl === newGetUrl &&
-        JSON.stringify(newGetParams) === JSON.stringify(getParams)
-      ) {
-        return;
+   function handleDropdownVisible(visible) {
+    if (visible) {
+      setDropDownOpen(true)
+      if (getUrl) {
+        if (optionList.length && getUrl === newGetUrl && JSON.stringify(newGetParams) === JSON.stringify(getParams)) {
+          return;
+        }
+        handleGetOptions(getUrl, null, 'getUrl');
+      } else if (Array.isArray(options) && options.length !== 0) {
+        setOptionsTotal(options.length)
       }
-      handleGetOptions(getUrl, null, 'getUrl');
+    } else {
+      setDropDownOpen(false)
     }
-  }
+  };
 
   function handleGetOptions(url, key, flag) {
     setOptionList([]);
@@ -70,17 +76,20 @@ export default function CustomSelectWithSearch(props) {
       params[searchKey] = key;
     }
     setLoading(true);
-    httpFetch[method](url, params).then((res) => {
-      const tempOptions = [];
-      const optionValue = handleFormatOptions(res.data, tempOptions);
-      setOptionList(optionValue);
-      onResetOptions(options, formItem.id);
-      setLoading(false);
-      if (flag === 'getUrl') {
-        setNewGetUrl(url);
-      }
-    });
-  }
+    httpFetch[method](url, params)
+      .then(res => {
+        const total = Number(res.headers["x-total-count"] || 0);
+        const tempOptions = [];
+        const optionValue = handleFormatOptions(res.data, tempOptions);
+        setOptionList(optionValue);
+        setOptionsTotal(total)
+        onResetOptions(options, formItem.id);
+        setLoading(false);
+        if (flag === "getUrl") {
+          setNewGetUrl(url);
+        }
+      });
+  };
 
   function handleFormatOptions(list, targetArray) {
     let dataList = list;
@@ -120,17 +129,69 @@ export default function CustomSelectWithSearch(props) {
     return (
       <Tooltip
         placement="top"
-        title={omittedValues.map((op, index) => (
-          <span key={op.value}>
-            {`${op.label}${index === omittedValues.length - 1 ? '' : '、'}`}
-          </span>
-        ))}
-        overlayStyle={{ maxWidth: 300, maxHeight: 300, overflowY: 'auto' }}
+        title={(
+          omittedValues.map((op, index) => (
+            <span key={op.value}>
+              {`${op.label}${index === omittedValues.length - 1 ? '' : '、'}`}
+            </span>
+          ))
+        )}
+        overlayStyle={{ maxWidth: 300, maxHeight: 300, overflowY: "unset" }}
         visible={omittedValues.length ? undefined : false}
       >
-        +{omittedValues.length}...
+        {messages('base.count.options' /* {count}个选项 */, { count: omittedValues.length })}...
       </Tooltip>
-    );
+    )
+  };
+
+  // 阻止默认事件以及冒泡
+  function preventDefault(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  /**
+   * lov模式下渲染的select组件取值：
+   * handleSelectValue、handleDesSelectValue模拟onChange
+   * @param {*} value
+   * @param {*} option
+   * @returns
+   */
+    function handleSelectValue(selectValue) {
+    if (onChange) onChange([...selectValue])
+  }
+
+  // 反选
+  function handleDesSelectValue(deSelectValue){
+    const index = value.findIndex(selected => selected === deSelectValue);
+    if (~index && onChange) {
+      const temp = [...value];
+      temp.splice(index, 1)
+      onChange(temp)
+    }
+  }
+
+  // 替换下拉框中的样式渲染
+  function dropDownMultipleRender() {
+    return (
+      <SelectWithSearchOptionsRender
+        selectValue={value}
+        loading={loading}
+        showSearch
+        showPagination
+        options={optionList}
+        valueKey={valueKey}
+        labelKey={labelKey}
+        componentType="select"
+        onChange={onChange}
+        onSelect={handleSelectValue}
+        onDeselect={handleDesSelectValue}
+        open={dropDownOpen}
+        total={optionsTotal}
+      />
+    )
   }
 
   return (
@@ -146,8 +207,8 @@ export default function CustomSelectWithSearch(props) {
         maxTagCount={maxTagCount || 1}
         labelInValue={!!entity}
         showSearch
-        allowClear={allowClear !== false}
         placeholder={messages('common.all')}
+        dropdownRender={dropDownMultipleRender}
         onChange={onChange}
         onDropdownVisibleChange={handleDropdownVisible}
         onSearch={handleSearchOption}
@@ -155,8 +216,10 @@ export default function CustomSelectWithSearch(props) {
         optionFilterProp="children"
         filterOption={handleFilterOption}
         getPopupContainer={(node) => node.parentNode}
-        className="value"
-        dropdownMatchSelectWidth={200}
+        className={Array.isArray(value) && value.length !== 0 ? "value inputValue multipleSelectValue valueNotNull" : "value inputValue multipleSelectValue valueNull"}
+        dropdownMatchSelectWidth={260}
+        tagRender={tagRender}
+        open={dropDownOpen}
         showArrow
         suffixIcon={
           <CaretDownOutlined
@@ -174,6 +237,7 @@ export default function CustomSelectWithSearch(props) {
           return (
             <Select.Option
               key={option.value}
+              value={option.value}
               title={option.data && !!entity ? JSON.stringify(option.data) : ''}
             >
               {option.label}

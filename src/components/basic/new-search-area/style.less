@@ -456,6 +456,37 @@
             width: 100%;
             min-width: 42px;
           }
+          .value.multipleSelectValue {
+            margin-right: 24px;
+
+            .ant-select-arrow {
+              margin-right: -20px;
+            }
+          }
+          .value.multipleSelectValue.valueNotNull {
+            background: unset !important;
+            
+            .ant-select-selector {
+              margin-top: -4px;
+              min-width: 48px;
+
+              .ant-select-selection-item {
+                background: #EAECF2;
+              }
+              .ant-tag:hover {
+                background: #DEE0E6;
+              }
+
+              .ant-select-selection-overflow-item-suffix {
+                display: none;
+              }
+            }
+          }
+          .value.multipleSelectValue.valueNull {
+            .ant-select-selector {
+              width: 48px !important;
+            }
+          }
           .ant-space-item {
             .select-part-load,
             .select-part-table {
