@@ -130,6 +130,14 @@ class ListSelector extends Component<IListSelectorProps, IListSelectorState> {
             selectorItem.searchForm.concat(tempSearchList);
         }
       }
+      if (Array.isArray(selectorItem.searchForm)) {
+        selectorItem.searchForm.forEach((searchItem) => {
+          searchItem.label = messages(searchItem.label, {
+            context: this.context,
+          });
+        });
+      }
+
       const { paramAsBody = false } = this.props;
       this.setState(
         { lov: { method: 'get', paramAsBody, ...selectorItem }, loading: true },
