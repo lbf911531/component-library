@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-18 14:34:39
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-16 10:44:57
+ * @LastEditTime: 2021-12-17 10:32:10
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -1019,7 +1019,7 @@ function SearchArea(props) {
             // 当前表单删除后，如有设定联动事件，则同步触发该表单绑定的联动事件
             // 对于外界而言，所谓删除类同于字段值设置undefined，而onChange是不会监听这里的值修改
             if (target?.item?.event && props.eventHandle) {
-              const values = getFieldsValue();
+              const values = formRef.current.getFieldsValue();
               const { params } = handleFormatSearchValues(values);
               props.eventHandle(target.item.event, undefined, params);
             }
