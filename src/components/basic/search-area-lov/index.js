@@ -1413,6 +1413,7 @@ class SearchAreaLov extends React.Component {
             paramAsBody={item.paramAsBody}
             single={item.single}
             allowClear={item.allowClear || !item.isRequired}
+            requestBody={item.requestBody}
           />
         );
       }

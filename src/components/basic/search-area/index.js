@@ -1775,6 +1775,8 @@ class SearchArea extends React.Component {
             showLabel={item.showLabel}
             renderLabel={item.renderLabel}
             getPopupContainer={this.getParentContainer}
+            paramAsBody={item.paramAsBody}
+            requestBody={item.requestBody}
           />
         );
       }
