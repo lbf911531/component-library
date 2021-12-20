@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/lbf911531/component-library/compare/v1.3.0...v1.3.1) (2021-12-20)
+
+### Bug Fixes
+
+- 修复未知 bug ([da285fb](https://github.com/lbf911531/component-library/commit/da285fb979abcbf1a5b63b4f2771d0ca052ca5a8))
+
 ## [1.3.0](https://github.com/lbf911531/component-library/compare/v1.2.0...v1.3.0) (2021-12-16)
 
 ### Features
