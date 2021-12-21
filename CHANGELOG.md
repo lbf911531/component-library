@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/lbf911531/component-library/compare/v1.3.1...v1.3.2) (2021-12-21)
+
+### Bug Fixes
+
+- 搜索组件 mulitply 类型下的表单组件缺失 tagRender 函数 ([9c58cf9](https://github.com/lbf911531/component-library/commit/9c58cf9b745071b06f54855d60a881a8e4a398a1))
+
 ### [1.3.1](https://github.com/lbf911531/component-library/compare/v1.3.0...v1.3.1) (2021-12-20)
 
 ### Bug Fixes
