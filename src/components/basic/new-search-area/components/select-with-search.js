@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-05-21 11:51:49
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-12-21 17:42:58
+ * @LastEditTime: 2021-12-22 11:09:53
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -141,7 +141,7 @@ export default function CustomSelectWithSearch(props) {
         visible={omittedValues.length ? undefined : false}
       >
         {messages('base.count.options' /* {count}个选项 */, {
-          count: omittedValues.length,
+          params: { count: omittedValues.length },
         })}
         ...
       </Tooltip>
