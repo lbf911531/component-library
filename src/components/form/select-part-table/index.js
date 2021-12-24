@@ -229,6 +229,8 @@ function SelectPartTable(props) {
     } else if (searchText.current) {
       setOptions([]);
       pageInfo.current = { ...pageInfo.current, page: 0, total: 0 };
+    } else {
+      setOptions([]);
     }
     searchText.current = null;
   }
@@ -291,6 +293,8 @@ function SelectPartTable(props) {
     setValue(val);
     if (propsOnChange) {
       propsOnChange(val);
+      setOptions([]);
+      searchText.current = null;
     }
   }
 
@@ -390,7 +394,7 @@ function SelectPartTable(props) {
           handleBlur(e, open);
         }}
         onClear={() => {
-          setOptions([]); 
+          setOptions([]);
           pageInfo.current = { ...pageInfo.current, page: -1 };
         }}
         allowClear={cusRemoveIcon ? false : allowClear}
