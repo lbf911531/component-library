@@ -1469,7 +1469,9 @@ class SearchAreaLov extends React.Component {
                   }
                 >
                   <Form.Item
-                    label={searchItem.label}
+                    label={messages(searchItem.label, {
+                      context: this.context,
+                    })}
                     colon={false}
                     initialValue={this.getDefaultValue(searchItem)}
                     name={searchItem.id}
@@ -1528,7 +1530,7 @@ class SearchAreaLov extends React.Component {
           ) : (
             <Form.Item
               {...formItemLayout}
-              label={item.label}
+              label={messages(item.label, { context: this.context })}
               name={item.id}
               valuePropName={item.type === 'switch' ? 'checked' : 'value'}
               initialValue={this.getDefaultValue(item)}
