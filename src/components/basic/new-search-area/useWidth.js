@@ -2,7 +2,7 @@
  * @Author: binfeng.long@hand-china.com
  * @Date: 2021-08-19 15:58:37
  * @LastEditors: binfeng.long@hand-china.com
- * @LastEditTime: 2021-11-22 10:31:54
+ * @LastEditTime: 2021-12-30 09:37:23
  * @Version: 1.0.0
  * @Description:
  * @Copyright: Copyright (c) 2021, Hand-RongJing
@@ -39,7 +39,11 @@ export default function useWidthAdaptation(
       // let currentWidth = eDiv.offsetWidth + padding * 2;
       // if (!currentWidth || currentWidth < defaultWidth) currentWidth = defaultWidth;
       setWidth(currentWidth);
-      eDiv.remove();
+      if (eDiv.remove) {
+        eDiv.remove();
+      } else {
+        eDiv.parentNode.removeChild(eDiv);
+      }
       eDiv = null;
     } else {
       setWidth(defaultWidth);
