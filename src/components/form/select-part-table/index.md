@@ -1,4 +1,14 @@
-# 基于 Select，下拉数据分页
+---
+nav:
+  title: 组件
+group:
+  title: 表单
+  path: /form
+---
+
+# SelectPartTable
+
+基于 Select，下拉数据分页
 
 ## 属性
 

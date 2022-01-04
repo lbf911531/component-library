@@ -18,6 +18,7 @@ import { Lov } from 'polard';
 
 export default function LovDemo() {
   const [value, setValue] = useState(undefined);
+  console.log('value:', value);
   return (
     <Lov
       code="company"
@@ -65,6 +66,7 @@ export default function LovDemo() {
 | paramAsBody                 | 搜索区参数是否放入请求体                                                                                                                                           | false                     |
 | isRenderSelect              | columns 配置为两列时是否要渲染下拉组件                                                                                                                             | true                      |
 | showLabel                   | 自定义下拉框展示的 label 字段                                                                                                                                      | null,可取值"code"，"name" |
+| notRenderPartLoad           | 强制渲染下拉表格                                                                                                                                                   | true                      |
 
 ## 提示
 

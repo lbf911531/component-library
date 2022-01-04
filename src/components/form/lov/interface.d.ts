@@ -65,6 +65,7 @@ export interface IProps {
   customChooserTextValue?: any;
   inputStyle?: any;
   onBlur?: (e: any, open: boolean) => void;
+  notRenderPartLoad?: boolean;
 }
 
 export interface ILov {

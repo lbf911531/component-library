@@ -21,7 +21,13 @@ import LocaleContext from '../../locale-lan-provider/context';
 
 function CompatibleLov(props: IProps) {
   const context = useContext(LocaleContext);
-  const { code, selectorItem, isRenderSelect = true, onBlur } = props;
+  const {
+    code,
+    selectorItem,
+    isRenderSelect = true,
+    onBlur,
+    notRenderPartLoad = true,
+  } = props;
   const [lov, setLov] = useState<ILov>({ columns: [], url: '' });
   const renderMap = {
     time: {
@@ -285,7 +291,12 @@ function CompatibleLov(props: IProps) {
     }
   }
 
-  if (isRenderSelect && Array.isArray(lov.columns) && lov.columns.length <= 2) {
+  if (
+    isRenderSelect &&
+    Array.isArray(lov.columns) &&
+    lov.columns.length <= 2 &&
+    !notRenderPartLoad
+  ) {
     return (
       <SelectPartLoad
         {...props}
@@ -309,7 +320,7 @@ function CompatibleLov(props: IProps) {
   } else if (
     isRenderSelect &&
     Array.isArray(lov.columns) &&
-    lov.columns.length > 2
+    (lov.columns.length > 2 || notRenderPartLoad)
   ) {
     return (
       <SelectPartTable

@@ -668,7 +668,7 @@ class EditTable extends Component {
    * @returns
    */
   getInterfaceParams = () => {
-    const { params: paramsFromProps } = this.props;
+    const { params: paramsFromProps, notStartFromZero } = this.props;
     const {
       pagination: { pageSize, current },
       params,
@@ -676,7 +676,8 @@ class EditTable extends Component {
     } = this.state;
     let requestBody = [];
     const searchParams = {
-      page: current - 1,
+      // 不从0开始
+      page: notStartFromZero ? current : current - 1,
       size: pageSize,
       ...paramsFromProps,
       ...params,

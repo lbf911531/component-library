@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 14:51:42
- * @LastEditTime: 2021-12-22 11:08:38
+ * @LastEditTime: 2022-01-04 09:57:17
  * @LastEditors: binfeng.long@hand-china.com
  * @Description: In User Settings Edit
  * @FilePath: \companyCode\polaris-web-workbench\polaris-web-workbench\src\components\Widget\Template\select-part-load\multipleOptionsRender.js
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { Spin, Input, Divider, Checkbox } from 'antd';
-import { messages } from 'utils/utils';
+import { messages } from '../../../utils';
 import SearchSvg from '../images/search';
 
 export default function SelectWithSearchOptionsRender(props) {
