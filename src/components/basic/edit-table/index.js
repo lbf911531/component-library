@@ -1629,7 +1629,10 @@ class EditTable extends Component {
   };
 
   onValueCheckCell = (column, value, row) => {
-    const errorMsg = validation(column.rules, value);
+    const { attrs } = this.state
+    const attr = attrs[`${row}|${column.dataIndex}`]
+
+    const errorMsg = validation([...(column.rules || []), ...(attr?.rules || [])], value);
     let errorFlag; // 用来返回给外部 判断 该单元格是否检验成功
     if (errorMsg) {
       // 存在错误信息，需要给当前单元格设置错误的样式
