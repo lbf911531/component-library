@@ -33,6 +33,7 @@ export default function TableOptionsRender(props) {
     time = 250,
     handleFocusDiv,
     searchPlaceholder,
+    loading,
   } = props;
 
   const [selectedRender, setSelectedRender] = useState([]); // 已选选项
@@ -311,7 +312,7 @@ export default function TableOptionsRender(props) {
         </div>
       )}
 
-      <Spin spinning={spinning}>
+      <Spin spinning={loading ? true : spinning}>
         <div
           className={`option-table-content ${
             mode === 'multiple'

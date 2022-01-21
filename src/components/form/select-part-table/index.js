@@ -39,6 +39,8 @@ function SelectPartTable(props) {
     onBlur: handleBlur = () => {},
     onFocus: handleFocus,
     handleFocusDiv,
+    dataKey,
+    disabledPage,
   } = props;
 
   const [loading, setLoading] = useState(false);
@@ -53,6 +55,7 @@ function SelectPartTable(props) {
   const fetchTimes = useRef(0);
   const canGetList = useRef();
   const loadFlag = useRef(false);
+  const lockFlag = useRef(false);
 
   const selectValue = useMemo(() => {
     if (Array.isArray(value)) {
@@ -93,10 +96,11 @@ function SelectPartTable(props) {
   }, [propsValue]);
 
   useEffect(() => {
-    if (defaultGetList) {
+    if (defaultGetList && propsUrl && !lockFlag.current) {
       getList(props);
+      lockFlag.current = true;
     }
-  }, [defaultGetList]);
+  }, [defaultGetList, propsUrl]);
 
   useEffect(() => {
     setForceGetList(true);
@@ -175,6 +179,9 @@ function SelectPartTable(props) {
       isQueryFlag ? queryParams : {},
     )
       .then((res) => {
+        if (dataKey) {
+          res.data = res.data?.[dataKey];
+        }
         if (!Array.isArray(res.data) || curTimes !== fetchTimes.current) return;
         const total = Number(res.headers['x-total-count']) || res.data.length;
         const replaceData = page === 0;
@@ -200,7 +207,7 @@ function SelectPartTable(props) {
         );
         setExtraOptions(extraOption);
         setLoading(false);
-
+        resetPropsValue(res.data);
         if (curSize === 'all') {
           onChange(res.data);
         }
@@ -217,10 +224,25 @@ function SelectPartTable(props) {
       });
   }
 
+  function resetPropsValue(dropdownList) {
+    if (
+      Array.isArray(dropdownList) &&
+      value &&
+      mode !== 'multiple' &&
+      !value[labelKey] &&
+      disabledPage &&
+      defaultGetList
+    ) {
+      const vl = dropdownList.find((op) => op[valueKey] === value.value);
+      onChange(vl);
+    }
+  }
+
   function onDropdownVisibleChange(isOpen) {
     setOpen(isOpen);
     if (isOpen) {
       if (handleFocus) handleFocus();
+      if (defaultGetList && disabledPage && options.length) return;
       if (!options.length || forceGetList) {
         setOptions([]);
         setForceGetList(propsForceGetList);
@@ -239,7 +261,7 @@ function SelectPartTable(props) {
     const { clientHeight, scrollHeight, scrollTop } = e.target;
     const isBottom = clientHeight + scrollTop >= scrollHeight - 30;
 
-    if (canGetList.current && isBottom && loadFlag.current) {
+    if (canGetList.current && isBottom && loadFlag.current && !disabledPage) {
       canGetList.current = false;
       getList(null, { page: pageInfo.current.page + 1 });
     }
@@ -270,6 +292,7 @@ function SelectPartTable(props) {
         columns={columns}
         onSelectAllHandle={onSelectAllHandle}
         handleFocusDiv={handleFocusDiv}
+        loading={loading}
       />
     );
   }
