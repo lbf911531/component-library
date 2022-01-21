@@ -1574,7 +1574,8 @@ class EditTable extends Component {
     if (onRowSave) {
       onRowSave(
         { ...record, ...values },
-        record.id > 0 ? 'EDIT' : 'NEW',
+        // 如果行数据没有id，切换行编辑的那个瞬间，(record.id > 0 === false)，因此需要判断rowKey
+        record.id > 0 || (rowKey !== 'id' && record[rowKey]) ? 'EDIT' : 'NEW',
         (value) => {
           pagination.pageSize = 10;
           this.setState({ loading: false, pagination });

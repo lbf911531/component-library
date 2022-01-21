@@ -38,6 +38,20 @@ export default function EditTableDemo() {
       width: 300,
       type: 'input',
     },
+    {
+      title: '说明',
+      dataIndex: 'colSrcType',
+      width: 300,
+      type: 'select',
+      valueKey: 'value',
+      labelKey: 'label',
+      options: [
+        {
+          value: '1',
+          label: '一',
+        },
+      ],
+    },
   ];
 
   function handleDelete(id) {
