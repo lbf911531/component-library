@@ -148,6 +148,9 @@
         vertical-align: top;
       }
       &:hover {
+        .edit-table-over-range {
+          max-width: calc(100% - 22px);
+        }
         .edit-table-hover-status {
           display: inline-block;
           &:hover {
@@ -173,7 +176,8 @@
       position: relative;
       min-height: 20px;
       display: inline-block;
-      max-width: calc(100% - 22px);
+      // max-width: calc(100% - 22px);
+      max-width: 100%;
     }
     .ant-popover-inner {
       .edit-table-over-range {

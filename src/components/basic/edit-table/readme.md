@@ -99,6 +99,7 @@ export default function EditTableDemo() {
         }}
         editWithCellFlag={editWithCellFlag}
         onRowSave={handleSave}
+        scroll={{ x: 1100 }}
       />
     </div>
   );
